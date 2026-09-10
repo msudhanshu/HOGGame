@@ -1,0 +1,613 @@
+{
+  "level_id": "watch_01",
+  "silhouette": "watch",
+  "background_color": "#F5F5F5",
+  "width": 360,
+  "height": 420,
+  "atlas": "stamps.atlas.json",
+  "items": [
+    {
+      "name": "bird",
+      "position": [173, 266],
+      "scale": 0.654500008,
+      "rotation": 351.447998,
+      "z_layer": 0,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "leaf",
+      "position": [189, 377],
+      "scale": 0.692900002,
+      "rotation": 135.535004,
+      "z_layer": 1,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "acorn",
+      "position": [170, 238],
+      "scale": 0.519800007,
+      "rotation": 313.789001,
+      "z_layer": 2,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "heart",
+      "position": [152, 138],
+      "scale": 0.810899973,
+      "rotation": 171.774994,
+      "z_layer": 3,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "gem",
+      "position": [154, 340],
+      "scale": 0.765600026,
+      "rotation": 354.295013,
+      "z_layer": 4,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "bell",
+      "position": [203, 356],
+      "scale": 0.837599993,
+      "rotation": 334.449005,
+      "z_layer": 5,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "crown",
+      "position": [115, 164],
+      "scale": 0.827099979,
+      "rotation": 239.636993,
+      "z_layer": 6,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "key",
+      "position": [182, 74],
+      "scale": 0.649100006,
+      "rotation": 177.703003,
+      "z_layer": 7,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "cloud",
+      "position": [182, 318],
+      "scale": 0.833400011,
+      "rotation": 125.976997,
+      "z_layer": 8,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "drop",
+      "position": [122, 226],
+      "scale": 0.825600028,
+      "rotation": 209.526001,
+      "z_layer": 9,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "sun",
+      "position": [206, 68.0000076],
+      "scale": 0.82190001,
+      "rotation": 177.020996,
+      "z_layer": 10,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "kite",
+      "position": [190, 120],
+      "scale": 0.526300013,
+      "rotation": 165.570007,
+      "z_layer": 11,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "bell",
+      "position": [150, 206],
+      "scale": 0.518299997,
+      "rotation": 79.6869965,
+      "z_layer": 12,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "anchor",
+      "position": [160, 292],
+      "scale": 0.80369997,
+      "rotation": 137.625,
+      "z_layer": 13,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "mushroom",
+      "position": [283, 216],
+      "scale": 0.466800004,
+      "rotation": 329.42099,
+      "z_layer": 14,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "sun",
+      "position": [150, 371],
+      "scale": 0.600399971,
+      "rotation": 125.295998,
+      "z_layer": 15,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "anchor",
+      "position": [206, 106],
+      "scale": 0.621800005,
+      "rotation": 179.889008,
+      "z_layer": 16,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "acorn",
+      "position": [161, 30.0000038],
+      "scale": 0.493000001,
+      "rotation": 141.188004,
+      "z_layer": 17,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "moon",
+      "position": [218, 160],
+      "scale": 0.4815,
+      "rotation": 283.582001,
+      "z_layer": 18,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "bolt",
+      "position": [209, 146],
+      "scale": 0.545000017,
+      "rotation": 182.121994,
+      "z_layer": 19,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "leaf",
+      "position": [149, 106],
+      "scale": 0.730000019,
+      "rotation": 189.621002,
+      "z_layer": 20,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "flower",
+      "position": [207, 221],
+      "scale": 0.584200025,
+      "rotation": 228.270996,
+      "z_layer": 21,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "apple",
+      "position": [115, 267],
+      "scale": 0.696799994,
+      "rotation": 22.8169994,
+      "z_layer": 22,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "moon",
+      "position": [195, 166],
+      "scale": 0.478799999,
+      "rotation": 137.987,
+      "z_layer": 23,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "crown",
+      "position": [214, 282],
+      "scale": 0.644900024,
+      "rotation": 180.119003,
+      "z_layer": 24,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "key",
+      "position": [254, 238],
+      "scale": 0.727599978,
+      "rotation": 116.141998,
+      "z_layer": 25,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "acorn",
+      "position": [176, 194],
+      "scale": 0.702499986,
+      "rotation": 2.95700049,
+      "z_layer": 26,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "drop",
+      "position": [192, 242],
+      "scale": 0.643899977,
+      "rotation": 40.6699982,
+      "z_layer": 27,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "leaf",
+      "position": [233, 251],
+      "scale": 0.765799999,
+      "rotation": 30.562006,
+      "z_layer": 28,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "cloud",
+      "position": [240, 146],
+      "scale": 0.782599986,
+      "rotation": 355.515015,
+      "z_layer": 29,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "crown",
+      "position": [159, 61],
+      "scale": 0.783900023,
+      "rotation": 141.042999,
+      "z_layer": 30,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "kite",
+      "position": [180, 44.0000038],
+      "scale": 0.603900015,
+      "rotation": 334.744995,
+      "z_layer": 31,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "kite",
+      "position": [156, 173],
+      "scale": 0.601800025,
+      "rotation": 282.31897,
+      "z_layer": 32,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "leaf",
+      "position": [217, 31.0000038],
+      "scale": 0.819999993,
+      "rotation": 249.524948,
+      "z_layer": 33,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "star",
+      "position": [213, 198],
+      "scale": 0.598399997,
+      "rotation": 101.425003,
+      "z_layer": 34,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "star",
+      "position": [240, 207],
+      "scale": 0.607299984,
+      "rotation": 47.723999,
+      "z_layer": 35,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "acorn",
+      "position": [262, 171],
+      "scale": 0.732800007,
+      "rotation": 296.96701,
+      "z_layer": 36,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "shell",
+      "position": [212, 315],
+      "scale": 0.566900015,
+      "rotation": 295.661011,
+      "z_layer": 37,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "moon",
+      "position": [163, 84],
+      "scale": 0.637399971,
+      "rotation": 50.121006,
+      "z_layer": 38,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "mushroom",
+      "position": [173, 215],
+      "scale": 0.575100005,
+      "rotation": 190.841995,
+      "z_layer": 39,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "star",
+      "position": [174, 167],
+      "scale": 0.4639,
+      "rotation": 58.2649994,
+      "z_layer": 40,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "moon",
+      "position": [98, 218],
+      "scale": 0.583599985,
+      "rotation": 276.382996,
+      "z_layer": 41,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "shell",
+      "position": [209, 392],
+      "scale": 0.720499992,
+      "rotation": 89.6949997,
+      "z_layer": 42,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "bird",
+      "position": [160, 318],
+      "scale": 0.546599984,
+      "rotation": 25.9420033,
+      "z_layer": 43,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "cloud",
+      "position": [142, 276],
+      "scale": 0.532500029,
+      "rotation": 354.605011,
+      "z_layer": 44,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "bolt",
+      "position": [187, 292],
+      "scale": 0.553200006,
+      "rotation": 59.2200012,
+      "z_layer": 45,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "gem",
+      "position": [155, 249],
+      "scale": 0.622799993,
+      "rotation": 182.257004,
+      "z_layer": 46,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "cloud",
+      "position": [255, 262],
+      "scale": 0.484699994,
+      "rotation": 89.4069901,
+      "z_layer": 47,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "cloud",
+      "position": [137, 161],
+      "scale": 0.501999974,
+      "rotation": 15.8209991,
+      "z_layer": 48,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "mushroom",
+      "position": [109, 194],
+      "scale": 0.766900003,
+      "rotation": 100.136002,
+      "z_layer": 49,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "key",
+      "position": [171, 364],
+      "scale": 0.604499996,
+      "rotation": 122.955002,
+      "z_layer": 50,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "acorn",
+      "position": [92, 236],
+      "scale": 0.549700022,
+      "rotation": 93.8290024,
+      "z_layer": 51,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "bolt",
+      "position": [193, 269],
+      "scale": 0.513800025,
+      "rotation": 113.150993,
+      "z_layer": 52,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "moon",
+      "position": [230, 183],
+      "scale": 0.516099989,
+      "rotation": 5.25700092,
+      "z_layer": 53,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "anchor",
+      "position": [172, 115],
+      "scale": 0.464599997,
+      "rotation": 205.957001,
+      "z_layer": 54,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "mushroom",
+      "position": [264, 210],
+      "scale": 0.636799991,
+      "rotation": 323.091003,
+      "z_layer": 55,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "shell",
+      "position": [142, 320],
+      "scale": 0.499799997,
+      "rotation": 354.528992,
+      "z_layer": 56,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "gem",
+      "position": [126, 140],
+      "scale": 0.843900025,
+      "rotation": 80.5350037,
+      "z_layer": 57,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "bell",
+      "position": [238, 279],
+      "scale": 0.773199975,
+      "rotation": 273.075012,
+      "z_layer": 58,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "mushroom",
+      "position": [200, 45.0000038],
+      "scale": 0.471500009,
+      "rotation": 300.864014,
+      "z_layer": 59,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "anchor",
+      "position": [214, 181],
+      "scale": 0.456499994,
+      "rotation": 131.869003,
+      "z_layer": 60,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "shell",
+      "position": [177, 147],
+      "scale": 0.685299993,
+      "rotation": 228.740005,
+      "z_layer": 61,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "shell",
+      "position": [128, 184],
+      "scale": 0.451499999,
+      "rotation": 44.1669998,
+      "z_layer": 62,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "acorn",
+      "position": [168, 388],
+      "scale": 0.621100008,
+      "rotation": 347.528015,
+      "z_layer": 63,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "cloud",
+      "position": [182, 99],
+      "scale": 0.5079,
+      "rotation": 310.203003,
+      "z_layer": 64,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "anchor",
+      "position": [236, 166],
+      "scale": 0.482300013,
+      "rotation": 240.399994,
+      "z_layer": 65,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    },
+    {
+      "name": "apple",
+      "position": [251, 192],
+      "scale": 0.45570001,
+      "rotation": 298.11499,
+      "z_layer": 66,
+      "color_tint": [0.588199973, 0.431400001, 0.274500012, 1],
+      "region": "r0"
+    }
+  ]
+}

@@ -1,0 +1,1217 @@
+{
+  "level_id": "bird_01",
+  "silhouette": "bird",
+  "background_color": "#F5F5F5",
+  "width": 420.0,
+  "height": 300.0,
+  "atlas": "stamps.atlas.json",
+  "items": [
+    {
+      "name": "shell",
+      "position": [
+        282.0,
+        139.0
+      ],
+      "scale": 0.509,
+      "rotation": 217.133,
+      "z_layer": 0,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "kite",
+      "position": [
+        249.0,
+        179.0
+      ],
+      "scale": 0.6721,
+      "rotation": 329.537,
+      "z_layer": 1,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "shell",
+      "position": [
+        227.0,
+        224.0
+      ],
+      "scale": 0.7489,
+      "rotation": 9.572,
+      "z_layer": 2,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "gem",
+      "position": [
+        134.0,
+        204.0
+      ],
+      "scale": 0.5843,
+      "rotation": 23.456,
+      "z_layer": 3,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "star",
+      "position": [
+        134.0,
+        232.0
+      ],
+      "scale": 0.668,
+      "rotation": 107.705,
+      "z_layer": 4,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "mushroom",
+      "position": [
+        253.0,
+        154.0
+      ],
+      "scale": 0.5063,
+      "rotation": 281.733,
+      "z_layer": 5,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "anchor",
+      "position": [
+        89.0,
+        211.0
+      ],
+      "scale": 0.7748,
+      "rotation": 317.831,
+      "z_layer": 6,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "apple",
+      "position": [
+        71.0,
+        165.0
+      ],
+      "scale": 0.7508,
+      "rotation": 32.303,
+      "z_layer": 7,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "key",
+      "position": [
+        330.0,
+        141.0
+      ],
+      "scale": 0.7659,
+      "rotation": 47.799,
+      "z_layer": 8,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "moon",
+      "position": [
+        274.0,
+        186.0
+      ],
+      "scale": 0.5433,
+      "rotation": 224.432,
+      "z_layer": 9,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "kite",
+      "position": [
+        283.0,
+        160.0
+      ],
+      "scale": 0.4299,
+      "rotation": 335.245,
+      "z_layer": 10,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "bolt",
+      "position": [
+        117.0,
+        116.0
+      ],
+      "scale": 0.5016,
+      "rotation": 60.981,
+      "z_layer": 11,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "kite",
+      "position": [
+        259.0,
+        128.0
+      ],
+      "scale": 0.6556,
+      "rotation": 288.09,
+      "z_layer": 12,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "leaf",
+      "position": [
+        290.0,
+        94.0
+      ],
+      "scale": 0.4028,
+      "rotation": 64.596,
+      "z_layer": 13,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "drop",
+      "position": [
+        285.0,
+        116.0
+      ],
+      "scale": 0.5227,
+      "rotation": 259.417,
+      "z_layer": 14,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "heart",
+      "position": [
+        186.0,
+        106.0
+      ],
+      "scale": 0.5433,
+      "rotation": 19.679,
+      "z_layer": 15,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "key",
+      "position": [
+        335.0,
+        102.0
+      ],
+      "scale": 0.7437,
+      "rotation": 216.916,
+      "z_layer": 16,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "kite",
+      "position": [
+        232.0,
+        87.0
+      ],
+      "scale": 0.6302,
+      "rotation": 205.881,
+      "z_layer": 17,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "star",
+      "position": [
+        219.0,
+        256.0
+      ],
+      "scale": 0.4831,
+      "rotation": 275.998,
+      "z_layer": 18,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "fish",
+      "position": [
+        174.0,
+        213.0
+      ],
+      "scale": 0.4826,
+      "rotation": 209.383,
+      "z_layer": 19,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "bell",
+      "position": [
+        315.0,
+        83.0
+      ],
+      "scale": 0.5491,
+      "rotation": 180.144,
+      "z_layer": 20,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "bolt",
+      "position": [
+        262.0,
+        90.0
+      ],
+      "scale": 0.7122,
+      "rotation": 132.813,
+      "z_layer": 21,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "apple",
+      "position": [
+        48.0,
+        176.0
+      ],
+      "scale": 0.6466,
+      "rotation": 85.049,
+      "z_layer": 22,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "crown",
+      "position": [
+        152.0,
+        230.0
+      ],
+      "scale": 0.4551,
+      "rotation": 133.346,
+      "z_layer": 23,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "boot",
+      "position": [
+        305.0,
+        151.0
+      ],
+      "scale": 0.4517,
+      "rotation": 151.751,
+      "z_layer": 24,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "cup",
+      "position": [
+        149.0,
+        109.0
+      ],
+      "scale": 0.5605,
+      "rotation": 235.46,
+      "z_layer": 25,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "bell",
+      "position": [
+        110.0,
+        198.0
+      ],
+      "scale": 0.7317,
+      "rotation": 119.983,
+      "z_layer": 26,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "candle",
+      "position": [
+        223.0,
+        134.0
+      ],
+      "scale": 0.5081,
+      "rotation": 116.337,
+      "z_layer": 27,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "bell",
+      "position": [
+        119.0,
+        218.0
+      ],
+      "scale": 0.4544,
+      "rotation": 95.508,
+      "z_layer": 28,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "candle",
+      "position": [
+        319.0,
+        114.0
+      ],
+      "scale": 0.519,
+      "rotation": 183.84,
+      "z_layer": 29,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "gem",
+      "position": [
+        95.0,
+        130.0
+      ],
+      "scale": 0.6144,
+      "rotation": 277.165,
+      "z_layer": 30,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "acorn",
+      "position": [
+        297.0,
+        81.0
+      ],
+      "scale": 0.5013,
+      "rotation": 62.231,
+      "z_layer": 31,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "mushroom",
+      "position": [
+        228.0,
+        152.0
+      ],
+      "scale": 0.5001,
+      "rotation": 278.04,
+      "z_layer": 32,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "anchor",
+      "position": [
+        206.0,
+        142.0
+      ],
+      "scale": 0.594,
+      "rotation": 242.942,
+      "z_layer": 33,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "bird",
+      "position": [
+        304.0,
+        121.0
+      ],
+      "scale": 0.4464,
+      "rotation": 30.534,
+      "z_layer": 34,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "leaf",
+      "position": [
+        200.0,
+        88.0
+      ],
+      "scale": 0.5917,
+      "rotation": 70.575,
+      "z_layer": 35,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "cloud",
+      "position": [
+        258.0,
+        249.0
+      ],
+      "scale": 0.4398,
+      "rotation": 102.402,
+      "z_layer": 36,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "cup",
+      "position": [
+        206.0,
+        115.0
+      ],
+      "scale": 0.5736,
+      "rotation": 187.444,
+      "z_layer": 37,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "shell",
+      "position": [
+        174.0,
+        127.0
+      ],
+      "scale": 0.7374,
+      "rotation": 353.468,
+      "z_layer": 38,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "cup",
+      "position": [
+        169.0,
+        230.0
+      ],
+      "scale": 0.411,
+      "rotation": 321.17,
+      "z_layer": 39,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "anchor",
+      "position": [
+        104.0,
+        169.0
+      ],
+      "scale": 0.4804,
+      "rotation": 166.088,
+      "z_layer": 40,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "key",
+      "position": [
+        99.0,
+        154.0
+      ],
+      "scale": 0.4541,
+      "rotation": 272.416,
+      "z_layer": 41,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "cloud",
+      "position": [
+        239.0,
+        116.0
+      ],
+      "scale": 0.6446,
+      "rotation": 138.179,
+      "z_layer": 42,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "mushroom",
+      "position": [
+        89.0,
+        184.0
+      ],
+      "scale": 0.4906,
+      "rotation": 16.451,
+      "z_layer": 43,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "gem",
+      "position": [
+        254.0,
+        235.0
+      ],
+      "scale": 0.4528,
+      "rotation": 314.667,
+      "z_layer": 44,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "acorn",
+      "position": [
+        155.0,
+        201.0
+      ],
+      "scale": 0.5427,
+      "rotation": 240.226,
+      "z_layer": 45,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "shell",
+      "position": [
+        69.0,
+        188.0
+      ],
+      "scale": 0.6598,
+      "rotation": 142.326,
+      "z_layer": 46,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "crown",
+      "position": [
+        243.0,
+        203.0
+      ],
+      "scale": 0.6371,
+      "rotation": 238.612,
+      "z_layer": 47,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "heart",
+      "position": [
+        252.0,
+        220.0
+      ],
+      "scale": 0.4055,
+      "rotation": 209.614,
+      "z_layer": 48,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "drop",
+      "position": [
+        199.0,
+        215.0
+      ],
+      "scale": 0.7575,
+      "rotation": 88.3,
+      "z_layer": 49,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "leaf",
+      "position": [
+        295.0,
+        177.0
+      ],
+      "scale": 0.4237,
+      "rotation": 107.335,
+      "z_layer": 50,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "shell",
+      "position": [
+        356.0,
+        127.0
+      ],
+      "scale": 0.663,
+      "rotation": 174.218,
+      "z_layer": 51,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "flower",
+      "position": [
+        222.0,
+        111.0
+      ],
+      "scale": 0.4616,
+      "rotation": 221.937,
+      "z_layer": 52,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "moon",
+      "position": [
+        126.0,
+        184.0
+      ],
+      "scale": 0.4826,
+      "rotation": 332.991,
+      "z_layer": 53,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "fish",
+      "position": [
+        167.0,
+        100.0
+      ],
+      "scale": 0.6134,
+      "rotation": 102.498,
+      "z_layer": 54,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "fish",
+      "position": [
+        378.0,
+        131.0
+      ],
+      "scale": 0.5042,
+      "rotation": 39.273,
+      "z_layer": 55,
+      "color_tint": [
+        0.1961,
+        0.2745,
+        0.3529,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "flower",
+      "position": [
+        197.0,
+        192.0
+      ],
+      "scale": 0.4891,
+      "rotation": 24.339,
+      "z_layer": 56,
+      "color_tint": [
+        0.1569,
+        0.2157,
+        0.2745,
+        1.0
+      ],
+      "region": "r1"
+    },
+    {
+      "name": "mushroom",
+      "position": [
+        167.0,
+        155.0
+      ],
+      "scale": 0.709,
+      "rotation": 197.401,
+      "z_layer": 57,
+      "color_tint": [
+        0.1569,
+        0.2157,
+        0.2745,
+        1.0
+      ],
+      "region": "r1"
+    },
+    {
+      "name": "anchor",
+      "position": [
+        135.0,
+        134.0
+      ],
+      "scale": 0.5975,
+      "rotation": 72.85,
+      "z_layer": 58,
+      "color_tint": [
+        0.1569,
+        0.2157,
+        0.2745,
+        1.0
+      ],
+      "region": "r1"
+    },
+    {
+      "name": "shell",
+      "position": [
+        214.0,
+        198.0
+      ],
+      "scale": 0.5281,
+      "rotation": 325.588,
+      "z_layer": 59,
+      "color_tint": [
+        0.1569,
+        0.2157,
+        0.2745,
+        1.0
+      ],
+      "region": "r1"
+    },
+    {
+      "name": "moon",
+      "position": [
+        170.0,
+        183.0
+      ],
+      "scale": 0.7486,
+      "rotation": 262.43,
+      "z_layer": 60,
+      "color_tint": [
+        0.1569,
+        0.2157,
+        0.2745,
+        1.0
+      ],
+      "region": "r1"
+    },
+    {
+      "name": "drop",
+      "position": [
+        204.0,
+        167.0
+      ],
+      "scale": 0.6568,
+      "rotation": 316.576,
+      "z_layer": 61,
+      "color_tint": [
+        0.1569,
+        0.2157,
+        0.2745,
+        1.0
+      ],
+      "region": "r1"
+    },
+    {
+      "name": "mushroom",
+      "position": [
+        136.0,
+        159.0
+      ],
+      "scale": 0.4726,
+      "rotation": 223.275,
+      "z_layer": 62,
+      "color_tint": [
+        0.1569,
+        0.2157,
+        0.2745,
+        1.0
+      ],
+      "region": "r1"
+    },
+    {
+      "name": "candle",
+      "position": [
+        116.0,
+        142.0
+      ],
+      "scale": 0.4824,
+      "rotation": 96.942,
+      "z_layer": 63,
+      "color_tint": [
+        0.1569,
+        0.2157,
+        0.2745,
+        1.0
+      ],
+      "region": "r1"
+    },
+    {
+      "name": "star",
+      "position": [
+        152.0,
+        138.0
+      ],
+      "scale": 0.5116,
+      "rotation": 300.406,
+      "z_layer": 64,
+      "color_tint": [
+        0.1569,
+        0.2157,
+        0.2745,
+        1.0
+      ],
+      "region": "r1"
+    },
+    {
+      "name": "sun",
+      "position": [
+        147.0,
+        171.0
+      ],
+      "scale": 0.427,
+      "rotation": 77.708,
+      "z_layer": 65,
+      "color_tint": [
+        0.1569,
+        0.2157,
+        0.2745,
+        1.0
+      ],
+      "region": "r1"
+    },
+    {
+      "name": "fish",
+      "position": [
+        222.0,
+        170.0
+      ],
+      "scale": 0.4079,
+      "rotation": 337.258,
+      "z_layer": 66,
+      "color_tint": [
+        0.1569,
+        0.2157,
+        0.2745,
+        1.0
+      ],
+      "region": "r1"
+    },
+    {
+      "name": "acorn",
+      "position": [
+        145.0,
+        187.0
+      ],
+      "scale": 0.4454,
+      "rotation": 191.231,
+      "z_layer": 67,
+      "color_tint": [
+        0.1569,
+        0.2157,
+        0.2745,
+        1.0
+      ],
+      "region": "r1"
+    },
+    {
+      "name": "bolt",
+      "position": [
+        124.0,
+        169.0
+      ],
+      "scale": 0.4662,
+      "rotation": 1.029,
+      "z_layer": 68,
+      "color_tint": [
+        0.1569,
+        0.2157,
+        0.2745,
+        1.0
+      ],
+      "region": "r1"
+    },
+    {
+      "name": "moon",
+      "position": [
+        189.0,
+        152.0
+      ],
+      "scale": 0.559,
+      "rotation": 151.297,
+      "z_layer": 69,
+      "color_tint": [
+        0.1569,
+        0.2157,
+        0.2745,
+        1.0
+      ],
+      "region": "r1"
+    },
+    {
+      "name": "flower",
+      "position": [
+        230.0,
+        189.0
+      ],
+      "scale": 0.496,
+      "rotation": 56.118,
+      "z_layer": 70,
+      "color_tint": [
+        0.1569,
+        0.2157,
+        0.2745,
+        1.0
+      ],
+      "region": "r1"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+# OS / IDE
+.DS_Store
+.vs/
+.idea/
+*.user
+*.userprefs
+*.suo
+*.pidb
+*.booproj
+*.svd
+*.opendb
+*.VC.db
+# Independent Core test builds (keep *.csproj / *.sln)
+**/DotNet~/bin/
+**/DotNet~/obj/
+**/DotNet/bin/
+**/DotNet/obj/
+**/TestResults/
+bin/
+obj/
+*.pdb
+*.mdb

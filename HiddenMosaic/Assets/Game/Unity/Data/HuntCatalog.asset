@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd68e6442ea4e4e26a9f27a84856fa4b, type: 3}
+  m_Name: HuntCatalog
+  m_EditorClassIdentifier: Game.Unity::Game.Unity.HuntCatalogAsset
+  entries:
+  - silhouetteFile: horse.json
+    title: Horse
+    waveSize: 3
+    waveCount: 2
+    memoryFade: 8
+    glassRadius: 0.16
+    zoom: 2
+  - silhouetteFile: watch.json
+    title: Watch
+    waveSize: 3
+    waveCount: 3
+    memoryFade: 6
+    glassRadius: 0.13
+    zoom: 2.3
+  - silhouetteFile: bird.json
+    title: Bird
+    waveSize: 4
+    waveCount: 3
+    memoryFade: 4.5
+    glassRadius: 0.11
+    zoom: 2.5

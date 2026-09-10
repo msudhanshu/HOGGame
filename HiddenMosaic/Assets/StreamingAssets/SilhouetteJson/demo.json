@@ -1,0 +1,724 @@
+{
+  "level_id": "horse_01",
+  "silhouette": "horse",
+  "background_color": "#F5F5F5",
+  "width": 400.0,
+  "height": 300.0,
+  "atlas": "stamps.atlas.json",
+  "items": [
+    {
+      "name": "cloud",
+      "position": [
+        295.0,
+        152.0
+      ],
+      "scale": 0.9302,
+      "rotation": 51.897,
+      "z_layer": 0,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "bird",
+      "position": [
+        182.0,
+        208.0
+      ],
+      "scale": 0.6747,
+      "rotation": 152.398,
+      "z_layer": 1,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "acorn",
+      "position": [
+        96.0,
+        125.0
+      ],
+      "scale": 0.7137,
+      "rotation": 197.854,
+      "z_layer": 2,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "heart",
+      "position": [
+        311.0,
+        96.0
+      ],
+      "scale": 0.8514,
+      "rotation": 193.732,
+      "z_layer": 3,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "key",
+      "position": [
+        131.0,
+        254.0
+      ],
+      "scale": 0.7112,
+      "rotation": 73.244,
+      "z_layer": 4,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "sun",
+      "position": [
+        242.0,
+        156.0
+      ],
+      "scale": 0.8501,
+      "rotation": 100.947,
+      "z_layer": 5,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "flower",
+      "position": [
+        87.0,
+        156.0
+      ],
+      "scale": 0.9423,
+      "rotation": 346.197,
+      "z_layer": 6,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "sun",
+      "position": [
+        184.0,
+        232.0
+      ],
+      "scale": 0.6143,
+      "rotation": 349.173,
+      "z_layer": 7,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "cloud",
+      "position": [
+        350.0,
+        145.0
+      ],
+      "scale": 0.5963,
+      "rotation": 224.456,
+      "z_layer": 8,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "kite",
+      "position": [
+        207.0,
+        150.0
+      ],
+      "scale": 0.7952,
+      "rotation": 330.227,
+      "z_layer": 9,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "flower",
+      "position": [
+        275.0,
+        218.0
+      ],
+      "scale": 0.5749,
+      "rotation": 230.878,
+      "z_layer": 10,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "sun",
+      "position": [
+        255.0,
+        204.0
+      ],
+      "scale": 0.886,
+      "rotation": 183.419,
+      "z_layer": 11,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "key",
+      "position": [
+        182.0,
+        91.0
+      ],
+      "scale": 0.8779,
+      "rotation": 245.983,
+      "z_layer": 12,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "mushroom",
+      "position": [
+        125.0,
+        122.0
+      ],
+      "scale": 0.8842,
+      "rotation": 101.476,
+      "z_layer": 13,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "moon",
+      "position": [
+        173.0,
+        152.0
+      ],
+      "scale": 0.8057,
+      "rotation": 289.82,
+      "z_layer": 14,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "heart",
+      "position": [
+        208.0,
+        223.0
+      ],
+      "scale": 0.8194,
+      "rotation": 330.872,
+      "z_layer": 15,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "kite",
+      "position": [
+        233.0,
+        182.0
+      ],
+      "scale": 0.6347,
+      "rotation": 299.259,
+      "z_layer": 16,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "star",
+      "position": [
+        97.0,
+        196.0
+      ],
+      "scale": 0.8265,
+      "rotation": 64.286,
+      "z_layer": 17,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "sun",
+      "position": [
+        155.0,
+        175.0
+      ],
+      "scale": 0.7185,
+      "rotation": 38.132,
+      "z_layer": 18,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "drop",
+      "position": [
+        154.0,
+        131.0
+      ],
+      "scale": 0.8741,
+      "rotation": 123.046,
+      "z_layer": 19,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "anchor",
+      "position": [
+        130.0,
+        196.0
+      ],
+      "scale": 0.6473,
+      "rotation": 92.472,
+      "z_layer": 20,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "leaf",
+      "position": [
+        220.0,
+        130.0
+      ],
+      "scale": 0.6531,
+      "rotation": 274.726,
+      "z_layer": 21,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "mushroom",
+      "position": [
+        285.0,
+        185.0
+      ],
+      "scale": 0.696,
+      "rotation": 161.423,
+      "z_layer": 22,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "kite",
+      "position": [
+        156.0,
+        221.0
+      ],
+      "scale": 0.8665,
+      "rotation": 273.337,
+      "z_layer": 23,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "crown",
+      "position": [
+        271.0,
+        255.0
+      ],
+      "scale": 0.7501,
+      "rotation": 27.75,
+      "z_layer": 24,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "key",
+      "position": [
+        262.0,
+        123.0
+      ],
+      "scale": 0.7524,
+      "rotation": 282.631,
+      "z_layer": 25,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "anchor",
+      "position": [
+        154.0,
+        97.0
+      ],
+      "scale": 0.7107,
+      "rotation": 106.284,
+      "z_layer": 26,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "boot",
+      "position": [
+        255.0,
+        231.0
+      ],
+      "scale": 0.6428,
+      "rotation": 302.842,
+      "z_layer": 27,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "drop",
+      "position": [
+        353.0,
+        79.0
+      ],
+      "scale": 0.8274,
+      "rotation": 187.749,
+      "z_layer": 28,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "bird",
+      "position": [
+        189.0,
+        185.0
+      ],
+      "scale": 0.6305,
+      "rotation": 355.759,
+      "z_layer": 29,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "acorn",
+      "position": [
+        293.0,
+        119.0
+      ],
+      "scale": 0.8021,
+      "rotation": 130.571,
+      "z_layer": 30,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "flower",
+      "position": [
+        234.0,
+        257.0
+      ],
+      "scale": 0.601,
+      "rotation": 80.102,
+      "z_layer": 31,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "cloud",
+      "position": [
+        323.0,
+        137.0
+      ],
+      "scale": 0.8596,
+      "rotation": 190.52,
+      "z_layer": 32,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "apple",
+      "position": [
+        134.0,
+        151.0
+      ],
+      "scale": 0.6134,
+      "rotation": 342.731,
+      "z_layer": 33,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "heart",
+      "position": [
+        342.0,
+        104.0
+      ],
+      "scale": 0.5827,
+      "rotation": 77.923,
+      "z_layer": 34,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "leaf",
+      "position": [
+        205.0,
+        201.0
+      ],
+      "scale": 0.5872,
+      "rotation": 346.745,
+      "z_layer": 35,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "key",
+      "position": [
+        184.0,
+        254.0
+      ],
+      "scale": 0.7047,
+      "rotation": 122.11,
+      "z_layer": 36,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "bolt",
+      "position": [
+        229.0,
+        113.0
+      ],
+      "scale": 0.5761,
+      "rotation": 18.783,
+      "z_layer": 37,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "moon",
+      "position": [
+        126.0,
+        217.0
+      ],
+      "scale": 0.6051,
+      "rotation": 354.15,
+      "z_layer": 38,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "leaf",
+      "position": [
+        208.0,
+        106.0
+      ],
+      "scale": 0.6587,
+      "rotation": 207.489,
+      "z_layer": 39,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "shell",
+      "position": [
+        119.0,
+        173.0
+      ],
+      "scale": 0.6384,
+      "rotation": 59.97,
+      "z_layer": 40,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    },
+    {
+      "name": "key",
+      "position": [
+        264.0,
+        93.0
+      ],
+      "scale": 0.6806,
+      "rotation": 340.094,
+      "z_layer": 41,
+      "color_tint": [
+        0.6275,
+        0.3529,
+        0.3137,
+        1.0
+      ],
+      "region": "r0"
+    }
+  ]
+}

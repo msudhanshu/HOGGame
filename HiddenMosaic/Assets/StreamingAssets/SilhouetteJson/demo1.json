@@ -1,0 +1,459 @@
+{
+  "level_id": "demo",
+  "silhouette": "blob",
+  "background_color": "#F5F5F5",
+  "width": 640,
+  "height": 480,
+  "items": [
+    {
+      "name": "triangle",
+      "position": [418, 242],
+      "scale": 0.927699983,
+      "rotation": 51.8969994,
+      "z_layer": 0,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "blob",
+      "position": [311, 298],
+      "scale": 0.640299976,
+      "rotation": 152.397995,
+      "z_layer": 1,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "blob",
+      "position": [201, 203],
+      "scale": 1.52985275,
+      "rotation": 197.854004,
+      "z_layer": 2,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "circle",
+      "position": [429, 186],
+      "scale": 0.839100003,
+      "rotation": 193.731995,
+      "z_layer": 3,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "circle",
+      "position": [252, 223],
+      "scale": 0.636399984,
+      "rotation": 48.2550011,
+      "z_layer": 4,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "blob",
+      "position": [249, 240],
+      "scale": 0.681400001,
+      "rotation": 94.4329987,
+      "z_layer": 5,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "blob",
+      "position": [347, 284],
+      "scale": 0.826200008,
+      "rotation": 194.841995,
+      "z_layer": 6,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "square",
+      "position": [313, 322],
+      "scale": 0.572300017,
+      "rotation": 349.173004,
+      "z_layer": 7,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "triangle",
+      "position": [472, 235],
+      "scale": 0.552100003,
+      "rotation": 224.455994,
+      "z_layer": 8,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "star",
+      "position": [330, 240],
+      "scale": 0.775900006,
+      "rotation": 330.22699,
+      "z_layer": 9,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "square",
+      "position": [319, 178],
+      "scale": 0.706700027,
+      "rotation": 230.878021,
+      "z_layer": 10,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "triangle",
+      "position": [341, 206],
+      "scale": 0.616999984,
+      "rotation": 302.356995,
+      "z_layer": 11,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "triangle",
+      "position": [308, 257],
+      "scale": 0.729900002,
+      "rotation": 271.091003,
+      "z_layer": 12,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "star",
+      "position": [356, 196],
+      "scale": 0.807500005,
+      "rotation": 68.9820023,
+      "z_layer": 13,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "star",
+      "position": [483, 202],
+      "scale": 0.884899974,
+      "rotation": 315.553009,
+      "z_layer": 14,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "star",
+      "position": [328, 306],
+      "scale": 0.712400019,
+      "rotation": 2.55299997,
+      "z_layer": 15,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "triangle",
+      "position": [324, 279],
+      "scale": 0.626800001,
+      "rotation": 230.158997,
+      "z_layer": 16,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "blob",
+      "position": [253, 344],
+      "scale": 0.567700028,
+      "rotation": 173.595993,
+      "z_layer": 17,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "blob",
+      "position": [300, 225],
+      "scale": 0.690199971,
+      "rotation": 212.220993,
+      "z_layer": 18,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "blob",
+      "position": [351, 330],
+      "scale": 0.898500025,
+      "rotation": 237.727997,
+      "z_layer": 19,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "blob",
+      "position": [389, 308],
+      "scale": 0.528199971,
+      "rotation": 297.175995,
+      "z_layer": 20,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "circle",
+      "position": [228, 241],
+      "scale": 0.668799996,
+      "rotation": 114.026001,
+      "z_layer": 21,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "star",
+      "position": [354, 176],
+      "scale": 0.58039999,
+      "rotation": 142.651993,
+      "z_layer": 22,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "star",
+      "position": [463, 164],
+      "scale": 0.689499974,
+      "rotation": 227.938004,
+      "z_layer": 23,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "star",
+      "position": [446, 174],
+      "scale": 0.794200003,
+      "rotation": 155.242004,
+      "z_layer": 24,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "star",
+      "position": [448, 224],
+      "scale": 0.58829999,
+      "rotation": 87.557991,
+      "z_layer": 25,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "square",
+      "position": [385, 353],
+      "scale": 0.61559999,
+      "rotation": 92.8089981,
+      "z_layer": 26,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "circle",
+      "position": [407, 184],
+      "scale": 0.843400002,
+      "rotation": 46.3220024,
+      "z_layer": 27,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "circle",
+      "position": [381, 275],
+      "scale": 0.66930002,
+      "rotation": 239.394012,
+      "z_layer": 28,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "triangle",
+      "position": [288, 207],
+      "scale": 0.877900004,
+      "rotation": 261.529999,
+      "z_layer": 29,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "square",
+      "position": [201, 256],
+      "scale": 0.701799989,
+      "rotation": 132.371994,
+      "z_layer": 30,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "circle",
+      "position": [386, 190],
+      "scale": 0.627699971,
+      "rotation": 112.696999,
+      "z_layer": 31,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "star",
+      "position": [305, 341],
+      "scale": 0.856000006,
+      "rotation": 214.916,
+      "z_layer": 32,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "circle",
+      "position": [290, 274],
+      "scale": 0.534699976,
+      "rotation": 76.6190109,
+      "z_layer": 33,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "triangle",
+      "position": [281, 320],
+      "scale": 0.853299975,
+      "rotation": 106.202003,
+      "z_layer": 34,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "circle",
+      "position": [246, 288],
+      "scale": 0.567099988,
+      "rotation": 144.589005,
+      "z_layer": 35,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "star",
+      "position": [396, 337],
+      "scale": 0.6329,
+      "rotation": 44.8059998,
+      "z_layer": 36,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "blob",
+      "position": [250, 188],
+      "scale": 0.675499976,
+      "rotation": 350.889008,
+      "z_layer": 37,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "triangle",
+      "position": [419, 263],
+      "scale": 0.734700024,
+      "rotation": 142.399994,
+      "z_layer": 38,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "circle",
+      "position": [345, 230],
+      "scale": 0.507499993,
+      "rotation": 349.774994,
+      "z_layer": 39,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "blob",
+      "position": [196, 241],
+      "scale": 0.507600009,
+      "rotation": 109.263,
+      "z_layer": 40,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "blob",
+      "position": [274, 238],
+      "scale": 0.617999971,
+      "rotation": 305.656006,
+      "z_layer": 41,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "circle",
+      "position": [374, 292],
+      "scale": 0.600099981,
+      "rotation": 202.339005,
+      "z_layer": 42,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "square",
+      "position": [424, 211],
+      "scale": 0.852199972,
+      "rotation": 90.4560013,
+      "z_layer": 43,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "circle",
+      "position": [439, 253],
+      "scale": 0.584100008,
+      "rotation": 242.888,
+      "z_layer": 44,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "circle",
+      "position": [226, 279],
+      "scale": 0.560400009,
+      "rotation": 62.9409981,
+      "z_layer": 45,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "circle",
+      "position": [230, 303],
+      "scale": 0.510200024,
+      "rotation": 129.695007,
+      "z_layer": 46,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "blob",
+      "position": [463, 191],
+      "scale": 0.542100012,
+      "rotation": 93.7310028,
+      "z_layer": 47,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "square",
+      "position": [276, 287],
+      "scale": 0.54400003,
+      "rotation": 266.73999,
+      "z_layer": 48,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    },
+    {
+      "name": "star",
+      "position": [354, 251],
+      "scale": 0.772899985,
+      "rotation": 12.2559996,
+      "z_layer": 49,
+      "color_tint": [0.627499998, 0.352899998, 0.313699991, 1],
+      "region": "body"
+    }
+  ]
+}
