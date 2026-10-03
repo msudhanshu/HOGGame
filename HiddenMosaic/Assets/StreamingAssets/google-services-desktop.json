@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "394222178905",
+    "project_id": "hiddenmosaic-c0f42",
+    "storage_bucket": "hiddenmosaic-c0f42.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:394222178905:android:896231668e6f51b25c5748",
+        "android_client_info": {
+          "package_name": "com.nixin.hiddenmosaic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFcW_-GU7KhedmkpvfMb4_WjLDld3YiUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
