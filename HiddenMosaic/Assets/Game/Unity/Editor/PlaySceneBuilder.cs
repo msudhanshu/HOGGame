@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Game.Unity;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -30,8 +29,7 @@ namespace Game.Unity.Editor
             cameraGo.AddComponent<AudioListener>();
 
             var eventGo = new GameObject("EventSystem");
-            eventGo.AddComponent<EventSystem>();
-            eventGo.AddComponent<InputSystemUIInputModule>();
+            HuntUiInputEditor.WireEventSystem(eventGo);
 
             var hostGo = new GameObject("PlayHost");
             var host = hostGo.AddComponent<PlayHost>();
@@ -53,7 +51,7 @@ namespace Game.Unity.Editor
                 AssetDatabase.CreateFolder("Assets", "Scenes");
 
             EditorSceneManager.SaveScene(scene, ScenePath);
-            AppendSceneToBuildSettings(ScenePath);
+            HuntBuildScenes.RegisterMenuAndPlayScenes();
             EditorSceneManager.OpenScene(ScenePath);
             Debug.Log("Hidden Mosaic play scene built at " + ScenePath);
         }
@@ -64,17 +62,5 @@ namespace Game.Unity.Editor
             EditorApplication.Exit(0);
         }
 
-        static void AppendSceneToBuildSettings(string scenePath)
-        {
-            var scenes = new List<EditorBuildSettingsScene>(EditorBuildSettings.scenes);
-            for (var i = 0; i < scenes.Count; i++)
-            {
-                if (scenes[i].path == scenePath)
-                    return;
-            }
-
-            scenes.Add(new EditorBuildSettingsScene(scenePath, true));
-            EditorBuildSettings.scenes = scenes.ToArray();
-        }
     }
 }

@@ -3,6 +3,7 @@
     "rootNamespace": "Game.Unity",
     "references": [
         "Game.Core",
+        "Nixin.Game.Core.Firebase",
         "Nixin.Audio",
         "Nixin.Boot",
         "Nixin.Game.Core",

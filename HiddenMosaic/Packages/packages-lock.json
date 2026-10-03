@@ -1,43 +1,89 @@
 {
   "dependencies": {
+    "com.google.external-dependency-manager": {
+      "version": "file:../../NixinStudioUnityCore/packages/FirebasePackages/com.google.external-dependency-manager-1.2.186.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {}
+    },
+    "com.google.firebase.analytics": {
+      "version": "file:../../NixinStudioUnityCore/packages/FirebasePackages/com.google.firebase.analytics-13.17.0.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.google.firebase.app": "13.17.0"
+      }
+    },
+    "com.google.firebase.app": {
+      "version": "file:../../NixinStudioUnityCore/packages/FirebasePackages/com.google.firebase.app-13.17.0.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.google.external-dependency-manager": "1.2.186"
+      }
+    },
+    "com.google.firebase.crashlytics": {
+      "version": "file:../../NixinStudioUnityCore/packages/FirebasePackages/com.google.firebase.crashlytics-13.17.0.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.google.firebase.app": "13.17.0"
+      }
+    },
+    "com.google.firebase.remote-config": {
+      "version": "file:../../NixinStudioUnityCore/packages/FirebasePackages/com.google.firebase.remote-config-13.17.0.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.google.firebase.app": "13.17.0"
+      }
+    },
     "com.nixin.audio": {
-      "version": "file:../../../NixinStudioUnityCore/packages/com.nixin.audio",
+      "version": "file:../../NixinStudioUnityCore/packages/com.nixin.audio",
       "depth": 0,
       "source": "local",
       "dependencies": {}
     },
     "com.nixin.boot": {
-      "version": "file:../../../NixinStudioUnityCore/packages/com.nixin.boot",
+      "version": "file:../../NixinStudioUnityCore/packages/com.nixin.boot",
       "depth": 0,
       "source": "local",
       "dependencies": {}
     },
     "com.nixin.game.core": {
-      "version": "file:../../../NixinStudioUnityCore/packages/com.nixin.game.core",
+      "version": "file:../../NixinStudioUnityCore/packages/com.nixin.game.core",
       "depth": 0,
       "source": "local",
       "dependencies": {}
     },
+    "com.nixin.game.core.firebase": {
+      "version": "file:../../NixinStudioUnityCore/packages/com.nixin.game.core.firebase",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.nixin.game.core": "0.1.0"
+      }
+    },
     "com.nixin.icons": {
-      "version": "file:../../../NixinStudioUnityCore/packages/com.nixin.icons",
+      "version": "file:../../NixinStudioUnityCore/packages/com.nixin.icons",
       "depth": 0,
       "source": "local",
       "dependencies": {}
     },
     "com.nixin.mosaic": {
-      "version": "file:../../../NixinStudioUnityCore/packages/com.nixin.mosaic",
+      "version": "file:../../NixinStudioUnityCore/packages/com.nixin.mosaic",
       "depth": 0,
       "source": "local",
       "dependencies": {}
     },
     "com.nixin.pinhole": {
-      "version": "file:../../../NixinStudioUnityCore/packages/com.nixin.pinhole",
+      "version": "file:../../NixinStudioUnityCore/packages/com.nixin.pinhole",
       "depth": 0,
       "source": "local",
       "dependencies": {}
     },
     "com.nixin.ui": {
-      "version": "file:../../../NixinStudioUnityCore/packages/com.nixin.ui",
+      "version": "file:../../NixinStudioUnityCore/packages/com.nixin.ui",
       "depth": 0,
       "source": "local",
       "dependencies": {
@@ -144,9 +190,36 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.ai.assistant": {
+      "version": "2.20.0-pre.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.2d.sprite": "1.0.0",
+        "com.unity.mathematics": "1.3.2",
+        "com.unity.nuget.mono-cecil": "1.11.5",
+        "com.unity.modules.uielements": "1.0.0",
+        "com.unity.nuget.newtonsoft-json": "3.2.1",
+        "com.unity.modules.unitywebrequest": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.ai.inference": {
+      "version": "2.6.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.burst": "1.8.17",
+        "com.unity.dt.app-ui": "1.3.6",
+        "com.unity.collections": "2.4.3",
+        "com.unity.nuget.newtonsoft-json": "3.2.1",
+        "com.unity.modules.imageconversion": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.burst": {
       "version": "1.8.30",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.mathematics": "1.2.1",
@@ -171,6 +244,18 @@
         "com.unity.test-framework": "1.4.6",
         "com.unity.test-framework.performance": "3.2.0"
       }
+    },
+    "com.unity.dt.app-ui": {
+      "version": "2.1.7",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.androidjni": "1.0.0",
+        "com.unity.modules.uielements": "1.0.0",
+        "com.unity.modules.screencapture": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
     },
     "com.unity.ext.nunit": {
       "version": "2.1.0",

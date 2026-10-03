@@ -1,0 +1,3700 @@
+{
+  "level_id": "bird_01",
+  "silhouette": "bird",
+  "background_color": "#000000",
+  "width": 1024.0,
+  "height": 1024.0,
+  "atlas": "animal-faces.atlas.json,forest-faces.atlas.json,outline-animals.atlas.json,pets.atlas.json,sea.atlas.json",
+  "items": [
+    {
+      "name": "star",
+      "position": [
+        761.0,
+        228.0
+      ],
+      "scale": 0.1875,
+      "rotation": 51.897,
+      "z_layer": 0,
+      "color_tint": [
+        0.9989,
+        0.999,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        776.0,
+        412.0
+      ],
+      "scale": 0.4371,
+      "rotation": 152.398,
+      "z_layer": 1,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        568.0,
+        291.0
+      ],
+      "scale": 0.25,
+      "rotation": 197.854,
+      "z_layer": 2,
+      "color_tint": [
+        0.997,
+        0.9971,
+        0.9972,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        880.0,
+        217.0
+      ],
+      "scale": 0.1373,
+      "rotation": 271.265,
+      "z_layer": 3,
+      "color_tint": [
+        0.9977,
+        0.9978,
+        0.9976,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        360.0,
+        524.0
+      ],
+      "scale": 0.4873,
+      "rotation": 109.15,
+      "z_layer": 4,
+      "color_tint": [
+        0.9966,
+        0.9973,
+        0.9969,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        500.0,
+        436.0
+      ],
+      "scale": 0.25,
+      "rotation": 145.121,
+      "z_layer": 5,
+      "color_tint": [
+        0.9987,
+        0.9987,
+        0.9986,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        742.0,
+        454.0
+      ],
+      "scale": 0.7002,
+      "rotation": 100.947,
+      "z_layer": 6,
+      "color_tint": [
+        0.9993,
+        0.9994,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        724.0,
+        234.0
+      ],
+      "scale": 0.8384,
+      "rotation": 346.197,
+      "z_layer": 7,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        713.0,
+        145.0
+      ],
+      "scale": 0.25,
+      "rotation": 99.681,
+      "z_layer": 8,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        444.0,
+        553.0
+      ],
+      "scale": 0.1875,
+      "rotation": 349.173,
+      "z_layer": 9,
+      "color_tint": [
+        0.9979,
+        0.9968,
+        0.9967,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        694.0,
+        308.0
+      ],
+      "scale": 0.25,
+      "rotation": 279.606,
+      "z_layer": 10,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        313.0,
+        615.0
+      ],
+      "scale": 0.1875,
+      "rotation": 330.227,
+      "z_layer": 11,
+      "color_tint": [
+        0.9931,
+        0.993,
+        0.9945,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        727.0,
+        445.0
+      ],
+      "scale": 0.5256,
+      "rotation": 22.446,
+      "z_layer": 12,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        549.0,
+        616.0
+      ],
+      "scale": 0.75,
+      "rotation": 213.459,
+      "z_layer": 13,
+      "color_tint": [
+        0.9989,
+        0.999,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        127.0,
+        758.0
+      ],
+      "scale": 0.25,
+      "rotation": 183.419,
+      "z_layer": 14,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        728.0,
+        729.0
+      ],
+      "scale": 0.1998,
+      "rotation": 53.252,
+      "z_layer": 15,
+      "color_tint": [
+        0.9984,
+        0.9985,
+        0.9979,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        173.0,
+        757.0
+      ],
+      "scale": 0.1373,
+      "rotation": 68.982,
+      "z_layer": 16,
+      "color_tint": [
+        0.9989,
+        0.999,
+        0.9979,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        271.0,
+        638.0
+      ],
+      "scale": 0.25,
+      "rotation": 307.882,
+      "z_layer": 17,
+      "color_tint": [
+        0.9989,
+        0.999,
+        0.9979,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        769.0,
+        144.0
+      ],
+      "scale": 0.25,
+      "rotation": 315.553,
+      "z_layer": 18,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        534.0,
+        776.0
+      ],
+      "scale": 0.25,
+      "rotation": 232.46,
+      "z_layer": 19,
+      "color_tint": [
+        0.9972,
+        0.9973,
+        0.9972,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        736.0,
+        740.0
+      ],
+      "scale": 0.1373,
+      "rotation": 101.476,
+      "z_layer": 20,
+      "color_tint": [
+        0.9907,
+        0.9918,
+        0.9912,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        729.0,
+        145.0
+      ],
+      "scale": 0.25,
+      "rotation": 54.189,
+      "z_layer": 21,
+      "color_tint": [
+        0.9975,
+        0.9975,
+        0.9974,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        585.0,
+        276.0
+      ],
+      "scale": 0.175,
+      "rotation": 322.098,
+      "z_layer": 22,
+      "color_tint": [
+        0.9979,
+        0.9985,
+        0.9984,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        641.0,
+        789.0
+      ],
+      "scale": 0.1998,
+      "rotation": 242.446,
+      "z_layer": 23,
+      "color_tint": [
+        0.9953,
+        0.9935,
+        0.9943,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        787.0,
+        267.0
+      ],
+      "scale": 0.1373,
+      "rotation": 237.728,
+      "z_layer": 24,
+      "color_tint": [
+        0.9967,
+        0.9973,
+        0.9969,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        684.0,
+        201.0
+      ],
+      "scale": 0.125,
+      "rotation": 276.666,
+      "z_layer": 25,
+      "color_tint": [
+        0.9989,
+        0.999,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        882.0,
+        221.0
+      ],
+      "scale": 0.2248,
+      "rotation": 297.176,
+      "z_layer": 26,
+      "color_tint": [
+        0.9991,
+        0.9992,
+        0.9991,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        424.0,
+        435.0
+      ],
+      "scale": 0.25,
+      "rotation": 142.652,
+      "z_layer": 27,
+      "color_tint": [
+        0.9951,
+        0.9951,
+        0.995,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        432.0,
+        430.0
+      ],
+      "scale": 0.25,
+      "rotation": 235.392,
+      "z_layer": 28,
+      "color_tint": [
+        0.9951,
+        0.9951,
+        0.994,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        532.0,
+        333.0
+      ],
+      "scale": 0.7704,
+      "rotation": 227.569,
+      "z_layer": 29,
+      "color_tint": [
+        0.9982,
+        0.9983,
+        0.9981,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        289.0,
+        585.0
+      ],
+      "scale": 0.125,
+      "rotation": 195.721,
+      "z_layer": 30,
+      "color_tint": [
+        0.9951,
+        0.9954,
+        0.9861,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        760.0,
+        438.0
+      ],
+      "scale": 0.4041,
+      "rotation": 26.348,
+      "z_layer": 31,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        734.0,
+        141.0
+      ],
+      "scale": 0.1875,
+      "rotation": 302.286,
+      "z_layer": 32,
+      "color_tint": [
+        0.9987,
+        0.9987,
+        0.9986,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        430.0,
+        547.0
+      ],
+      "scale": 0.1998,
+      "rotation": 161.423,
+      "z_layer": 33,
+      "color_tint": [
+        0.9982,
+        0.9983,
+        0.9981,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        750.0,
+        522.0
+      ],
+      "scale": 0.6623,
+      "rotation": 273.337,
+      "z_layer": 34,
+      "color_tint": [
+        0.9993,
+        0.9994,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        214.0,
+        697.0
+      ],
+      "scale": 0.2248,
+      "rotation": 27.75,
+      "z_layer": 35,
+      "color_tint": [
+        0.9989,
+        0.999,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        610.0,
+        305.0
+      ],
+      "scale": 0.3777,
+      "rotation": 47.771,
+      "z_layer": 36,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        580.0,
+        619.0
+      ],
+      "scale": 0.1373,
+      "rotation": 106.202,
+      "z_layer": 37,
+      "color_tint": [
+        0.9982,
+        0.9992,
+        0.9976,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        346.0,
+        648.0
+      ],
+      "scale": 0.5246,
+      "rotation": 53.657,
+      "z_layer": 38,
+      "color_tint": [
+        0.9986,
+        0.9987,
+        0.9985,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        687.0,
+        488.0
+      ],
+      "scale": 0.3247,
+      "rotation": 264.093,
+      "z_layer": 39,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        153.0,
+        742.0
+      ],
+      "scale": 0.25,
+      "rotation": 302.842,
+      "z_layer": 40,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        519.0,
+        735.0
+      ],
+      "scale": 0.1373,
+      "rotation": 249.704,
+      "z_layer": 41,
+      "color_tint": [
+        0.9989,
+        0.999,
+        0.9979,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        613.0,
+        798.0
+      ],
+      "scale": 0.25,
+      "rotation": 355.759,
+      "z_layer": 42,
+      "color_tint": [
+        0.9984,
+        0.999,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        123.0,
+        763.0
+      ],
+      "scale": 0.2248,
+      "rotation": 137.153,
+      "z_layer": 43,
+      "color_tint": [
+        0.9934,
+        0.9956,
+        0.9931,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        660.0,
+        596.0
+      ],
+      "scale": 0.2601,
+      "rotation": 109.263,
+      "z_layer": 44,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        756.0,
+        142.0
+      ],
+      "scale": 0.25,
+      "rotation": 305.656,
+      "z_layer": 45,
+      "color_tint": [
+        0.9987,
+        0.9995,
+        0.9991,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        521.0,
+        472.0
+      ],
+      "scale": 0.1373,
+      "rotation": 226.914,
+      "z_layer": 46,
+      "color_tint": [
+        0.9984,
+        0.9985,
+        0.9984,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        682.0,
+        265.0
+      ],
+      "scale": 0.4744,
+      "rotation": 133.868,
+      "z_layer": 47,
+      "color_tint": [
+        0.9985,
+        0.9986,
+        0.9985,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        734.0,
+        735.0
+      ],
+      "scale": 0.2248,
+      "rotation": 284.996,
+      "z_layer": 48,
+      "color_tint": [
+        0.9987,
+        0.9987,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        806.0,
+        188.0
+      ],
+      "scale": 0.25,
+      "rotation": 346.631,
+      "z_layer": 49,
+      "color_tint": [
+        0.9984,
+        0.9985,
+        0.9984,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        580.0,
+        286.0
+      ],
+      "scale": 0.25,
+      "rotation": 57.08,
+      "z_layer": 50,
+      "color_tint": [
+        0.9989,
+        0.999,
+        0.9979,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        436.0,
+        425.0
+      ],
+      "scale": 0.25,
+      "rotation": 51.841,
+      "z_layer": 51,
+      "color_tint": [
+        0.9984,
+        0.9985,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        662.0,
+        332.0
+      ],
+      "scale": 0.5748,
+      "rotation": 241.772,
+      "z_layer": 52,
+      "color_tint": [
+        0.9982,
+        0.9983,
+        0.9981,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        700.0,
+        146.0
+      ],
+      "scale": 0.125,
+      "rotation": 8.142,
+      "z_layer": 53,
+      "color_tint": [
+        0.9903,
+        0.9913,
+        0.9878,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        418.0,
+        465.0
+      ],
+      "scale": 0.4662,
+      "rotation": 33.691,
+      "z_layer": 54,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        514.0,
+        534.0
+      ],
+      "scale": 0.1373,
+      "rotation": 95.162,
+      "z_layer": 55,
+      "color_tint": [
+        0.9994,
+        0.999,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        488.0,
+        384.0
+      ],
+      "scale": 0.6139,
+      "rotation": 12.256,
+      "z_layer": 56,
+      "color_tint": [
+        0.9992,
+        0.9993,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        739.0,
+        393.0
+      ],
+      "scale": 0.4814,
+      "rotation": 7.14,
+      "z_layer": 57,
+      "color_tint": [
+        0.9992,
+        0.9993,
+        0.9991,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        208.0,
+        718.0
+      ],
+      "scale": 0.175,
+      "rotation": 7.727,
+      "z_layer": 58,
+      "color_tint": [
+        0.9898,
+        0.9918,
+        0.9907,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        735.0,
+        509.0
+      ],
+      "scale": 0.3058,
+      "rotation": 346.745,
+      "z_layer": 59,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        431.0,
+        637.0
+      ],
+      "scale": 0.25,
+      "rotation": 47.584,
+      "z_layer": 60,
+      "color_tint": [
+        0.9982,
+        0.9983,
+        0.9981,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        479.0,
+        617.0
+      ],
+      "scale": 0.2992,
+      "rotation": 333.65,
+      "z_layer": 61,
+      "color_tint": [
+        0.9991,
+        0.9992,
+        0.9991,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        146.0,
+        750.0
+      ],
+      "scale": 0.2248,
+      "rotation": 167.736,
+      "z_layer": 62,
+      "color_tint": [
+        0.9948,
+        0.9949,
+        0.9948,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        162.0,
+        734.0
+      ],
+      "scale": 0.25,
+      "rotation": 221.898,
+      "z_layer": 63,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        692.0,
+        519.0
+      ],
+      "scale": 0.3482,
+      "rotation": 8.6,
+      "z_layer": 64,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        664.0,
+        778.0
+      ],
+      "scale": 0.25,
+      "rotation": 59.834,
+      "z_layer": 65,
+      "color_tint": [
+        0.9951,
+        0.9923,
+        0.996,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        523.0,
+        780.0
+      ],
+      "scale": 0.2248,
+      "rotation": 45.653,
+      "z_layer": 66,
+      "color_tint": [
+        0.9946,
+        0.9939,
+        0.9943,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        654.0,
+        699.0
+      ],
+      "scale": 0.2248,
+      "rotation": 64.017,
+      "z_layer": 67,
+      "color_tint": [
+        0.9987,
+        0.9987,
+        0.9986,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        718.0,
+        141.0
+      ],
+      "scale": 0.125,
+      "rotation": 70.828,
+      "z_layer": 68,
+      "color_tint": [
+        0.9994,
+        0.999,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        750.0,
+        140.0
+      ],
+      "scale": 0.125,
+      "rotation": 239.184,
+      "z_layer": 69,
+      "color_tint": [
+        0.9979,
+        0.9975,
+        0.9986,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        563.0,
+        292.0
+      ],
+      "scale": 0.1373,
+      "rotation": 340.163,
+      "z_layer": 70,
+      "color_tint": [
+        0.9905,
+        0.9954,
+        0.9967,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        880.0,
+        232.0
+      ],
+      "scale": 0.125,
+      "rotation": 36.17,
+      "z_layer": 71,
+      "color_tint": [
+        0.9881,
+        0.9882,
+        0.99,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        646.0,
+        257.0
+      ],
+      "scale": 0.25,
+      "rotation": 115.95,
+      "z_layer": 72,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        749.0,
+        156.0
+      ],
+      "scale": 0.25,
+      "rotation": 158.377,
+      "z_layer": 73,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        561.0,
+        429.0
+      ],
+      "scale": 0.175,
+      "rotation": 79.549,
+      "z_layer": 74,
+      "color_tint": [
+        0.9989,
+        0.999,
+        0.9984,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        671.0,
+        348.0
+      ],
+      "scale": 0.25,
+      "rotation": 272.594,
+      "z_layer": 75,
+      "color_tint": [
+        0.9991,
+        0.9992,
+        0.9991,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        775.0,
+        394.0
+      ],
+      "scale": 0.3474,
+      "rotation": 259.276,
+      "z_layer": 76,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        400.0,
+        494.0
+      ],
+      "scale": 0.2248,
+      "rotation": 95.05,
+      "z_layer": 77,
+      "color_tint": [
+        0.9991,
+        0.9992,
+        0.9991,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        485.0,
+        578.0
+      ],
+      "scale": 0.8285,
+      "rotation": 274.596,
+      "z_layer": 78,
+      "color_tint": [
+        0.9992,
+        0.9993,
+        0.9992,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        735.0,
+        755.0
+      ],
+      "scale": 0.125,
+      "rotation": 35.148,
+      "z_layer": 79,
+      "color_tint": [
+        0.9984,
+        0.9985,
+        0.9979,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        774.0,
+        471.0
+      ],
+      "scale": 0.2619,
+      "rotation": 103.952,
+      "z_layer": 80,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        715.0,
+        488.0
+      ],
+      "scale": 0.349,
+      "rotation": 111.949,
+      "z_layer": 81,
+      "color_tint": [
+        0.9993,
+        0.9994,
+        0.9992,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        230.0,
+        681.0
+      ],
+      "scale": 0.25,
+      "rotation": 317.75,
+      "z_layer": 82,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        732.0,
+        729.0
+      ],
+      "scale": 0.125,
+      "rotation": 334.659,
+      "z_layer": 83,
+      "color_tint": [
+        0.9987,
+        0.9987,
+        0.9986,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        293.0,
+        662.0
+      ],
+      "scale": 0.2248,
+      "rotation": 285.048,
+      "z_layer": 84,
+      "color_tint": [
+        0.9907,
+        0.9937,
+        0.9917,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        601.0,
+        634.0
+      ],
+      "scale": 0.25,
+      "rotation": 9.204,
+      "z_layer": 85,
+      "color_tint": [
+        0.9979,
+        0.998,
+        0.9979,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        471.0,
+        608.0
+      ],
+      "scale": 0.4421,
+      "rotation": 249.702,
+      "z_layer": 86,
+      "color_tint": [
+        0.9991,
+        0.9992,
+        0.9991,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        427.0,
+        429.0
+      ],
+      "scale": 0.1373,
+      "rotation": 319.584,
+      "z_layer": 87,
+      "color_tint": [
+        0.9934,
+        0.9923,
+        0.9967,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        159.0,
+        756.0
+      ],
+      "scale": 0.2248,
+      "rotation": 174.567,
+      "z_layer": 88,
+      "color_tint": [
+        0.9915,
+        0.9915,
+        0.9914,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        132.0,
+        761.0
+      ],
+      "scale": 0.2248,
+      "rotation": 347.768,
+      "z_layer": 89,
+      "color_tint": [
+        0.9989,
+        0.999,
+        0.9979,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        584.0,
+        774.0
+      ],
+      "scale": 0.25,
+      "rotation": 259.058,
+      "z_layer": 90,
+      "color_tint": [
+        0.997,
+        0.9971,
+        0.9969,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        605.0,
+        769.0
+      ],
+      "scale": 0.6117,
+      "rotation": 108.125,
+      "z_layer": 91,
+      "color_tint": [
+        0.9976,
+        0.998,
+        0.998,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        707.0,
+        146.0
+      ],
+      "scale": 0.25,
+      "rotation": 227.456,
+      "z_layer": 92,
+      "color_tint": [
+        0.9977,
+        0.9959,
+        0.9967,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        744.0,
+        145.0
+      ],
+      "scale": 0.5,
+      "rotation": 78.608,
+      "z_layer": 93,
+      "color_tint": [
+        0.9991,
+        0.9992,
+        0.9984,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        737.0,
+        752.0
+      ],
+      "scale": 0.125,
+      "rotation": 81.449,
+      "z_layer": 94,
+      "color_tint": [
+        0.9975,
+        0.9975,
+        0.9974,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        714.0,
+        217.0
+      ],
+      "scale": 0.7935,
+      "rotation": 310.169,
+      "z_layer": 95,
+      "color_tint": [
+        0.9989,
+        0.999,
+        0.9989,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        734.0,
+        173.0
+      ],
+      "scale": 0.4213,
+      "rotation": 219.342,
+      "z_layer": 96,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        516.0,
+        373.0
+      ],
+      "scale": 0.1373,
+      "rotation": 293.083,
+      "z_layer": 97,
+      "color_tint": [
+        0.9982,
+        0.9983,
+        0.9981,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        418.0,
+        437.0
+      ],
+      "scale": 0.175,
+      "rotation": 352.12,
+      "z_layer": 98,
+      "color_tint": [
+        0.9989,
+        0.999,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        631.0,
+        421.0
+      ],
+      "scale": 0.25,
+      "rotation": 72.339,
+      "z_layer": 99,
+      "color_tint": [
+        0.9929,
+        0.993,
+        0.9928,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        786.0,
+        385.0
+      ],
+      "scale": 0.8097,
+      "rotation": 58.397,
+      "z_layer": 100,
+      "color_tint": [
+        0.9994,
+        0.9994,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        403.0,
+        527.0
+      ],
+      "scale": 0.125,
+      "rotation": 279.306,
+      "z_layer": 101,
+      "color_tint": [
+        0.9994,
+        0.9985,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        481.0,
+        483.0
+      ],
+      "scale": 0.175,
+      "rotation": 130.326,
+      "z_layer": 102,
+      "color_tint": [
+        0.9965,
+        0.9966,
+        0.9964,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        734.0,
+        468.0
+      ],
+      "scale": 0.682,
+      "rotation": 47.846,
+      "z_layer": 103,
+      "color_tint": [
+        0.9993,
+        0.9994,
+        0.9992,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        637.0,
+        498.0
+      ],
+      "scale": 0.612,
+      "rotation": 230.439,
+      "z_layer": 104,
+      "color_tint": [
+        0.999,
+        0.9991,
+        0.999,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        191.0,
+        704.0
+      ],
+      "scale": 0.175,
+      "rotation": 336.009,
+      "z_layer": 105,
+      "color_tint": [
+        0.9946,
+        0.9927,
+        0.994,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        584.0,
+        638.0
+      ],
+      "scale": 0.4173,
+      "rotation": 234.679,
+      "z_layer": 106,
+      "color_tint": [
+        0.9989,
+        0.9988,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        664.0,
+        715.0
+      ],
+      "scale": 0.125,
+      "rotation": 98.404,
+      "z_layer": 107,
+      "color_tint": [
+        0.99,
+        0.9911,
+        0.99,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        341.0,
+        655.0
+      ],
+      "scale": 0.1875,
+      "rotation": 113.468,
+      "z_layer": 108,
+      "color_tint": [
+        0.9972,
+        0.9973,
+        0.9967,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        204.0,
+        732.0
+      ],
+      "scale": 0.1373,
+      "rotation": 16.161,
+      "z_layer": 109,
+      "color_tint": [
+        0.9989,
+        0.9992,
+        0.9991,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        550.0,
+        822.0
+      ],
+      "scale": 0.125,
+      "rotation": 165.896,
+      "z_layer": 110,
+      "color_tint": [
+        0.9927,
+        0.9927,
+        0.9936,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        628.0,
+        778.0
+      ],
+      "scale": 0.2248,
+      "rotation": 66.696,
+      "z_layer": 111,
+      "color_tint": [
+        0.9953,
+        0.9954,
+        0.9952,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        734.0,
+        751.0
+      ],
+      "scale": 0.1373,
+      "rotation": 8.548,
+      "z_layer": 112,
+      "color_tint": [
+        0.996,
+        0.9961,
+        0.9945,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        138.0,
+        775.0
+      ],
+      "scale": 0.1373,
+      "rotation": 125.07,
+      "z_layer": 113,
+      "color_tint": [
+        0.9936,
+        0.9932,
+        0.9933,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        760.0,
+        140.0
+      ],
+      "scale": 0.125,
+      "rotation": 289.307,
+      "z_layer": 114,
+      "color_tint": [
+        0.9977,
+        0.9985,
+        0.9962,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        678.0,
+        172.0
+      ],
+      "scale": 0.25,
+      "rotation": 95.14,
+      "z_layer": 115,
+      "color_tint": [
+        0.9972,
+        0.9973,
+        0.9972,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        814.0,
+        284.0
+      ],
+      "scale": 0.2875,
+      "rotation": 301.477,
+      "z_layer": 116,
+      "color_tint": [
+        0.9989,
+        0.999,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        572.0,
+        287.0
+      ],
+      "scale": 0.2248,
+      "rotation": 2.633,
+      "z_layer": 117,
+      "color_tint": [
+        0.997,
+        0.9985,
+        0.9979,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        723.0,
+        144.0
+      ],
+      "scale": 0.25,
+      "rotation": 1.989,
+      "z_layer": 118,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        470.0,
+        423.0
+      ],
+      "scale": 0.25,
+      "rotation": 133.424,
+      "z_layer": 119,
+      "color_tint": [
+        0.9975,
+        0.9975,
+        0.996,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        603.0,
+        344.0
+      ],
+      "scale": 0.513,
+      "rotation": 17.017,
+      "z_layer": 120,
+      "color_tint": [
+        0.9988,
+        0.9989,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        758.0,
+        298.0
+      ],
+      "scale": 0.394,
+      "rotation": 119.578,
+      "z_layer": 121,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        438.0,
+        438.0
+      ],
+      "scale": 0.25,
+      "rotation": 168.668,
+      "z_layer": 122,
+      "color_tint": [
+        0.9943,
+        0.993,
+        0.9964,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        337.0,
+        525.0
+      ],
+      "scale": 0.125,
+      "rotation": 41.399,
+      "z_layer": 123,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        651.0,
+        567.0
+      ],
+      "scale": 0.7465,
+      "rotation": 336.278,
+      "z_layer": 124,
+      "color_tint": [
+        0.9988,
+        0.9989,
+        0.9987,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        753.0,
+        496.0
+      ],
+      "scale": 0.7673,
+      "rotation": 146.528,
+      "z_layer": 125,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        545.0,
+        471.0
+      ],
+      "scale": 0.25,
+      "rotation": 70.202,
+      "z_layer": 126,
+      "color_tint": [
+        0.9977,
+        0.9987,
+        0.9972,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        256.0,
+        667.0
+      ],
+      "scale": 0.1373,
+      "rotation": 120.236,
+      "z_layer": 127,
+      "color_tint": [
+        0.9888,
+        0.9894,
+        0.9902,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        338.0,
+        642.0
+      ],
+      "scale": 0.175,
+      "rotation": 184.257,
+      "z_layer": 128,
+      "color_tint": [
+        0.9924,
+        0.9925,
+        0.9924,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        613.0,
+        622.0
+      ],
+      "scale": 0.6623,
+      "rotation": 359.712,
+      "z_layer": 129,
+      "color_tint": [
+        0.9988,
+        0.9989,
+        0.9987,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        526.0,
+        628.0
+      ],
+      "scale": 0.2248,
+      "rotation": 291.877,
+      "z_layer": 130,
+      "color_tint": [
+        0.9979,
+        0.998,
+        0.9979,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        180.0,
+        751.0
+      ],
+      "scale": 0.1373,
+      "rotation": 131.378,
+      "z_layer": 131,
+      "color_tint": [
+        0.9987,
+        0.9992,
+        0.9991,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        567.0,
+        803.0
+      ],
+      "scale": 0.175,
+      "rotation": 191.609,
+      "z_layer": 132,
+      "color_tint": [
+        0.9989,
+        0.999,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        143.0,
+        768.0
+      ],
+      "scale": 0.1373,
+      "rotation": 245.519,
+      "z_layer": 133,
+      "color_tint": [
+        0.9994,
+        0.9985,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        581.0,
+        278.0
+      ],
+      "scale": 0.125,
+      "rotation": 84.043,
+      "z_layer": 134,
+      "color_tint": [
+        0.9951,
+        0.9956,
+        0.9962,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        624.0,
+        761.0
+      ],
+      "scale": 0.2816,
+      "rotation": 223.952,
+      "z_layer": 135,
+      "color_tint": [
+        0.9987,
+        0.9987,
+        0.9986,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        775.0,
+        143.0
+      ],
+      "scale": 0.125,
+      "rotation": 20.677,
+      "z_layer": 136,
+      "color_tint": [
+        0.9989,
+        0.999,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        886.0,
+        225.0
+      ],
+      "scale": 0.125,
+      "rotation": 195.2,
+      "z_layer": 137,
+      "color_tint": [
+        0.9876,
+        0.9887,
+        0.9847,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        577.0,
+        282.0
+      ],
+      "scale": 0.1373,
+      "rotation": 135.747,
+      "z_layer": 138,
+      "color_tint": [
+        0.9975,
+        0.9975,
+        0.9945,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        696.0,
+        230.0
+      ],
+      "scale": 0.7854,
+      "rotation": 160.577,
+      "z_layer": 139,
+      "color_tint": [
+        0.9992,
+        0.9993,
+        0.9992,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        864.0,
+        207.0
+      ],
+      "scale": 0.2248,
+      "rotation": 24.698,
+      "z_layer": 140,
+      "color_tint": [
+        0.9965,
+        0.9966,
+        0.9969,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        438.0,
+        432.0
+      ],
+      "scale": 0.25,
+      "rotation": 264.411,
+      "z_layer": 141,
+      "color_tint": [
+        0.9982,
+        0.9983,
+        0.9976,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        526.0,
+        346.0
+      ],
+      "scale": 0.398,
+      "rotation": 234.452,
+      "z_layer": 142,
+      "color_tint": [
+        0.9989,
+        0.9989,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        680.0,
+        360.0
+      ],
+      "scale": 0.3364,
+      "rotation": 197.604,
+      "z_layer": 143,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        747.0,
+        302.0
+      ],
+      "scale": 0.5203,
+      "rotation": 122.19,
+      "z_layer": 144,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        409.0,
+        444.0
+      ],
+      "scale": 0.175,
+      "rotation": 163.22,
+      "z_layer": 145,
+      "color_tint": [
+        0.997,
+        0.9978,
+        0.9981,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        548.0,
+        541.0
+      ],
+      "scale": 0.4994,
+      "rotation": 131.243,
+      "z_layer": 146,
+      "color_tint": [
+        0.9987,
+        0.9988,
+        0.9987,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        694.0,
+        561.0
+      ],
+      "scale": 0.4908,
+      "rotation": 296.53,
+      "z_layer": 147,
+      "color_tint": [
+        0.9993,
+        0.9994,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        736.0,
+        495.0
+      ],
+      "scale": 0.3211,
+      "rotation": 202.215,
+      "z_layer": 148,
+      "color_tint": [
+        0.9981,
+        0.9982,
+        0.998,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        224.0,
+        686.0
+      ],
+      "scale": 0.25,
+      "rotation": 211.231,
+      "z_layer": 149,
+      "color_tint": [
+        0.9984,
+        0.999,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        406.0,
+        605.0
+      ],
+      "scale": 0.25,
+      "rotation": 59.808,
+      "z_layer": 150,
+      "color_tint": [
+        0.9991,
+        0.9992,
+        0.9991,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        562.0,
+        648.0
+      ],
+      "scale": 0.1998,
+      "rotation": 194.193,
+      "z_layer": 151,
+      "color_tint": [
+        0.9989,
+        0.9992,
+        0.9986,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        627.0,
+        606.0
+      ],
+      "scale": 0.6596,
+      "rotation": 107.206,
+      "z_layer": 152,
+      "color_tint": [
+        0.9991,
+        0.9992,
+        0.999,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        136.0,
+        760.0
+      ],
+      "scale": 0.125,
+      "rotation": 333.577,
+      "z_layer": 153,
+      "color_tint": [
+        0.9984,
+        0.9985,
+        0.9984,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        149.0,
+        764.0
+      ],
+      "scale": 0.175,
+      "rotation": 307.073,
+      "z_layer": 154,
+      "color_tint": [
+        0.9989,
+        0.999,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        543.0,
+        775.0
+      ],
+      "scale": 0.25,
+      "rotation": 62.772,
+      "z_layer": 155,
+      "color_tint": [
+        0.9994,
+        0.999,
+        0.9991,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        679.0,
+        739.0
+      ],
+      "scale": 0.1875,
+      "rotation": 338.396,
+      "z_layer": 156,
+      "color_tint": [
+        0.9991,
+        0.9983,
+        0.9986,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        878.0,
+        223.0
+      ],
+      "scale": 0.1373,
+      "rotation": 342.908,
+      "z_layer": 157,
+      "color_tint": [
+        0.997,
+        0.9971,
+        0.9969,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        783.0,
+        146.0
+      ],
+      "scale": 0.1373,
+      "rotation": 357.748,
+      "z_layer": 158,
+      "color_tint": [
+        0.9946,
+        0.9951,
+        0.9943,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        729.0,
+        140.0
+      ],
+      "scale": 0.125,
+      "rotation": 345.964,
+      "z_layer": 159,
+      "color_tint": [
+        0.9982,
+        0.9987,
+        0.9976,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        738.0,
+        737.0
+      ],
+      "scale": 0.1373,
+      "rotation": 134.59,
+      "z_layer": 160,
+      "color_tint": [
+        0.9891,
+        0.9906,
+        0.9869,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        725.0,
+        140.0
+      ],
+      "scale": 0.125,
+      "rotation": 65.119,
+      "z_layer": 161,
+      "color_tint": [
+        0.9991,
+        0.998,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        637.0,
+        231.0
+      ],
+      "scale": 0.2789,
+      "rotation": 43.822,
+      "z_layer": 162,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        838.0,
+        239.0
+      ],
+      "scale": 0.2815,
+      "rotation": 24.326,
+      "z_layer": 163,
+      "color_tint": [
+        0.9987,
+        0.9987,
+        0.9986,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        585.0,
+        282.0
+      ],
+      "scale": 0.25,
+      "rotation": 329.995,
+      "z_layer": 164,
+      "color_tint": [
+        0.9989,
+        0.999,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        581.0,
+        350.0
+      ],
+      "scale": 0.4259,
+      "rotation": 87.709,
+      "z_layer": 165,
+      "color_tint": [
+        0.9981,
+        0.9982,
+        0.998,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        602.0,
+        303.0
+      ],
+      "scale": 0.277,
+      "rotation": 114.608,
+      "z_layer": 166,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        738.0,
+        311.0
+      ],
+      "scale": 0.25,
+      "rotation": 264.814,
+      "z_layer": 167,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        404.0,
+        514.0
+      ],
+      "scale": 0.2248,
+      "rotation": 172.713,
+      "z_layer": 168,
+      "color_tint": [
+        0.9975,
+        0.9975,
+        0.9974,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        528.0,
+        442.0
+      ],
+      "scale": 0.25,
+      "rotation": 352.876,
+      "z_layer": 169,
+      "color_tint": [
+        0.9972,
+        0.9978,
+        0.9969,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        605.0,
+        578.0
+      ],
+      "scale": 0.2691,
+      "rotation": 21.094,
+      "z_layer": 170,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        737.0,
+        548.0
+      ],
+      "scale": 0.25,
+      "rotation": 204.585,
+      "z_layer": 171,
+      "color_tint": [
+        0.9982,
+        0.9983,
+        0.9981,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        286.0,
+        599.0
+      ],
+      "scale": 0.25,
+      "rotation": 351.245,
+      "z_layer": 172,
+      "color_tint": [
+        0.9982,
+        0.9983,
+        0.9972,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        430.0,
+        438.0
+      ],
+      "scale": 0.25,
+      "rotation": 271.8,
+      "z_layer": 173,
+      "color_tint": [
+        0.9972,
+        0.9973,
+        0.9972,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        393.0,
+        594.0
+      ],
+      "scale": 0.1875,
+      "rotation": 224.895,
+      "z_layer": 174,
+      "color_tint": [
+        0.9948,
+        0.9963,
+        0.9897,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        583.0,
+        595.0
+      ],
+      "scale": 0.8478,
+      "rotation": 355.055,
+      "z_layer": 175,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        99.0,
+        782.0
+      ],
+      "scale": 0.125,
+      "rotation": 75.045,
+      "z_layer": 176,
+      "color_tint": [
+        0.99,
+        0.9901,
+        0.9895,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        661.0,
+        727.0
+      ],
+      "scale": 0.1875,
+      "rotation": 247.19,
+      "z_layer": 177,
+      "color_tint": [
+        0.9895,
+        0.9942,
+        0.9962,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        551.0,
+        782.0
+      ],
+      "scale": 0.2248,
+      "rotation": 144.32,
+      "z_layer": 178,
+      "color_tint": [
+        0.9989,
+        0.9992,
+        0.9991,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        153.0,
+        763.0
+      ],
+      "scale": 0.1373,
+      "rotation": 54.382,
+      "z_layer": 179,
+      "color_tint": [
+        0.9929,
+        0.9939,
+        0.9933,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        712.0,
+        736.0
+      ],
+      "scale": 0.125,
+      "rotation": 56.815,
+      "z_layer": 180,
+      "color_tint": [
+        0.9984,
+        0.9987,
+        0.9986,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        763.0,
+        141.0
+      ],
+      "scale": 0.125,
+      "rotation": 108.057,
+      "z_layer": 181,
+      "color_tint": [
+        0.9989,
+        0.9992,
+        0.9986,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        584.0,
+        291.0
+      ],
+      "scale": 0.2526,
+      "rotation": 190.929,
+      "z_layer": 182,
+      "color_tint": [
+        0.9991,
+        0.9992,
+        0.9991,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        624.0,
+        254.0
+      ],
+      "scale": 0.6709,
+      "rotation": 279.337,
+      "z_layer": 183,
+      "color_tint": [
+        0.9993,
+        0.9994,
+        0.9992,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        806.0,
+        233.0
+      ],
+      "scale": 0.1373,
+      "rotation": 1.29,
+      "z_layer": 184,
+      "color_tint": [
+        0.9982,
+        0.9983,
+        0.9962,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        438.0,
+        421.0
+      ],
+      "scale": 0.1373,
+      "rotation": 43.334,
+      "z_layer": 185,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        481.0,
+        364.0
+      ],
+      "scale": 0.2248,
+      "rotation": 229.513,
+      "z_layer": 186,
+      "color_tint": [
+        0.9991,
+        0.9992,
+        0.9991,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "square",
+      "position": [
+        616.0,
+        396.0
+      ],
+      "scale": 0.25,
+      "rotation": 208.455,
+      "z_layer": 187,
+      "color_tint": [
+        0.9982,
+        0.9983,
+        0.9981,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        741.0,
+        429.0
+      ],
+      "scale": 0.6447,
+      "rotation": 121.253,
+      "z_layer": 188,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        434.0,
+        532.0
+      ],
+      "scale": 0.175,
+      "rotation": 260.82,
+      "z_layer": 189,
+      "color_tint": [
+        0.9991,
+        0.9992,
+        0.9991,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        577.0,
+        577.0
+      ],
+      "scale": 0.3493,
+      "rotation": 295.066,
+      "z_layer": 190,
+      "color_tint": [
+        0.9985,
+        0.9986,
+        0.9985,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        653.0,
+        521.0
+      ],
+      "scale": 0.6126,
+      "rotation": 283.724,
+      "z_layer": 191,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        774.0,
+        446.0
+      ],
+      "scale": 0.5782,
+      "rotation": 295.848,
+      "z_layer": 192,
+      "color_tint": [
+        0.9993,
+        0.9994,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        236.0,
+        672.0
+      ],
+      "scale": 0.25,
+      "rotation": 63.677,
+      "z_layer": 193,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        297.0,
+        619.0
+      ],
+      "scale": 0.1373,
+      "rotation": 21.125,
+      "z_layer": 194,
+      "color_tint": [
+        0.9975,
+        0.998,
+        0.9967,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        464.0,
+        594.0
+      ],
+      "scale": 0.25,
+      "rotation": 147.868,
+      "z_layer": 195,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.9993,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        657.0,
+        608.0
+      ],
+      "scale": 0.4744,
+      "rotation": 48.004,
+      "z_layer": 196,
+      "color_tint": [
+        0.9988,
+        0.9989,
+        0.9973,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        137.0,
+        752.0
+      ],
+      "scale": 0.25,
+      "rotation": 257.208,
+      "z_layer": 197,
+      "color_tint": [
+        0.9979,
+        0.9983,
+        0.9981,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        169.0,
+        732.0
+      ],
+      "scale": 0.1998,
+      "rotation": 188.917,
+      "z_layer": 198,
+      "color_tint": [
+        0.9941,
+        0.9966,
+        0.9943,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        550.0,
+        774.0
+      ],
+      "scale": 0.125,
+      "rotation": 49.33,
+      "z_layer": 199,
+      "color_tint": [
+        0.9977,
+        0.9968,
+        0.9967,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        616.0,
+        770.0
+      ],
+      "scale": 0.2875,
+      "rotation": 57.796,
+      "z_layer": 200,
+      "color_tint": [
+        0.9977,
+        0.9978,
+        0.9976,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "star",
+      "position": [
+        778.0,
+        144.0
+      ],
+      "scale": 0.125,
+      "rotation": 57.809,
+      "z_layer": 201,
+      "color_tint": [
+        0.9977,
+        0.9978,
+        0.9976,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "blob",
+      "position": [
+        576.0,
+        291.0
+      ],
+      "scale": 0.2539,
+      "rotation": 304.48,
+      "z_layer": 202,
+      "color_tint": [
+        0.9991,
+        0.999,
+        0.9991,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "triangle",
+      "position": [
+        647.0,
+        288.0
+      ],
+      "scale": 0.5308,
+      "rotation": 160.721,
+      "z_layer": 203,
+      "color_tint": [
+        0.9988,
+        0.9989,
+        0.9988,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    },
+    {
+      "name": "circle",
+      "position": [
+        795.0,
+        156.0
+      ],
+      "scale": 0.4668,
+      "rotation": 320.72,
+      "z_layer": 204,
+      "color_tint": [
+        0.9994,
+        0.9995,
+        0.999,
+        1.0
+      ],
+      "region": "r0",
+      "hunt": false
+    }
+  ]
+}

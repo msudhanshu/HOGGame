@@ -10,6 +10,10 @@ namespace Game.Unity
     {
         public const string SilhouetteFolder = "SilhouetteJson";
 
+        /// <summary>Legacy editor path; runtime loads from Resources/HiddenMosaic.</summary>
+        public static string SilhouetteDirectoryEditor =>
+            Path.Combine(Application.dataPath, "Game", "Resources", HuntContentResources.Root, SilhouetteFolder);
+
         [Serializable]
         public sealed class CatalogJson
         {
@@ -26,28 +30,26 @@ namespace Game.Unity
             public float memory_fade;
             public float glass_radius;
             public float zoom;
+            public float hunt_size_scale;
+            public bool glass_fog;
+            public float time_limit_seconds;
+            public int toughness;
+            public int sprinkle_seed;
         }
-
-        public static string SilhouetteDirectory =>
-            Path.Combine(Application.streamingAssetsPath, SilhouetteFolder);
-
-        public static string SilhouettePath(string fileName) =>
-            Path.Combine(SilhouetteDirectory, fileName);
 
         public static HuntCatalog Load(HuntCatalogAsset asset)
         {
             if (asset != null && asset.Count > 0)
                 return asset.ToCatalog();
-            return LoadJson(SilhouetteDirectory);
+            return LoadJsonFromResources();
         }
 
-        public static HuntCatalog LoadJson(string silhouetteDirectory)
+        public static HuntCatalog LoadJsonFromResources()
         {
-            var path = Path.Combine(silhouetteDirectory, "catalog.json");
-            if (!File.Exists(path))
+            if (!HuntContentResources.TryLoadText(SilhouetteFolder, "catalog.json", out var json))
                 return HuntCatalog.Fallback("horse.json");
 
-            var data = JsonUtility.FromJson<CatalogJson>(File.ReadAllText(path));
+            var data = JsonUtility.FromJson<CatalogJson>(json);
             if (data == null || data.levels == null || data.levels.Length == 0)
                 return HuntCatalog.Fallback("horse.json");
 

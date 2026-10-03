@@ -17,20 +17,179 @@ MonoBehaviour:
     title: Horse
     waveSize: 3
     waveCount: 2
-    memoryFade: 8
-    glassRadius: 0.16
-    zoom: 2
+    memoryFade: 8.0
+    glassRadius: 0.1
+    zoom: 3.6
+    huntSizeScale: 1
+    glassFog: 1
+    timeLimitSeconds: 210
+    toughness: 1
+    sprinkleSeed: 0
+  - silhouetteFile: rabbit.json
+    title: Rabbit
+    waveSize: 3
+    waveCount: 2
+    memoryFade: 8.0
+    glassRadius: 0.1
+    zoom: 3.6
+    huntSizeScale: 1
+    glassFog: 1
+    timeLimitSeconds: 200
+    toughness: 1
+    sprinkleSeed: 0
+  - silhouetteFile: bird.json
+    title: Bird
+    waveSize: 3
+    waveCount: 2
+    memoryFade: 7.5
+    glassRadius: 0.095
+    zoom: 3.7
+    huntSizeScale: 1
+    glassFog: 1
+    timeLimitSeconds: 195
+    toughness: 1
+    sprinkleSeed: 0
+  - silhouetteFile: bat.json
+    title: Bat
+    waveSize: 3
+    waveCount: 2
+    memoryFade: 7.5
+    glassRadius: 0.095
+    zoom: 3.7
+    huntSizeScale: 1
+    glassFog: 1
+    timeLimitSeconds: 190
+    toughness: 2
+    sprinkleSeed: 0
+  - silhouetteFile: cap.json
+    title: Cap
+    waveSize: 3
+    waveCount: 2
+    memoryFade: 7.0
+    glassRadius: 0.09
+    zoom: 3.75
+    huntSizeScale: 1
+    glassFog: 1
+    timeLimitSeconds: 185
+    toughness: 2
+    sprinkleSeed: 0
+  - silhouetteFile: camel.json
+    title: Camel
+    waveSize: 3
+    waveCount: 2
+    memoryFade: 7.0
+    glassRadius: 0.09
+    zoom: 3.75
+    huntSizeScale: 1
+    glassFog: 1
+    timeLimitSeconds: 180
+    toughness: 2
+    sprinkleSeed: 0
+  - silhouetteFile: elephant.json
+    title: Elephant
+    waveSize: 3
+    waveCount: 2
+    memoryFade: 6.5
+    glassRadius: 0.09
+    zoom: 3.8
+    huntSizeScale: 0.88
+    glassFog: 1
+    timeLimitSeconds: 175
+    toughness: 3
+    sprinkleSeed: 0
   - silhouetteFile: watch.json
     title: Watch
     waveSize: 3
+    waveCount: 2
+    memoryFade: 6.0
+    glassRadius: 0.09
+    zoom: 3.8
+    huntSizeScale: 0.82
+    glassFog: 1
+    timeLimitSeconds: 170
+    toughness: 3
+    sprinkleSeed: 0
+  - silhouetteFile: horse.json
+    title: Horse — Remix
+    waveSize: 3
     waveCount: 3
-    memoryFade: 6
-    glassRadius: 0.13
-    zoom: 2.3
+    memoryFade: 6.0
+    glassRadius: 0.088
+    zoom: 3.85
+    huntSizeScale: 1
+    glassFog: 1
+    timeLimitSeconds: 165
+    toughness: 3
+    sprinkleSeed: 101
   - silhouetteFile: bird.json
-    title: Bird
+    title: Bird — Remix
+    waveSize: 4
+    waveCount: 2
+    memoryFade: 5.5
+    glassRadius: 0.085
+    zoom: 4.0
+    huntSizeScale: 1
+    glassFog: 1
+    timeLimitSeconds: 155
+    toughness: 4
+    sprinkleSeed: 202
+  - silhouetteFile: bat.json
+    title: Bat — Rush
+    waveSize: 3
+    waveCount: 3
+    memoryFade: 5.0
+    glassRadius: 0.085
+    zoom: 4.0
+    huntSizeScale: 1
+    glassFog: 1
+    timeLimitSeconds: 145
+    toughness: 4
+    sprinkleSeed: 303
+  - silhouetteFile: rabbit.json
+    title: Rabbit — Rush
+    waveSize: 4
+    waveCount: 2
+    memoryFade: 4.5
+    glassRadius: 0.082
+    zoom: 4.1
+    huntSizeScale: 1
+    glassFog: 1
+    timeLimitSeconds: 135
+    toughness: 4
+    sprinkleSeed: 404
+  - silhouetteFile: watch.json
+    title: Watch — Expert
+    waveSize: 3
+    waveCount: 3
+    memoryFade: 4.0
+    glassRadius: 0.08
+    zoom: 4.2
+    huntSizeScale: 0.8
+    glassFog: 0
+    timeLimitSeconds: 125
+    toughness: 5
+    sprinkleSeed: 505
+  - silhouetteFile: elephant.json
+    title: Elephant — Expert
     waveSize: 4
     waveCount: 3
-    memoryFade: 4.5
-    glassRadius: 0.11
-    zoom: 2.5
+    memoryFade: 3.5
+    glassRadius: 0.078
+    zoom: 4.2
+    huntSizeScale: 0.85
+    glassFog: 0
+    timeLimitSeconds: 115
+    toughness: 5
+    sprinkleSeed: 606
+  - silhouetteFile: camel.json
+    title: Camel — Finale
+    waveSize: 4
+    waveCount: 3
+    memoryFade: 3.0
+    glassRadius: 0.075
+    zoom: 4.3
+    huntSizeScale: 1
+    glassFog: 0
+    timeLimitSeconds: 105
+    toughness: 5
+    sprinkleSeed: 707

@@ -9,13 +9,16 @@ namespace Game.Unity.Editor
         public const string AssetPath = "Assets/Game/Unity/Data/HuntCatalog.asset";
 
         [MenuItem("Nixin Studio/Hidden Mosaic/Import Catalog JSON into Asset")]
-        public static void ImportFromStreamingAssets()
+        public static void ImportCatalogJsonIntoAsset()
         {
             var asset = EnsureAsset();
-            var jsonPath = Path.Combine(Application.streamingAssetsPath, HuntCatalogLoader.SilhouetteFolder, "catalog.json");
+            var jsonPath = Path.Combine(HuntCatalogLoader.SilhouetteDirectoryEditor, "catalog.json");
             if (!File.Exists(jsonPath))
             {
-                EditorUtility.DisplayDialog("Hunt Catalog", "No catalog.json under StreamingAssets/SilhouetteJson.", "OK");
+                EditorUtility.DisplayDialog(
+                    "Hunt Catalog",
+                    "No catalog.json under Assets/Game/Resources/HiddenMosaic/SilhouetteJson.",
+                    "OK");
                 return;
             }
 
@@ -41,7 +44,7 @@ namespace Game.Unity.Editor
 
             if (asset.Count == 0)
             {
-                var jsonPath = Path.Combine(Application.dataPath, "StreamingAssets", HuntCatalogLoader.SilhouetteFolder, "catalog.json");
+                var jsonPath = Path.Combine(HuntCatalogLoader.SilhouetteDirectoryEditor, "catalog.json");
                 if (File.Exists(jsonPath))
                     asset.ReplaceEntries(HuntCatalogLoader.EntriesFromJson(File.ReadAllText(jsonPath)));
                 EditorUtility.SetDirty(asset);
