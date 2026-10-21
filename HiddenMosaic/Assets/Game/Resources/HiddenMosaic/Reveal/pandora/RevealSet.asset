@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f775987e9c3446b9a784b62bebfcc8e, type: 3}
+  m_Name: RevealSet
+  m_EditorClassIdentifier: Game.Unity::Game.Unity.RevealSetAsset
+  id: pandora
+  title: 'Avatar''s Pandora: Before the Ashes'
+  description: A scorched, cracked wasteland. Scan it to see the living world of
+    Pandora that once grew here.
+  day: {fileID: 2800000, guid: 1c7094e72072a41ffb0e3b68b5e0ba97, type: 3}
+  night: {fileID: 2800000, guid: f9343917cb27e4d939d2d1355ca338ab, type: 3}
+  objects: {fileID: 0}
+  background: {r: 0.0392, g: 0.0392, b: 0.0471, a: 1}
+  thumbnail: {fileID: 0}
+  scanner: Magnifier
+  lensRadius: 0.11
+  timeLimitSeconds: 85
+  toughness: 3
+  targetsPerWave: 3
+  waves: 3

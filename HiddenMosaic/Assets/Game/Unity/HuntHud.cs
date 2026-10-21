@@ -1,4 +1,5 @@
 using Game.Core;
+using Nixin.Icons;
 using Nixin.Mosaic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -25,6 +26,8 @@ namespace Game.Unity
         GameObject _menuGo;
         GameObject _homeGo;
         GameObject _backGo;
+        GameObject _hintGo;
+        HuntSevenSegmentClock _clock;
         Transform _iconRow;
         RectTransform _barRect;
         HuntDirector _director;
@@ -35,6 +38,16 @@ namespace Game.Unity
         public readonly UnityEvent MenuRequested = new UnityEvent();
         public readonly UnityEvent HomeRequested = new UnityEvent();
         public readonly UnityEvent BackRequested = new UnityEvent();
+        public readonly UnityEvent HintRequested = new UnityEvent();
+        /// <summary>Dev builds only: cycles scanner styles for look comparison.</summary>
+        public readonly UnityEvent LensRequested = new UnityEvent();
+        /// <summary>"+" on the coins pill.</summary>
+        public readonly UnityEvent ShopRequested = new UnityEvent();
+
+        bool _skinned;
+        Text _hintBadge;
+        GameObject _hintBadgeGo;
+        HuntCurrencyPill _coinsPill;
 
         public float BottomInsetNormalized => BarHeight / ReferenceHeight;
 
@@ -58,6 +71,28 @@ namespace Game.Unity
             EnsureRefs();
             ApplyReadableLayout();
             ApplyScreenSizing();
+            HuntSafeTopInset.Ensure(transform.Find("BackPanel"));
+            HuntSafeTopInset.Ensure(transform.Find("TimerPanel"));
+            HuntSafeTopInset.Ensure(transform.Find("Hint"));
+            var oldLens = transform.Find("Lens");
+            if (oldLens != null)
+                oldLens.gameObject.SetActive(false);
+            EnsureClock();
+            ApplySkin();
+        }
+
+        void EnsureClock()
+        {
+            if (_clock != null)
+                return;
+            var panel = transform.Find("TimerPanel") as RectTransform;
+            if (panel == null)
+                return;
+            var existing = panel.GetComponentInChildren<HuntSevenSegmentClock>(true);
+            _clock = existing != null ? existing : HuntSevenSegmentClock.Create(panel);
+            panel.sizeDelta = new Vector2(HuntSevenSegmentClock.TotalWidth + 48f, 96f);
+            if (_timer != null)
+                _timer.enabled = false;
         }
 
         public void Build()
@@ -132,6 +167,9 @@ namespace Game.Unity
             WireActionButtons();
             HideActionButtons();
 
+            _hintGo = MakeHintButton();
+            WireButton(_hintGo, OnHintClicked);
+
             ApplyReadableLayout();
         }
 
@@ -145,6 +183,8 @@ namespace Game.Unity
             EnsureReady();
             _director = director;
             Refresh();
+            if (_hintGo != null)
+                _hintGo.SetActive(true);
         }
 
         public void ApplyPlayViewport(Camera camera)
@@ -157,7 +197,8 @@ namespace Game.Unity
 
             var inset = MeasureBottomInsetNormalized();
             inset = Mathf.Clamp(inset + 0.008f, 0.08f, 0.42f);
-            camera.rect = new Rect(0f, inset, 1f, 1f - inset);
+            var top = HuntSafeArea.TopInsetNormalized;
+            camera.rect = new Rect(0f, inset, 1f, Mathf.Max(0.3f, 1f - inset - top));
         }
 
         public void FramePlayCamera(Camera camera)
@@ -199,9 +240,7 @@ namespace Game.Unity
             {
                 _status.text = "Done";
                 ClearIcons();
-                _nextGo.SetActive(_director.HasNextLevel);
-                _retryGo.SetActive(false);
-                _menuGo.SetActive(false);
+                HideActionButtons();
                 return;
             }
 
@@ -242,43 +281,59 @@ namespace Game.Unity
         public void RefreshTimer(float remainingSeconds, bool urgent)
         {
             EnsureReady();
+            var total = Mathf.Max(0f, remainingSeconds);
+            var whole = Mathf.CeilToInt(total);
+            var minutes = whole / 60;
+            var seconds = whole % 60;
+            if (_clock != null)
+                _clock.SetTime(minutes, seconds, urgent ? new Color(1f, 0.32f, 0.26f) : new Color(1f, 0.97f, 0.4f));
             if (_timer == null)
                 return;
-            var total = Mathf.Max(0f, remainingSeconds);
-            var minutes = Mathf.FloorToInt(total / 60f);
-            var seconds = Mathf.FloorToInt(total % 60f);
             _timer.text = minutes + ":" + seconds.ToString("00");
             _timer.color = urgent ? new Color(1f, 0.45f, 0.35f) : Color.white;
         }
 
+        /// <summary>Win / fail flow is handled by popups; the HUD only hides its play controls.</summary>
         public void ShowTimedOut()
         {
             EnsureReady();
             if (_status != null)
                 _status.text = "Time's up";
+            HideActionButtons();
+            SetPlayControls(false);
+        }
+
+        /// <summary>Hint button visibility (hidden after the level ends, back on continue).</summary>
+        public void SetPlayControls(bool visible)
+        {
+            if (_hintGo != null)
+                _hintGo.SetActive(visible);
+        }
+
+        /// <summary>Reveal scene with no authored objects yet: explore with the scanner, then Done.</summary>
+        public void ShowPreview(string title, string message)
+        {
+            EnsureReady();
+            if (_title != null)
+                _title.text = title;
+            if (_status != null)
+                _status.text = message;
             ClearIcons();
-            _nextGo.SetActive(false);
-            _retryGo.SetActive(true);
-            _menuGo.SetActive(true);
-            _homeGo.SetActive(false);
-        }
-
-        public void ShowCampaignComplete()
-        {
-            EnsureReady();
-            _nextGo.SetActive(false);
-            _retryGo.SetActive(false);
-            _menuGo.SetActive(false);
+            HideActionButtons();
+            SetPlayControls(false);
+            if (_homeGo == null)
+                return;
+            var label = _homeGo.GetComponentInChildren<Text>(true);
+            if (label != null)
+                label.text = "Done";
             _homeGo.SetActive(true);
         }
 
-        public void ShowLevelCompleteSingle()
+        public void ShowLevelComplete()
         {
             EnsureReady();
-            _nextGo.SetActive(false);
-            _retryGo.SetActive(false);
-            _menuGo.SetActive(false);
-            _homeGo.SetActive(true);
+            HideActionButtons();
+            SetPlayControls(false);
         }
 
         public void HideActionButtons()
@@ -495,9 +550,16 @@ namespace Game.Unity
                     _backGo = MakeTopBarButton("Back", true);
             }
 
+            if (_hintGo == null)
+            {
+                var t = transform.Find("Hint");
+                _hintGo = t != null ? t.gameObject : MakeHintButton();
+            }
+
             WireNextButton();
             WireActionButtons();
             WireButton(_backGo, OnBackClicked);
+            WireButton(_hintGo, OnHintClicked);
             if (_backGo != null)
                 _backGo.SetActive(true);
         }
@@ -552,6 +614,172 @@ namespace Game.Unity
         void OnMenuClicked() => MenuRequested.Invoke();
         void OnHomeClicked() => HomeRequested.Invoke();
         void OnBackClicked() => BackRequested.Invoke();
+        void OnHintClicked() => HintRequested.Invoke();
+        void OnLensClicked() => LensRequested.Invoke();
+
+        /// <summary>Hint count badge on the hint button ("AD" when empty).</summary>
+        public void SetHintCount(int hints)
+        {
+            EnsureReady();
+            if (_hintBadge == null)
+                return;
+            _hintBadge.text = hints > 0 ? hints.ToString() : "+";
+            _hintBadgeGo.GetComponent<Image>().color = hints > 0 ? HuntUiTheme.Current.danger : HuntUiTheme.Current.success;
+        }
+
+        /// <summary>Find tray pop: target icons bounce in when a wave is shown.</summary>
+        public void PopIcons()
+        {
+            if (_iconRow == null)
+                return;
+            for (var i = 0; i < _iconRow.childCount; i++)
+            {
+                var child = _iconRow.GetChild(i);
+                child.localScale = Vector3.zero;
+                HuntTweener.Scale(child, Vector3.zero, Vector3.one, 0.4f, Ease.OutBack, i * 0.08f);
+            }
+        }
+
+        public RectTransform CoinsPillRect => _coinsPill != null ? (RectTransform)_coinsPill.transform : null;
+
+        /// <summary>Re-skins the (scene-authored or built) HUD with HuntUiTheme: gradient tray,
+        /// round pause button, chunky hint button with count badge, coins pill.</summary>
+        void ApplySkin()
+        {
+            if (_skinned || _barRect == null)
+                return;
+            _skinned = true;
+            var theme = HuntUiTheme.Current;
+
+            var barImage = _barRect.GetComponent<Image>();
+            if (barImage != null)
+            {
+                barImage.sprite = HuntUiSprites.Gradient(HuntUiTheme.Darken(theme.primary, 0.15f), HuntUiTheme.Darken(theme.bgTop, 0.55f));
+                barImage.color = Color.white;
+            }
+
+            if (_title != null)
+            {
+                _title.font = theme.Font;
+                _title.color = Color.white;
+                AddOutline(_title.gameObject);
+            }
+
+            if (_status != null)
+            {
+                _status.font = theme.Font;
+                _status.color = theme.accent;
+            }
+
+            var timerPanel = transform.Find("TimerPanel");
+            if (timerPanel != null)
+                RoundPanel(timerPanel.GetComponent<Image>(), HuntUiTheme.WithAlpha(theme.ink, 0.9f));
+
+            if (_backGo != null)
+            {
+                var backPanel = _backGo.transform.parent != transform ? _backGo.transform.parent : null;
+                if (backPanel != null)
+                {
+                    var panelImage = backPanel.GetComponent<Image>();
+                    if (panelImage != null)
+                        panelImage.color = Color.clear;
+                    var panelRect = (RectTransform)backPanel;
+                    panelRect.sizeDelta = new Vector2(120f, 120f);
+                }
+
+                var backRect = (RectTransform)_backGo.transform;
+                backRect.anchorMin = backRect.anchorMax = new Vector2(0.5f, 0.5f);
+                backRect.sizeDelta = new Vector2(120f, 120f);
+                backRect.anchoredPosition = Vector2.zero;
+                var img = _backGo.GetComponent<Image>();
+                img.sprite = HuntUiSprites.Circle;
+                img.type = Image.Type.Simple;
+                img.color = theme.primary;
+                var label = _backGo.transform.Find("Label");
+                if (label != null)
+                    label.gameObject.SetActive(false);
+                var icon = HuntUiKit.Icon(_backGo.transform, NixinIcons.Load(NixinIcons.Pause), Color.white, new Vector2(64f, 64f));
+                icon.raycastTarget = false;
+                if (_backGo.GetComponent<HuntButtonJuice>() == null)
+                    _backGo.AddComponent<HuntButtonJuice>();
+            }
+
+            if (_hintGo != null)
+            {
+                var rect = (RectTransform)_hintGo.transform;
+                rect.sizeDelta = new Vector2(200f, 116f);
+                rect.anchoredPosition = new Vector2(-16f, -128f);
+                RoundPanel(_hintGo.GetComponent<Image>(), theme.hint);
+                var label = _hintGo.transform.Find("Label");
+                if (label != null)
+                {
+                    var text = label.GetComponent<Text>();
+                    text.text = "HINT";
+                    text.font = theme.Font;
+                    text.fontSize = 34;
+                    text.rectTransform.offsetMin = new Vector2(80f, 0f);
+                    AddOutline(label.gameObject);
+                }
+
+                var glyph = HuntUiKit.Icon(_hintGo.transform, HuntUiKit.HintGlyph, Color.white, new Vector2(64f, 64f));
+                glyph.rectTransform.anchorMin = glyph.rectTransform.anchorMax = new Vector2(0f, 0.5f);
+                glyph.rectTransform.anchoredPosition = new Vector2(52f, 0f);
+                glyph.raycastTarget = false;
+
+                var badge = HuntUiKit.Image(_hintGo.transform, "Badge", HuntUiSprites.Circle, theme.danger);
+                HuntUiKit.Place(badge.rectTransform, new Vector2(1f, 1f), new Vector2(64f, 64f), new Vector2(-6f, -6f));
+                _hintBadgeGo = badge.gameObject;
+                _hintBadge = HuntUiKit.Label(badge.transform, "0", 34, Color.white, TextAnchor.MiddleCenter, true);
+                _hintGo.AddComponent<HuntIdlePulse>().amount = 0.025f;
+                if (_hintGo.GetComponent<HuntButtonJuice>() == null)
+                    _hintGo.AddComponent<HuntButtonJuice>();
+            }
+
+            _coinsPill = HuntCurrencyPill.Build(transform, HuntCurrencies.Coins, () => ShopRequested.Invoke(), 400f);
+            var pillRect = (RectTransform)_coinsPill.transform;
+            HuntUiKit.Place(pillRect, new Vector2(0.5f, 1f), new Vector2(400f, 92f), new Vector2(0f, -66f));
+            HuntSafeTopInset.Ensure(pillRect);
+        }
+
+        static void RoundPanel(Image image, Color color)
+        {
+            if (image == null)
+                return;
+            image.sprite = HuntUiSprites.Rounded;
+            image.type = Image.Type.Sliced;
+            image.pixelsPerUnitMultiplier = HuntUiKit.SpriteRadius / 28f;
+            image.color = color;
+        }
+
+        static void AddOutline(GameObject go)
+        {
+            if (go.GetComponent<Outline>() != null)
+                return;
+            var o = go.AddComponent<Outline>();
+            o.effectColor = new Color(0.17f, 0.07f, 0.3f, 0.85f);
+            o.effectDistance = new Vector2(2f, -2f);
+        }
+
+        /// <summary>Visible throughout play (unlike Retry/Menu/Home), stacked below TimerPanel
+        /// in the same top-right corner.</summary>
+        GameObject MakeHintButton()
+        {
+            var go = new GameObject("Hint", typeof(RectTransform), typeof(Image), typeof(Button));
+            go.transform.SetParent(transform, false);
+            var rect = go.GetComponent<RectTransform>();
+            rect.anchorMin = new Vector2(1f, 1f);
+            rect.anchorMax = new Vector2(1f, 1f);
+            rect.pivot = new Vector2(1f, 1f);
+            rect.anchoredPosition = new Vector2(-16f, -88f);
+            rect.sizeDelta = new Vector2(160f, 56f);
+            go.GetComponent<Image>().color = new Color(0.45f, 0.3f, 0.55f, 0.95f);
+            var text = MakeText("Label", go.transform, 26, FontStyle.Bold, TextAnchor.MiddleCenter);
+            text.text = "Hint";
+            text.rectTransform.offsetMin = Vector2.zero;
+            text.rectTransform.offsetMax = Vector2.zero;
+            go.SetActive(false);
+            return go;
+        }
 
         GameObject MakeTopBarButton(string label, bool topLeft)
         {

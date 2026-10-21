@@ -10,24 +10,30 @@ namespace Game.Core
     public static class HuntLaunchRequest
     {
         public static HuntLaunchMode Mode { get; private set; } = HuntLaunchMode.Campaign;
-        public static int StartLevelIndex { get; private set; }
+        /// <summary>Roadmap node index to play (see HuntRoadmap). -1 = continue at the current node.</summary>
+        public static int NodeIndex { get; private set; } = -1;
+        /// <summary>Set when launching an image-HOG scene; read it there for id/title/time limit.</summary>
+        public static ImageHogDef ImageHog { get; private set; }
 
-        public static void SetCampaign(int startLevelIndex = 0)
+        public static void SetNode(int nodeIndex)
         {
             Mode = HuntLaunchMode.Campaign;
-            StartLevelIndex = startLevelIndex < 0 ? 0 : startLevelIndex;
+            NodeIndex = nodeIndex < 0 ? -1 : nodeIndex;
+            ImageHog = null;
         }
 
-        public static void SetSingle(int levelIndex)
+        public static void SetImageHog(int nodeIndex, ImageHogDef def)
         {
-            Mode = HuntLaunchMode.Single;
-            StartLevelIndex = levelIndex < 0 ? 0 : levelIndex;
+            Mode = HuntLaunchMode.Campaign;
+            NodeIndex = nodeIndex;
+            ImageHog = def;
         }
 
         public static void ResetToDefaults()
         {
             Mode = HuntLaunchMode.Campaign;
-            StartLevelIndex = 0;
+            NodeIndex = -1;
+            ImageHog = null;
         }
     }
 }

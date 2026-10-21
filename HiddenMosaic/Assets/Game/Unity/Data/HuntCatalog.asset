@@ -22,174 +22,511 @@ MonoBehaviour:
     zoom: 3.6
     huntSizeScale: 1
     glassFog: 1
-    timeLimitSeconds: 210
+    timeLimitSeconds: 90
     toughness: 1
     sprinkleSeed: 0
+    theme: pets
+    mode: 0
+    scanner: 
+    revealSet: 
   - silhouetteFile: rabbit.json
     title: Rabbit
     waveSize: 3
     waveCount: 2
-    memoryFade: 8.0
-    glassRadius: 0.1
-    zoom: 3.6
+    memoryFade: 7.8
+    glassRadius: 0.099
+    zoom: 3.63
     huntSizeScale: 1
     glassFog: 1
-    timeLimitSeconds: 200
+    timeLimitSeconds: 75
     toughness: 1
-    sprinkleSeed: 0
+    sprinkleSeed: 101
+    theme: animal-faces
+    mode: 0
+    scanner: 
+    revealSet: 
   - silhouetteFile: bird.json
     title: Bird
     waveSize: 3
     waveCount: 2
-    memoryFade: 7.5
-    glassRadius: 0.095
-    zoom: 3.7
+    memoryFade: 7.7
+    glassRadius: 0.098
+    zoom: 3.66
     huntSizeScale: 1
     glassFog: 1
-    timeLimitSeconds: 195
+    timeLimitSeconds: 60
     toughness: 1
-    sprinkleSeed: 0
+    sprinkleSeed: 202
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
   - silhouetteFile: bat.json
     title: Bat
     waveSize: 3
     waveCount: 2
     memoryFade: 7.5
-    glassRadius: 0.095
-    zoom: 3.7
+    glassRadius: 0.097
+    zoom: 3.68
     huntSizeScale: 1
     glassFog: 1
-    timeLimitSeconds: 190
+    timeLimitSeconds: 60
     toughness: 2
-    sprinkleSeed: 0
+    sprinkleSeed: 303
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
   - silhouetteFile: cap.json
     title: Cap
     waveSize: 3
     waveCount: 2
-    memoryFade: 7.0
-    glassRadius: 0.09
-    zoom: 3.75
+    memoryFade: 7.3
+    glassRadius: 0.096
+    zoom: 3.71
     huntSizeScale: 1
     glassFog: 1
-    timeLimitSeconds: 185
+    timeLimitSeconds: 60
     toughness: 2
-    sprinkleSeed: 0
+    sprinkleSeed: 404
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
   - silhouetteFile: camel.json
     title: Camel
     waveSize: 3
     waveCount: 2
-    memoryFade: 7.0
-    glassRadius: 0.09
-    zoom: 3.75
+    memoryFade: 7.1
+    glassRadius: 0.095
+    zoom: 3.74
     huntSizeScale: 1
     glassFog: 1
-    timeLimitSeconds: 180
+    timeLimitSeconds: 60
     toughness: 2
-    sprinkleSeed: 0
+    sprinkleSeed: 505
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
   - silhouetteFile: elephant.json
     title: Elephant
     waveSize: 3
     waveCount: 2
-    memoryFade: 6.5
-    glassRadius: 0.09
-    zoom: 3.8
+    memoryFade: 7.0
+    glassRadius: 0.094
+    zoom: 3.77
     huntSizeScale: 0.88
     glassFog: 1
-    timeLimitSeconds: 175
-    toughness: 3
-    sprinkleSeed: 0
+    timeLimitSeconds: 60
+    toughness: 2
+    sprinkleSeed: 606
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
   - silhouetteFile: watch.json
     title: Watch
     waveSize: 3
     waveCount: 2
-    memoryFade: 6.0
-    glassRadius: 0.09
-    zoom: 3.8
+    memoryFade: 6.8
+    glassRadius: 0.093
+    zoom: 3.79
     huntSizeScale: 0.82
     glassFog: 1
-    timeLimitSeconds: 170
-    toughness: 3
-    sprinkleSeed: 0
+    timeLimitSeconds: 55
+    toughness: 2
+    sprinkleSeed: 707
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
   - silhouetteFile: horse.json
-    title: Horse — Remix
+    title: "Horse — Remix"
     waveSize: 3
-    waveCount: 3
-    memoryFade: 6.0
-    glassRadius: 0.088
+    waveCount: 2
+    memoryFade: 6.6
+    glassRadius: 0.092
+    zoom: 3.82
+    huntSizeScale: 1
+    glassFog: 1
+    timeLimitSeconds: 55
+    toughness: 3
+    sprinkleSeed: 808
+    theme: pets
+    mode: 0
+    scanner: 
+    revealSet: 
+  - silhouetteFile: bird.json
+    title: "Bird — Remix"
+    waveSize: 3
+    waveCount: 2
+    memoryFade: 6.4
+    glassRadius: 0.091
     zoom: 3.85
     huntSizeScale: 1
     glassFog: 1
-    timeLimitSeconds: 165
+    timeLimitSeconds: 55
     toughness: 3
-    sprinkleSeed: 101
-  - silhouetteFile: bird.json
-    title: Bird — Remix
-    waveSize: 4
-    waveCount: 2
-    memoryFade: 5.5
-    glassRadius: 0.085
-    zoom: 4.0
-    huntSizeScale: 1
-    glassFog: 1
-    timeLimitSeconds: 155
-    toughness: 4
-    sprinkleSeed: 202
+    sprinkleSeed: 909
+    theme: 
+    mode: 0
+    scanner: Target
+    revealSet: 
   - silhouetteFile: bat.json
-    title: Bat — Rush
+    title: "Bat — Remix"
     waveSize: 3
     waveCount: 3
-    memoryFade: 5.0
-    glassRadius: 0.085
-    zoom: 4.0
+    memoryFade: 6.3
+    glassRadius: 0.09
+    zoom: 3.88
     huntSizeScale: 1
     glassFog: 1
-    timeLimitSeconds: 145
-    toughness: 4
-    sprinkleSeed: 303
+    timeLimitSeconds: 85
+    toughness: 3
+    sprinkleSeed: 1010
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
   - silhouetteFile: rabbit.json
-    title: Rabbit — Rush
+    title: "Rabbit — Remix"
+    waveSize: 3
+    waveCount: 3
+    memoryFade: 6.1
+    glassRadius: 0.089
+    zoom: 3.9
+    huntSizeScale: 1
+    glassFog: 1
+    timeLimitSeconds: 80
+    toughness: 3
+    sprinkleSeed: 1111
+    theme: animal-faces
+    mode: 0
+    scanner: 
+    revealSet: 
+  - silhouetteFile: cap.json
+    title: "Cap — Remix"
+    waveSize: 3
+    waveCount: 3
+    memoryFade: 5.9
+    glassRadius: 0.088
+    zoom: 3.93
+    huntSizeScale: 1
+    glassFog: 1
+    timeLimitSeconds: 80
+    toughness: 3
+    sprinkleSeed: 1212
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
+  - silhouetteFile: camel.json
+    title: "Camel — Remix"
     waveSize: 4
-    waveCount: 2
-    memoryFade: 4.5
-    glassRadius: 0.082
+    waveCount: 3
+    memoryFade: 5.8
+    glassRadius: 0.087
+    zoom: 3.96
+    huntSizeScale: 1
+    glassFog: 1
+    timeLimitSeconds: 105
+    toughness: 3
+    sprinkleSeed: 1313
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
+  - silhouetteFile: elephant.json
+    title: "Elephant — Remix"
+    waveSize: 4
+    waveCount: 3
+    memoryFade: 5.6
+    glassRadius: 0.086
+    zoom: 3.99
+    huntSizeScale: 0.88
+    glassFog: 1
+    timeLimitSeconds: 105
+    toughness: 4
+    sprinkleSeed: 1414
+    theme: 
+    mode: 0
+    scanner: RectLens
+    revealSet: 
+  - silhouetteFile: watch.json
+    title: "Watch — Remix"
+    waveSize: 3
+    waveCount: 3
+    memoryFade: 5.4
+    glassRadius: 0.086
+    zoom: 4.01
+    huntSizeScale: 0.82
+    glassFog: 1
+    timeLimitSeconds: 75
+    toughness: 3
+    sprinkleSeed: 1515
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
+  - silhouetteFile: horse.json
+    title: "Horse — Rush"
+    waveSize: 3
+    waveCount: 3
+    memoryFade: 5.2
+    glassRadius: 0.085
+    zoom: 4.04
+    huntSizeScale: 1
+    glassFog: 1
+    timeLimitSeconds: 75
+    toughness: 4
+    sprinkleSeed: 1616
+    theme: pets
+    mode: 0
+    scanner: 
+    revealSet: 
+  - silhouetteFile: bird.json
+    title: "Bird — Rush"
+    waveSize: 3
+    waveCount: 3
+    memoryFade: 5.1
+    glassRadius: 0.084
+    zoom: 4.07
+    huntSizeScale: 1
+    glassFog: 1
+    timeLimitSeconds: 75
+    toughness: 4
+    sprinkleSeed: 1717
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
+  - silhouetteFile: bat.json
+    title: "Bat — Rush"
+    waveSize: 4
+    waveCount: 3
+    memoryFade: 4.9
+    glassRadius: 0.083
     zoom: 4.1
     huntSizeScale: 1
     glassFog: 1
-    timeLimitSeconds: 135
+    timeLimitSeconds: 100
     toughness: 4
-    sprinkleSeed: 404
+    sprinkleSeed: 1818
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
+  - silhouetteFile: rabbit.json
+    title: "Rabbit — Rush"
+    waveSize: 4
+    waveCount: 3
+    memoryFade: 4.7
+    glassRadius: 0.082
+    zoom: 4.12
+    huntSizeScale: 1
+    glassFog: 1
+    timeLimitSeconds: 95
+    toughness: 4
+    sprinkleSeed: 1919
+    theme: animal-faces
+    mode: 0
+    scanner: Microscope
+    revealSet: 
+  - silhouetteFile: cap.json
+    title: "Cap — Rush"
+    waveSize: 4
+    waveCount: 3
+    memoryFade: 4.6
+    glassRadius: 0.081
+    zoom: 4.15
+    huntSizeScale: 1
+    glassFog: 0
+    timeLimitSeconds: 95
+    toughness: 4
+    sprinkleSeed: 2020
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
+  - silhouetteFile: camel.json
+    title: "Camel — Rush"
+    waveSize: 4
+    waveCount: 3
+    memoryFade: 4.4
+    glassRadius: 0.08
+    zoom: 4.18
+    huntSizeScale: 1
+    glassFog: 0
+    timeLimitSeconds: 90
+    toughness: 4
+    sprinkleSeed: 2121
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
+  - silhouetteFile: elephant.json
+    title: "Elephant — Rush"
+    waveSize: 4
+    waveCount: 3
+    memoryFade: 4.2
+    glassRadius: 0.079
+    zoom: 4.21
+    huntSizeScale: 0.88
+    glassFog: 0
+    timeLimitSeconds: 90
+    toughness: 4
+    sprinkleSeed: 2222
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
   - silhouetteFile: watch.json
-    title: Watch — Expert
-    waveSize: 3
+    title: "Watch — Rush"
+    waveSize: 4
     waveCount: 3
     memoryFade: 4.0
-    glassRadius: 0.08
-    zoom: 4.2
-    huntSizeScale: 0.8
+    glassRadius: 0.078
+    zoom: 4.23
+    huntSizeScale: 0.82
     glassFog: 0
-    timeLimitSeconds: 125
+    timeLimitSeconds: 90
     toughness: 5
-    sprinkleSeed: 505
-  - silhouetteFile: elephant.json
-    title: Elephant — Expert
+    sprinkleSeed: 2323
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
+  - silhouetteFile: horse.json
+    title: "Horse — Expert"
+    waveSize: 4
+    waveCount: 3
+    memoryFade: 3.9
+    glassRadius: 0.077
+    zoom: 4.26
+    huntSizeScale: 1
+    glassFog: 0
+    timeLimitSeconds: 85
+    toughness: 5
+    sprinkleSeed: 2424
+    theme: pets
+    mode: 0
+    scanner: Target
+    revealSet: 
+  - silhouetteFile: bird.json
+    title: "Bird — Expert"
+    waveSize: 4
+    waveCount: 3
+    memoryFade: 3.7
+    glassRadius: 0.076
+    zoom: 4.29
+    huntSizeScale: 1
+    glassFog: 0
+    timeLimitSeconds: 85
+    toughness: 5
+    sprinkleSeed: 2525
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
+  - silhouetteFile: bat.json
+    title: "Bat — Expert"
     waveSize: 4
     waveCount: 3
     memoryFade: 3.5
-    glassRadius: 0.078
-    zoom: 4.2
-    huntSizeScale: 0.85
+    glassRadius: 0.075
+    zoom: 4.32
+    huntSizeScale: 1
     glassFog: 0
-    timeLimitSeconds: 115
+    timeLimitSeconds: 85
     toughness: 5
-    sprinkleSeed: 606
+    sprinkleSeed: 2626
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
+  - silhouetteFile: rabbit.json
+    title: "Rabbit — Expert"
+    waveSize: 4
+    waveCount: 3
+    memoryFade: 3.3
+    glassRadius: 0.074
+    zoom: 4.34
+    huntSizeScale: 1
+    glassFog: 0
+    timeLimitSeconds: 80
+    toughness: 5
+    sprinkleSeed: 2727
+    theme: animal-faces
+    mode: 0
+    scanner: 
+    revealSet: 
+  - silhouetteFile: elephant.json
+    title: "Elephant — Expert"
+    waveSize: 4
+    waveCount: 3
+    memoryFade: 3.2
+    glassRadius: 0.073
+    zoom: 4.37
+    huntSizeScale: 0.88
+    glassFog: 0
+    timeLimitSeconds: 80
+    toughness: 5
+    sprinkleSeed: 2828
+    theme: 
+    mode: 0
+    scanner: 
+    revealSet: 
   - silhouetteFile: camel.json
-    title: Camel — Finale
+    title: "Camel — Finale"
     waveSize: 4
     waveCount: 3
     memoryFade: 3.0
-    glassRadius: 0.075
-    zoom: 4.3
+    glassRadius: 0.072
+    zoom: 4.4
     huntSizeScale: 1
     glassFog: 0
-    timeLimitSeconds: 105
+    timeLimitSeconds: 80
     toughness: 5
-    sprinkleSeed: 707
+    sprinkleSeed: 2929
+    theme: 
+    mode: 0
+    scanner: Microscope
+    revealSet: 
+  imageHogs:
+  - id: garden
+    title: Moonlit Garden
+    scene: 
+    timeLimitSeconds: 90
+    toughness: 2
+    revealSet: {fileID: 11400000, guid: cab5d5194c1d43fa9ee3aa98f52c6124, type: 2}
+  - id: forest
+    title: Whispering Woods
+    scene: 
+    timeLimitSeconds: 60
+    toughness: 2
+    revealSet: {fileID: 11400000, guid: 5f1b57403f0a453e83409b9add77eacc, type: 2}
+  - id: newyork
+    title: "Times Square: Then & Now"
+    scene: 
+    timeLimitSeconds: 60
+    toughness: 3
+    revealSet: {fileID: 11400000, guid: 5ab4ea3a45aa453d9d8a5ceb612626e4, type: 2}
+  - id: pandora
+    title: Before the Ashes
+    scene: 
+    timeLimitSeconds: 85
+    toughness: 3
+    revealSet: {fileID: 11400000, guid: eeafbbdd89f0449ca65b0f75ad7d7b7a, type: 2}
+  - id: mib
+    title: Platform 4
+    scene: 
+    timeLimitSeconds: 75
+    toughness: 4
+    revealSet: {fileID: 11400000, guid: 985e138912514061ad607654e4bb06f4, type: 2}
+  - id: matrix
+    title: Wake Up
+    scene: 
+    timeLimitSeconds: 70
+    toughness: 5
+    revealSet: {fileID: 11400000, guid: 9c666e5004bf4b94bc1e5781f68da38d, type: 2}

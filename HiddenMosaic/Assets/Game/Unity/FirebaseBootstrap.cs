@@ -19,6 +19,9 @@ namespace Game.Unity
             new GameObject("FirebaseBootstrap").AddComponent<FirebaseBootstrap>();
         }
 
+        protected override bool SuppressFirebaseAnalyticsUpload()
+            => HuntGameSettings.SuppressFirebaseAnalytics;
+
         protected override IDictionary<string, object> GetRemoteConfigDefaults()
             => HuntRemoteConfig.Defaults();
     }

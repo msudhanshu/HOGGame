@@ -58,5 +58,57 @@ namespace Game.Unity
             {
                 { AnalyticsParams.LevelId, levelId }, { AnalyticsParams.ItemName, itemName }, { AnalyticsParams.Duration, elapsed },
             });
+
+        public const string CurrencyEarnEvent = "currency_earn";
+        public const string CurrencySpendEvent = "currency_spend";
+        public const string PopupViewEvent = "popup_view";
+        public const string ShopViewEvent = "shop_view";
+        public const string ContinueUsedEvent = "continue_used";
+        public const string StarsAwardedEvent = "stars_awarded";
+        public const string ImageHogStartEvent = "image_hog_start";
+        public const string ImageHogCompleteEvent = "image_hog_complete";
+
+        public static void CurrencyEarn(string currency, int amount, string source)
+            => GameServices.Analytics.Track(CurrencyEarnEvent, new Dictionary<string, object>
+            {
+                { "currency", currency }, { "amount", amount }, { "source", source ?? "" },
+            });
+
+        public static void CurrencySpend(string currency, int amount, string sink)
+            => GameServices.Analytics.Track(CurrencySpendEvent, new Dictionary<string, object>
+            {
+                { "currency", currency }, { "amount", amount }, { "sink", sink ?? "" },
+            });
+
+        public static void PopupView(string popup)
+            => GameServices.Analytics.Track(PopupViewEvent, new Dictionary<string, object> { { "popup", popup } });
+
+        public static void ShopView(string from)
+            => GameServices.Analytics.Track(ShopViewEvent, new Dictionary<string, object> { { "from", from ?? "" } });
+
+        /// <summary>method: "coins" | "ad".</summary>
+        public static void ContinueUsed(string levelId, string method, int continueIndex)
+            => GameServices.Analytics.Track(ContinueUsedEvent, new Dictionary<string, object>
+            {
+                { AnalyticsParams.LevelId, levelId }, { "method", method }, { "continue_index", continueIndex },
+            });
+
+        public static void StarsAwarded(string levelId, int stars, bool firstClear)
+            => GameServices.Analytics.Track(StarsAwardedEvent, new Dictionary<string, object>
+            {
+                { AnalyticsParams.LevelId, levelId }, { "stars", stars }, { "first_clear", firstClear },
+            });
+
+        public static void ImageHogStart(string id, bool placeholder)
+            => GameServices.Analytics.Track(ImageHogStartEvent, new Dictionary<string, object>
+            {
+                { "id", id }, { "placeholder", placeholder },
+            });
+
+        public static void ImageHogComplete(string id, bool success)
+            => GameServices.Analytics.Track(ImageHogCompleteEvent, new Dictionary<string, object>
+            {
+                { "id", id }, { "success", success },
+            });
     }
 }

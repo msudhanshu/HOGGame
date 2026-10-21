@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f775987e9c3446b9a784b62bebfcc8e, type: 3}
+  m_Name: RevealSet
+  m_EditorClassIdentifier: Game.Unity::Game.Unity.RevealSetAsset
+  id: daynight_park_outline
+  title: "Night Watch Outlines (test)"
+  description: "Test scene from the hog-object-extract tool: outline hit shapes and cutout icons."
+  day: {fileID: 2800000, guid: 08b0194d0e32b4729b5e41654f4c3b3f, type: 3}
+  night: {fileID: 2800000, guid: ecb311047468f4e38b8c27bfa4c2b66a, type: 3}
+  objects: {fileID: 4900000, guid: 2d7ac535a6f4e49afbb024d758c9f676, type: 3}
+  background: {r: 0.0431, g: 0.0627, b: 0.1255, a: 1}
+  scanner: Flashlight
+  lensRadius: 0.11
+  timeLimitSeconds: 180
+  toughness: 2
+  targetsPerWave: 3
+  waves: 2

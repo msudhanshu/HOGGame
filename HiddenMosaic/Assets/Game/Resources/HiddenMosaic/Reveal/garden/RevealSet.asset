@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f775987e9c3446b9a784b62bebfcc8e, type: 3}
+  m_Name: RevealSet
+  m_EditorClassIdentifier: Game.Unity::Game.Unity.RevealSetAsset
+  id: garden
+  title: "Moonlit Garden"
+  description: "Night has settled over the cottage garden. Sweep the flashlight across the beds to bring back the daylight and spot what is hiding among the flowers."
+  day: {fileID: 2800000, guid: feed4ceef2a1c48a2b9f7f003633db8e, type: 3}
+  night: {fileID: 2800000, guid: 4c2296b69dd9241b5a098ba589252290, type: 3}
+  objects: {fileID: 0}
+  background: {r: 0.0235, g: 0.0314, b: 0.0588, a: 1}
+  scanner: Flashlight
+  lensRadius: 0.12
+  timeLimitSeconds: 90
+  toughness: 2
+  targetsPerWave: 3
+  waves: 2

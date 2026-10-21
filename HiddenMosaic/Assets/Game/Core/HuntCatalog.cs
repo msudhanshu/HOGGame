@@ -3,6 +3,14 @@ using System.Collections.Generic;
 
 namespace Game.Core
 {
+    /// <summary>Mosaic = grey stamp board under a (usually magnifying) lens.
+    /// Reveal = darker "night" image over the real "day" image; the scanner reveals the day art.</summary>
+    public enum HuntLevelMode
+    {
+        Mosaic,
+        Reveal
+    }
+
     public sealed class HuntLevelDef
     {
         public HuntLevelDef(
@@ -17,7 +25,11 @@ namespace Game.Core
             bool glassFog = true,
             float timeLimitSeconds = 180f,
             int toughness = 1,
-            int sprinkleSeed = 0)
+            int sprinkleSeed = 0,
+            string theme = null,
+            HuntLevelMode mode = HuntLevelMode.Mosaic,
+            string scanner = null,
+            string revealSet = null)
         {
             if (string.IsNullOrWhiteSpace(fileName))
                 throw new ArgumentException("Level file is required.", nameof(fileName));
@@ -33,6 +45,17 @@ namespace Game.Core
             TimeLimitSeconds = timeLimitSeconds < 30f ? 30f : (timeLimitSeconds > 600f ? 600f : timeLimitSeconds);
             Toughness = toughness < 1 ? 1 : (toughness > 5 ? 5 : toughness);
             SprinkleSeed = sprinkleSeed;
+            Theme = theme ?? string.Empty;
+            Mode = mode;
+            Scanner = scanner ?? string.Empty;
+            RevealSet = string.IsNullOrWhiteSpace(revealSet) ? (mode == HuntLevelMode.Reveal ? fileName : string.Empty) : revealSet;
+        }
+
+        public static HuntLevelMode ParseMode(string value)
+        {
+            return string.Equals(value, "reveal", StringComparison.OrdinalIgnoreCase)
+                ? HuntLevelMode.Reveal
+                : HuntLevelMode.Mosaic;
         }
 
         /// <summary>Copy with remote-tuned values. waveSize/waveCount &lt;= 0 and timeScale &lt;= 0 keep the level's own value.</summary>
@@ -44,7 +67,7 @@ namespace Game.Core
                 waveCount > 0 ? waveCount : WaveCount,
                 MemoryFade, GlassRadius, Zoom, HuntSizeScale, GlassFog,
                 timeScale > 0f ? TimeLimitSeconds * timeScale : TimeLimitSeconds,
-                Toughness, SprinkleSeed);
+                Toughness, SprinkleSeed, Theme, Mode, Scanner, RevealSet);
         }
 
         public string FileName { get; }
@@ -63,14 +86,24 @@ namespace Game.Core
         public int Toughness { get; }
         /// <summary>Offset mixed into hunt sprinkle seed for layout variation.</summary>
         public int SprinkleSeed { get; }
+        /// <summary>Optional alternate atlas name(s), comma-separated same as MosaicLevel.Atlas.
+        /// Empty = always use the silhouette's own atlas. Non-empty is only honoured when the
+        /// player owns the theme-pack entitlement - see PlayHost.LoadCatalog.</summary>
+        public string Theme { get; }
+        public HuntLevelMode Mode { get; }
+        /// <summary>Scanner style id (see NixinScanners). Empty = mode default.</summary>
+        public string Scanner { get; }
+        /// <summary>Reveal levels: folder under Resources/HiddenMosaic/Reveal. Defaults to FileName.</summary>
+        public string RevealSet { get; }
         public int TargetCount => WaveSize * WaveCount;
     }
 
     public sealed class HuntCatalog
     {
         readonly List<HuntLevelDef> _levels;
+        readonly List<ImageHogDef> _imageHogs = new List<ImageHogDef>();
 
-        public HuntCatalog(IReadOnlyList<HuntLevelDef> levels)
+        public HuntCatalog(IReadOnlyList<HuntLevelDef> levels, IReadOnlyList<ImageHogDef> imageHogs = null)
         {
             if (levels == null || levels.Count == 0)
                 throw new ArgumentException("Catalog needs at least one level.", nameof(levels));
@@ -81,9 +114,19 @@ namespace Game.Core
                     throw new ArgumentException("Catalog levels cannot be null.", nameof(levels));
                 _levels.Add(levels[i]);
             }
+
+            if (imageHogs == null)
+                return;
+            for (var i = 0; i < imageHogs.Count; i++)
+            {
+                if (imageHogs[i] != null)
+                    _imageHogs.Add(imageHogs[i]);
+            }
         }
 
         public IReadOnlyList<HuntLevelDef> Levels => _levels;
+        /// <summary>Real-image HOG levels, one per chapter in order (see HuntRoadmap).</summary>
+        public IReadOnlyList<ImageHogDef> ImageHogs => _imageHogs;
         public int Count => _levels.Count;
         public HuntLevelDef this[int index] => _levels[index];
 

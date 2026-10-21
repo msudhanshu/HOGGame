@@ -37,6 +37,7 @@ Shader "HiddenMosaic/MosaicSpriteReveal"
             half4 _Color;
             float _RevealAmount;
             float4 _MosaicGlass;
+            float4 _MosaicGlassShape; // (halfW, halfH, isRect, 0)
 
             struct Attributes
             {
@@ -66,6 +67,13 @@ Shader "HiddenMosaic/MosaicSpriteReveal"
                 float2 delta = worldXY - _MosaicGlass.xy;
                 float dist = length(delta);
                 float radius = max(_MosaicGlass.z, 0.0001);
+                if (_MosaicGlassShape.z > 0.5)
+                {
+                    // Rect lens: distance outside the box, measured against a zero "radius".
+                    float2 q = abs(delta) - max(_MosaicGlassShape.xy, 0.0001);
+                    dist = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0);
+                    radius = 0.0001;
+                }
                 float soft = max(_MosaicGlass.w, 0.0001);
                 if (dist <= radius)
                     return 1.0;
@@ -100,6 +108,7 @@ Shader "HiddenMosaic/MosaicSpriteReveal"
             half4 _Color;
             float _RevealAmount;
             float4 _MosaicGlass;
+            float4 _MosaicGlassShape; // (halfW, halfH, isRect, 0)
 
             struct Attributes
             {
@@ -129,6 +138,13 @@ Shader "HiddenMosaic/MosaicSpriteReveal"
                 float2 delta = worldXY - _MosaicGlass.xy;
                 float dist = length(delta);
                 float radius = max(_MosaicGlass.z, 0.0001);
+                if (_MosaicGlassShape.z > 0.5)
+                {
+                    // Rect lens: distance outside the box, measured against a zero "radius".
+                    float2 q = abs(delta) - max(_MosaicGlassShape.xy, 0.0001);
+                    dist = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0);
+                    radius = 0.0001;
+                }
                 float soft = max(_MosaicGlass.w, 0.0001);
                 if (dist <= radius)
                     return 1.0;

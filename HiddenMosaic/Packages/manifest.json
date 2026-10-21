@@ -1,13 +1,24 @@
 {
   "dependencies": {
-    "com.nixin.game.core.firebase": "file:../../NixinStudioUnityCore/packages/com.nixin.game.core.firebase",
+    "com.google.external-dependency-manager": "file:../../NixinStudioUnityCore/packages/FirebasePackages/com.google.external-dependency-manager-1.2.186.tgz",
+    "com.google.firebase.analytics": "file:../../NixinStudioUnityCore/packages/FirebasePackages/com.google.firebase.analytics-13.17.0.tgz",
+    "com.google.firebase.app": "file:../../NixinStudioUnityCore/packages/FirebasePackages/com.google.firebase.app-13.17.0.tgz",
+    "com.google.firebase.crashlytics": "file:../../NixinStudioUnityCore/packages/FirebasePackages/com.google.firebase.crashlytics-13.17.0.tgz",
+    "com.google.firebase.remote-config": "file:../../NixinStudioUnityCore/packages/FirebasePackages/com.google.firebase.remote-config-13.17.0.tgz",
     "com.nixin.audio": "file:../../NixinStudioUnityCore/packages/com.nixin.audio",
     "com.nixin.boot": "file:../../NixinStudioUnityCore/packages/com.nixin.boot",
+    "com.nixin.crosspromo": "file:../../NixinStudioUnityCore/packages/com.nixin.crosspromo",
     "com.nixin.game.core": "file:../../NixinStudioUnityCore/packages/com.nixin.game.core",
+    "com.nixin.game.core.firebase": "file:../../NixinStudioUnityCore/packages/com.nixin.game.core.firebase",
+    "com.nixin.grid.core": "file:../../NixinStudioUnityCore/packages/com.nixin.grid.core",
     "com.nixin.icons": "file:../../NixinStudioUnityCore/packages/com.nixin.icons",
+    "com.nixin.monetization": "file:../../NixinStudioUnityCore/packages/com.nixin.monetization",
+    "com.nixin.monetization.levelplay": "file:../../NixinStudioUnityCore/packages/com.nixin.monetization.levelplay",
+    "com.nixin.monetization.unityiap": "file:../../NixinStudioUnityCore/packages/com.nixin.monetization.unityiap",
     "com.nixin.mosaic": "file:../../NixinStudioUnityCore/packages/com.nixin.mosaic",
     "com.nixin.pinhole": "file:../../NixinStudioUnityCore/packages/com.nixin.pinhole",
     "com.nixin.ui": "file:../../NixinStudioUnityCore/packages/com.nixin.ui",
+    "com.nixin.uitoolkit": "file:../../NixinStudioUnityCore/packages/com.nixin.uitoolkit",
     "com.unity.2d.animation": "15.1.0",
     "com.unity.2d.aseprite": "5.0.3",
     "com.unity.2d.psdimporter": "14.0.3",
@@ -24,6 +35,7 @@
     "com.unity.inputsystem": "1.20.0",
     "com.unity.multiplayer.center": "1.0.1",
     "com.unity.pipeline": "0.6.0-exp.1",
+    "com.unity.purchasing": "5.4.4",
     "com.unity.render-pipelines.universal": "17.6.0",
     "com.unity.test-framework": "1.7.0",
     "com.unity.timeline": "1.8.12",
@@ -62,11 +74,6 @@
     "com.unity.modules.vehicles": "1.0.0",
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0",
-    "com.google.external-dependency-manager": "file:../../NixinStudioUnityCore/packages/FirebasePackages/com.google.external-dependency-manager-1.2.186.tgz",
-    "com.google.firebase.app": "file:../../NixinStudioUnityCore/packages/FirebasePackages/com.google.firebase.app-13.17.0.tgz",
-    "com.google.firebase.analytics": "file:../../NixinStudioUnityCore/packages/FirebasePackages/com.google.firebase.analytics-13.17.0.tgz",
-    "com.google.firebase.crashlytics": "file:../../NixinStudioUnityCore/packages/FirebasePackages/com.google.firebase.crashlytics-13.17.0.tgz",
-    "com.google.firebase.remote-config": "file:../../NixinStudioUnityCore/packages/FirebasePackages/com.google.firebase.remote-config-13.17.0.tgz"
+    "com.unity.modules.xr": "1.0.0"
   }
 }

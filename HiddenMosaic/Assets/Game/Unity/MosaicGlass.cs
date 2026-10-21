@@ -37,6 +37,9 @@ namespace Game.Unity
         bool _glassFogMode;
         MeshRenderer _backdropRenderer;
         Material _backdropMaterial;
+        ScannerStyle _style;
+        bool _revealMode;
+        const float ReferenceZoom = 3.8f;
 
         public MosaicScanMemory Memory => _memory;
         /// <summary>World point under the center of the magnifier (aim sample).</summary>
@@ -45,7 +48,14 @@ namespace Game.Unity
         /// <summary>World point under the finger; the lens sits above this on touch devices.</summary>
         public Vector3 HandleWorld { get; private set; }
 
+        /// <summary>Lens half-height in world units (circle radius for round lenses).</summary>
         public float GlassWorldRadius { get; private set; }
+        public ScannerShape LensShape => _style != null ? _style.Shape : ScannerShape.Circle;
+        public float LensRectAspect => _style != null ? _style.RectAspect : 1f;
+        /// <summary>Lens half-width in world units (equals GlassWorldRadius for circles).</summary>
+        public float GlassWorldHalfWidth => LensShape == ScannerShape.Rect ? GlassWorldRadius * LensRectAspect : GlassWorldRadius;
+        public ScannerStyle Scanner => _style;
+        public bool RevealMode => _revealMode;
         public bool PointerHeld { get; private set; }
         public MosaicSaturationDriver Saturation => _saturation;
 
@@ -54,11 +64,58 @@ namespace Game.Unity
             fadeSeconds = fade;
             holeRadius = hole;
             zoom = zoomAmount;
+            ApplyLens();
+        }
+
+        /// <summary>Lens look (shape, rim, effects). Null = classic PinholePeek magnifier.</summary>
+        public void SetScanner(ScannerStyle style)
+        {
+            _style = style;
             if (surface != null)
+                surface.Style = style;
+            ApplyLens();
+        }
+
+        /// <summary>
+        /// Reveal (day/night) levels: the main camera draws only the night cover, the lens shows the
+        /// captured day board 1:1 (no magnification, no blur backdrop, no grey-out).
+        /// </summary>
+        public void SetRevealMode(bool enabled)
+        {
+            _revealMode = enabled;
+            ApplyLens();
+            ApplyFogPresentation();
+        }
+
+        float EffectiveHoleRadius => holeRadius * (_style != null ? _style.SizeScale : 1f);
+
+        float EffectiveZoom
+        {
+            get
             {
-                surface.HoleRadius = holeRadius;
-                surface.Zoom = zoom;
+                if (_revealMode)
+                    return 1f;
+                if (_style == null)
+                    return zoom;
+                if (_style.DefaultZoom <= 1.001f)
+                    return 1f;
+                // Level zoom is tuned for the classic magnifier; stronger/weaker styles scale it.
+                return Mathf.Clamp(zoom * _style.DefaultZoom / ReferenceZoom, 1f, 8f);
             }
+        }
+
+        void ApplyLens()
+        {
+            if (surface == null)
+                return;
+            surface.HoleRadius = EffectiveHoleRadius;
+            surface.Zoom = EffectiveZoom;
+        }
+
+        /// <summary>World-space test against the current lens shape (no scan memory).</summary>
+        public bool ContainsInLens(Vector3 world)
+        {
+            return ScannerHole.Contains(world.x - GlassWorld.x, world.y - GlassWorld.y, GlassWorldRadius, LensRectAspect, LensShape);
         }
 
         /// <summary>When enabled, a blurred cover layer hides the board; only the magnifier shows sharp detail.</summary>
@@ -71,9 +128,10 @@ namespace Game.Unity
         void ApplyFogPresentation()
         {
             var cam = targetCamera != null ? targetCamera : Camera.main;
+            var coverBoard = _glassFogMode || _revealMode;
             if (cam != null)
             {
-                if (_glassFogMode)
+                if (coverBoard)
                 {
                     if (_savedMainCullingMask < 0)
                         _savedMainCullingMask = cam.cullingMask;
@@ -89,7 +147,18 @@ namespace Game.Unity
             if (surface == null)
                 return;
 
-            if (_glassFogMode)
+            if (_revealMode)
+            {
+                surface.DistinctZoomCover = true;
+                surface.MagnifierHoleOnly = true;
+                surface.FogBlur = 0f;
+                surface.OverlayAlpha = 1f;
+                if (_rt != null)
+                    surface.SetTextures(_rt, _rt, takeOwnership: false);
+                if (_backdropRenderer != null)
+                    _backdropRenderer.enabled = false;
+            }
+            else if (_glassFogMode)
             {
                 EnsureBlurBackdrop();
                 surface.DistinctZoomCover = true;
@@ -133,7 +202,8 @@ namespace Game.Unity
             var shader = Shader.Find("HiddenMosaic/BlurBackdrop");
             if (shader == null)
             {
-                Debug.LogWarning("HiddenMosaic/BlurBackdrop shader missing; memory cover may not render.");
+                Debug.LogWarning("HiddenMosaic/BlurBackdrop shader missing (stripped from build?); memory cover may not render.");
+                _backdropRenderer.enabled = false;   // never show the pink "missing shader" quad
                 return;
             }
 
@@ -143,7 +213,7 @@ namespace Game.Unity
 
         void SyncBlurBackdrop(Camera cam)
         {
-            if (!_glassFogMode || _backdropRenderer == null || _backdropMaterial == null || _rt == null)
+            if (!_glassFogMode || _revealMode || _backdropRenderer == null || _backdropMaterial == null || _rt == null)
                 return;
 
             ScreenFitQuad.Apply(_backdropRenderer.transform, cam, BackdropDistance);
@@ -164,7 +234,8 @@ namespace Game.Unity
             targetCamera = cam;
             EnsureGlobalLight();
             SetLayerRecursively(levelRoot.gameObject, MosaicLayer);
-            ApplyRevealMaterial(levelRoot);
+            if (!_revealMode)
+                ApplyRevealMaterial(levelRoot);
             EnsureSaturationDriver(levelRoot);
             EnsureCapture(cam);
             EnsureSurface(cam);
@@ -179,9 +250,7 @@ namespace Game.Unity
             if (cam == null)
                 return true;
             TrackPointer(cam);
-            var dx = world.x - GlassWorld.x;
-            var dy = world.y - GlassWorld.y;
-            if (dx * dx + dy * dy <= GlassWorldRadius * GlassWorldRadius)
+            if (ContainsInLens(world))
                 return true;
             return _memory != null && _memory.Contains(world.x, world.y, Time.time);
         }
@@ -208,7 +277,7 @@ namespace Game.Unity
                 _capture.backgroundColor = cam.backgroundColor;
             }
 
-            if (_glassFogMode && _capture != null)
+            if ((_glassFogMode || _revealMode) && _capture != null)
                 _capture.Render();
             SyncBlurBackdrop(cam);
             if (_memory != null)
@@ -217,7 +286,7 @@ namespace Game.Unity
 
         void TrackPointer(Camera cam)
         {
-            GlassWorldRadius = cam.orthographicSize * 2f * holeRadius;
+            GlassWorldRadius = cam.orthographicSize * 2f * EffectiveHoleRadius;
             var pointer = Pointer.current;
             if (pointer == null)
             {
@@ -348,9 +417,10 @@ namespace Game.Unity
 
             surface.Mode = PinholeMode.Zoom;
             surface.MaintainAspect = false;
-            surface.HoleRadius = holeRadius;
+            surface.HoleRadius = EffectiveHoleRadius;
             surface.HoleOffset = 0f;
-            surface.Zoom = zoom;
+            surface.Zoom = EffectiveZoom;
+            surface.Style = _style;
             surface.OverlayAlpha = 0f;
             surface.SetTextures(_rt, _rt, takeOwnership: false);
             var meshRenderer = surface.GetComponent<MeshRenderer>();
@@ -421,6 +491,9 @@ namespace Game.Unity
             _spriteReveal = new Material(shader) { name = "MosaicSpriteReveal" };
             return _spriteReveal;
         }
+
+        /// <summary>Plain unlit sprite material (no grey-out) - used for reveal boards.</summary>
+        public static Material PlainSpriteMaterial() => SpriteUnlit();
 
         static Material SpriteUnlit()
         {

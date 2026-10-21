@@ -1,0 +1,975 @@
+fileFormatVersion: 2
+guid: a06b552fa319c43ea8dd47064616accc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1146009668707584820
+    second: NixinLogo_0
+  - first:
+      213: 2488876846658973631
+    second: NixinLogo_1
+  - first:
+      213: 6416650200293533447
+    second: NixinLogo_2
+  - first:
+      213: 1694849332788718007
+    second: NixinLogo_3
+  - first:
+      213: -843873505815877140
+    second: NixinLogo_4
+  - first:
+      213: 8987751109900408056
+    second: NixinLogo_5
+  - first:
+      213: -463496889246717820
+    second: NixinLogo_6
+  - first:
+      213: -9175384921088884201
+    second: NixinLogo_7
+  - first:
+      213: -6152845663515704559
+    second: NixinLogo_8
+  - first:
+      213: 1629069258029699329
+    second: NixinLogo_9
+  - first:
+      213: -6642696880232303710
+    second: NixinLogo_10
+  - first:
+      213: 621154363071869210
+    second: NixinLogo_11
+  - first:
+      213: -1207073897728545233
+    second: NixinLogo_12
+  - first:
+      213: -3023174218994921888
+    second: NixinLogo_13
+  - first:
+      213: 1747970177710505165
+    second: NixinLogo_14
+  - first:
+      213: 8867858400020766287
+    second: NixinLogo_15
+  - first:
+      213: 8447566966934716884
+    second: NixinLogo_16
+  - first:
+      213: 3835907679858548948
+    second: NixinLogo_17
+  - first:
+      213: -58656747646137543
+    second: NixinLogo_18
+  - first:
+      213: -7908018631885320452
+    second: NixinLogo_19
+  - first:
+      213: 6636012872383143666
+    second: NixinLogo_20
+  - first:
+      213: 8285294947817686482
+    second: NixinLogo_21
+  - first:
+      213: -5268273784508692294
+    second: NixinLogo_22
+  - first:
+      213: 4709025099491517224
+    second: NixinLogo_23
+  - first:
+      213: 2487765862642610832
+    second: NixinLogo_24
+  - first:
+      213: 8341130508904394129
+    second: NixinLogo_25
+  - first:
+      213: -9189119097938285105
+    second: NixinLogo_26
+  - first:
+      213: 219538956099426656
+    second: NixinLogo_27
+  - first:
+      213: -331203637879587501
+    second: NixinLogo_28
+  - first:
+      213: -3331483153093371502
+    second: NixinLogo_29
+  - first:
+      213: 4166417794724114424
+    second: NixinLogo_30
+  - first:
+      213: -4430042415921835199
+    second: NixinLogo_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NixinLogo_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 65
+        width: 41
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43b8a7cc8b177ef00800000000000000
+      internalID: 1146009668707584820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 65
+        width: 13
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbf6dce2e444a8220800000000000000
+      internalID: 2488876846658973631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_2
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 65
+        width: 44
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7076f6c3c558c0950800000000000000
+      internalID: 6416650200293533447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_3
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 65
+        width: 13
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b9edac0d70558710800000000000000
+      internalID: 1694849332788718007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_4
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 65
+        width: 40
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce92b7a7485f944f0800000000000000
+      internalID: -843873505815877140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_5
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 64
+        width: 35
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f49c3be308eabc70800000000000000
+      internalID: 8987751109900408056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_6
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 65
+        width: 37
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48863f1f8045199f0800000000000000
+      internalID: -463496889246717820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_7
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 64
+        width: 38
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 712850d070c7aa080800000000000000
+      internalID: -9175384921088884201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_8
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 65
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 113085cd773bc9aa0800000000000000
+      internalID: -6152845663515704559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_9
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 65
+        width: 10
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1019e57ebdd9b9610800000000000000
+      internalID: 1629069258029699329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_10
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 64
+        width: 46
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a37827c16660d3a0800000000000000
+      internalID: -6642696880232303710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_11
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 30
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1135992a98ce9800800000000000000
+      internalID: 621154363071869210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_12
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 30
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2e6e347fac9f3fe0800000000000000
+      internalID: -1207073897728545233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_13
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 30
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06e40b6b0178b06d0800000000000000
+      internalID: -3023174218994921888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_14
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 30
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcc39609d99024810800000000000000
+      internalID: 1747970177710505165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_15
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 30
+        width: 13
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4e93bb1b36f01b70800000000000000
+      internalID: 8867858400020766287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_16
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 30
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d1c7783669cb3570800000000000000
+      internalID: 8447566966934716884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_17
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 30
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d0692916b1eb3530800000000000000
+      internalID: 3835907679858548948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_18
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 30
+        width: 26
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93b4fd0bffb9f2ff0800000000000000
+      internalID: -58656747646137543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_19
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 30
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfe0e49e3f2114290800000000000000
+      internalID: -7908018631885320452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_20
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 30
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fe115f5c8ad71c50800000000000000
+      internalID: 6636012872383143666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_21
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 30
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d503009bd74bf270800000000000000
+      internalID: 8285294947817686482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_22
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 30
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab84bdec7e453e6b0800000000000000
+      internalID: -5268273784508692294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_23
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 30
+        width: 17
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8232795e061d95140800000000000000
+      internalID: 4709025099491517224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_24
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 30
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 092f72f0fd1568220800000000000000
+      internalID: 2487765862642610832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_25
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 30
+        width: 25
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19d6b603106a1c370800000000000000
+      internalID: 8341130508904394129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_26
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 30
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcd61a0ddd0b97080800000000000000
+      internalID: -9189119097938285105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_27
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 30
+        width: 14
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0699aa47485fb0300800000000000000
+      internalID: 219538956099426656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_28
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 30
+        width: 36
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35dbedfcb04576bf0800000000000000
+      internalID: -331203637879587501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_29
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 30
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 299dba429b134c1d0800000000000000
+      internalID: -3331483153093371502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_30
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 30
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ffa560e8e612d930800000000000000
+      internalID: 4166417794724114424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NixinLogo_31
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 30
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 143d013e4e35582c0800000000000000
+      internalID: -4430042415921835199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      NixinLogo_0: 1146009668707584820
+      NixinLogo_1: 2488876846658973631
+      NixinLogo_10: -6642696880232303710
+      NixinLogo_11: 621154363071869210
+      NixinLogo_12: -1207073897728545233
+      NixinLogo_13: -3023174218994921888
+      NixinLogo_14: 1747970177710505165
+      NixinLogo_15: 8867858400020766287
+      NixinLogo_16: 8447566966934716884
+      NixinLogo_17: 3835907679858548948
+      NixinLogo_18: -58656747646137543
+      NixinLogo_19: -7908018631885320452
+      NixinLogo_2: 6416650200293533447
+      NixinLogo_20: 6636012872383143666
+      NixinLogo_21: 8285294947817686482
+      NixinLogo_22: -5268273784508692294
+      NixinLogo_23: 4709025099491517224
+      NixinLogo_24: 2487765862642610832
+      NixinLogo_25: 8341130508904394129
+      NixinLogo_26: -9189119097938285105
+      NixinLogo_27: 219538956099426656
+      NixinLogo_28: -331203637879587501
+      NixinLogo_29: -3331483153093371502
+      NixinLogo_3: 1694849332788718007
+      NixinLogo_30: 4166417794724114424
+      NixinLogo_31: -4430042415921835199
+      NixinLogo_4: -843873505815877140
+      NixinLogo_5: 8987751109900408056
+      NixinLogo_6: -463496889246717820
+      NixinLogo_7: -9175384921088884201
+      NixinLogo_8: -6152845663515704559
+      NixinLogo_9: 1629069258029699329
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

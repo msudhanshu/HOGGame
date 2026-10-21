@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f775987e9c3446b9a784b62bebfcc8e, type: 3}
+  m_Name: RevealSet
+  m_EditorClassIdentifier: Game.Unity::Game.Unity.RevealSetAsset
+  id: newyork
+  title: 'I''m Legend: Dystopian New York'
+  description: Decades after everyone left, the square is overgrown and silent. Your
+    scanner looks back in time to the bright, busy street it used to be.
+  day: {fileID: 2800000, guid: 579a64da2ced34fddb8b3219275c6869, type: 3}
+  night: {fileID: 2800000, guid: 1f6c0cd987624482ea2708a750807a0d, type: 3}
+  objects: {fileID: 0}
+  background: {r: 0.0471, g: 0.0431, b: 0.0392, a: 1}
+  thumbnail: {fileID: 0}
+  scanner: RectLens
+  lensRadius: 0.11
+  timeLimitSeconds: 60
+  toughness: 3
+  targetsPerWave: 3
+  waves: 2

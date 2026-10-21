@@ -1,0 +1,248 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950c0d3e88bf45caaf146f0d38930b74, type: 3}
+  m_Name: MonetizationCatalog
+  m_EditorClassIdentifier: Nixin.Monetization::Nixin.Monetization.MonetizationCatalogAsset
+  placements:
+  - id: hint
+    kind: 7
+    currency: hints
+    currencyCost: 1
+    rewardCurrency: hints
+    rewardAmount: 2
+    requiredEntitlement: 
+    productId: 
+    fallbackOfferProductIds:
+    - hints_small
+    cooldownSeconds: 0
+    sessionCap: 0
+    enabled: 1
+  - id: interstitial_level_complete
+    kind: 3
+    currency: 
+    currencyCost: 0
+    rewardCurrency: 
+    rewardAmount: 0
+    requiredEntitlement: 
+    productId: 
+    fallbackOfferProductIds: []
+    cooldownSeconds: 90
+    sessionCap: 0
+    enabled: 1
+  - id: unlock_level
+    kind: 2
+    currency: 
+    currencyCost: 0
+    rewardCurrency: 
+    rewardAmount: 0
+    requiredEntitlement: 
+    productId: 
+    fallbackOfferProductIds:
+    - bundle_all_levels
+    cooldownSeconds: 0
+    sessionCap: 0
+    enabled: 1
+  - id: remove_ads_purchase
+    kind: 5
+    currency: 
+    currencyCost: 0
+    rewardCurrency: 
+    rewardAmount: 0
+    requiredEntitlement: 
+    productId: remove_ads
+    fallbackOfferProductIds: []
+    cooldownSeconds: 0
+    sessionCap: 0
+    enabled: 1
+  - id: theme_pack_purchase
+    kind: 5
+    currency: 
+    currencyCost: 0
+    rewardCurrency: 
+    rewardAmount: 0
+    requiredEntitlement: 
+    productId: theme_pack
+    fallbackOfferProductIds: []
+    cooldownSeconds: 0
+    sessionCap: 0
+    enabled: 1
+  - id: hint_ad
+    kind: 2
+    currency: hints
+    currencyCost: 1
+    rewardCurrency: hints
+    rewardAmount: 1
+    requiredEntitlement: 
+    productId: 
+    fallbackOfferProductIds: []
+    cooldownSeconds: 0
+    sessionCap: 0
+    enabled: 1
+  - id: continue_ad
+    kind: 2
+    currency: 
+    currencyCost: 0
+    rewardCurrency: 
+    rewardAmount: 0
+    requiredEntitlement: 
+    productId: 
+    fallbackOfferProductIds: []
+    cooldownSeconds: 0
+    sessionCap: 0
+    enabled: 1
+  - id: double_coins
+    kind: 2
+    currency: 
+    currencyCost: 0
+    rewardCurrency: 
+    rewardAmount: 0
+    requiredEntitlement: 
+    productId: 
+    fallbackOfferProductIds: []
+    cooldownSeconds: 0
+    sessionCap: 0
+    enabled: 1
+  - id: free_coins
+    kind: 2
+    currency: 
+    currencyCost: 0
+    rewardCurrency: coins
+    rewardAmount: 25
+    requiredEntitlement: 
+    productId: 
+    fallbackOfferProductIds: []
+    cooldownSeconds: 0
+    sessionCap: 0
+    enabled: 1
+  - id: free_hint
+    kind: 2
+    currency: 
+    currencyCost: 0
+    rewardCurrency: hints
+    rewardAmount: 1
+    requiredEntitlement: 
+    productId: 
+    fallbackOfferProductIds: []
+    cooldownSeconds: 0
+    sessionCap: 0
+    enabled: 1
+  - id: buy_coins_small
+    kind: 5
+    currency: 
+    currencyCost: 0
+    rewardCurrency: 
+    rewardAmount: 0
+    requiredEntitlement: 
+    productId: coins_small
+    fallbackOfferProductIds: []
+    cooldownSeconds: 0
+    sessionCap: 0
+    enabled: 1
+  - id: buy_coins_large
+    kind: 5
+    currency: 
+    currencyCost: 0
+    rewardCurrency: 
+    rewardAmount: 0
+    requiredEntitlement: 
+    productId: coins_large
+    fallbackOfferProductIds: []
+    cooldownSeconds: 0
+    sessionCap: 0
+    enabled: 1
+  - id: buy_hints_small
+    kind: 5
+    currency: 
+    currencyCost: 0
+    rewardCurrency: 
+    rewardAmount: 0
+    requiredEntitlement: 
+    productId: hints_small
+    fallbackOfferProductIds: []
+    cooldownSeconds: 0
+    sessionCap: 0
+    enabled: 1
+  - id: buy_hints_large
+    kind: 5
+    currency: 
+    currencyCost: 0
+    rewardCurrency: 
+    rewardAmount: 0
+    requiredEntitlement: 
+    productId: hints_large
+    fallbackOfferProductIds: []
+    cooldownSeconds: 0
+    sessionCap: 0
+    enabled: 1
+  - id: home_banner
+    kind: 4
+    currency: 
+    currencyCost: 0
+    rewardCurrency: 
+    rewardAmount: 0
+    requiredEntitlement: 
+    productId: 
+    fallbackOfferProductIds: []
+    cooldownSeconds: 0
+    sessionCap: 0
+    enabled: 1
+  - id: buy_all_levels
+    kind: 5
+    currency: 
+    currencyCost: 0
+    rewardCurrency: 
+    rewardAmount: 0
+    requiredEntitlement: 
+    productId: bundle_all_levels
+    fallbackOfferProductIds: []
+    cooldownSeconds: 0
+    sessionCap: 0
+    enabled: 1
+  products:
+  - productId: hints_small
+    kind: 0
+    grantCurrency: hints
+    grantAmount: 10
+    grantEntitlements: []
+  - productId: remove_ads
+    kind: 1
+    grantCurrency: 
+    grantAmount: 0
+    grantEntitlements:
+    - remove_ads
+  - productId: theme_pack
+    kind: 1
+    grantCurrency: 
+    grantAmount: 0
+    grantEntitlements:
+    - theme_pack
+  - productId: bundle_all_levels
+    kind: 1
+    grantCurrency: 
+    grantAmount: 0
+    grantEntitlements:
+    - all_levels
+  - productId: hints_large
+    kind: 0
+    grantCurrency: hints
+    grantAmount: 30
+    grantEntitlements: []
+  - productId: coins_small
+    kind: 0
+    grantCurrency: coins
+    grantAmount: 500
+    grantEntitlements: []
+  - productId: coins_large
+    kind: 0
+    grantCurrency: coins
+    grantAmount: 3000
+    grantEntitlements: []

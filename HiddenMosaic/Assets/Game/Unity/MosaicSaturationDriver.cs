@@ -10,6 +10,7 @@ namespace Game.Unity
     {
         static readonly int RevealAmountId = Shader.PropertyToID("_RevealAmount");
         static readonly int MosaicGlassId = Shader.PropertyToID("_MosaicGlass");
+        static readonly int MosaicGlassShapeId = Shader.PropertyToID("_MosaicGlassShape");
 
         [SerializeField] float revealEdgeSoftness = 0.08f;
 
@@ -53,12 +54,15 @@ namespace Game.Unity
             var radius = Mathf.Max(0.001f, _glass.GlassWorldRadius);
             var soft = Mathf.Max(0.002f, radius * Mathf.Clamp(revealEdgeSoftness, 0.02f, 0.2f));
             ApplyGlobals(center, radius, soft);
+            var isRect = _glass.LensShape == Nixin.Pinhole.Core.ScannerShape.Rect;
+            Shader.SetGlobalVector(MosaicGlassShapeId, new Vector4(Mathf.Max(0.001f, _glass.GlassWorldHalfWidth), radius, isRect ? 1f : 0f, 0f));
             ApplyAimBoosts();
         }
 
         void ApplyGlobals(Vector3 center, float radius, float edgeSoftness = 0.02f)
         {
             Shader.SetGlobalVector(MosaicGlassId, new Vector4(center.x, center.y, radius, edgeSoftness));
+            Shader.SetGlobalVector(MosaicGlassShapeId, new Vector4(radius, radius, 0f, 0f));
         }
 
         void ApplyAimBoosts()

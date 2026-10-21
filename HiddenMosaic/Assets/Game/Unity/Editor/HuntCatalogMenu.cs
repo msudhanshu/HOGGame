@@ -22,7 +22,13 @@ namespace Game.Unity.Editor
                 return;
             }
 
-            asset.ReplaceEntries(HuntCatalogLoader.EntriesFromJson(File.ReadAllText(jsonPath)));
+            var json = File.ReadAllText(jsonPath);
+            asset.ReplaceEntries(HuntCatalogLoader.EntriesFromJson(json));
+            var hogs = HuntCatalogLoader.ImageHogsFromJson(json);
+            var hogEntries = new HuntImageHogEntry[hogs.Count];
+            for (var i = 0; i < hogs.Count; i++)
+                hogEntries[i] = HuntImageHogEntry.FromDef(hogs[i]);
+            asset.ReplaceImageHogs(hogEntries);
             EditorUtility.SetDirty(asset);
             AssetDatabase.SaveAssets();
             Selection.activeObject = asset;

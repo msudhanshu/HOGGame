@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f775987e9c3446b9a784b62bebfcc8e, type: 3}
+  m_Name: RevealSet
+  m_EditorClassIdentifier: Game.Unity::Game.Unity.RevealSetAsset
+  id: mib
+  title: 'MIB: Alien Among Us'
+  description: Just another crowded commute... or is it? The agent scanner exposes
+    who is really waiting for the train.
+  day: {fileID: 2800000, guid: 7901b5341e37d42e69c85802ba55a545, type: 3}
+  night: {fileID: 2800000, guid: fbf4a4b9cee3e410b8af9651b32bc197, type: 3}
+  objects: {fileID: 0}
+  background: {r: 0.0392, g: 0.0471, b: 0.0627, a: 1}
+  thumbnail: {fileID: 0}
+  scanner: Target
+  lensRadius: 0.1
+  timeLimitSeconds: 75
+  toughness: 4
+  targetsPerWave: 4
+  waves: 2

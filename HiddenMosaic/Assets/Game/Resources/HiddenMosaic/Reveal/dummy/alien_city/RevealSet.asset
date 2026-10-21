@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f775987e9c3446b9a784b62bebfcc8e, type: 3}
+  m_Name: RevealSet
+  m_EditorClassIdentifier: Game.Unity::Game.Unity.RevealSetAsset
+  id: alien_city
+  title: "They Live Among Us (test)"
+  description: "Generated test scene: ordinary city over a neon alien city."
+  day: {fileID: 2800000, guid: 0a61928afb1aa440ca49c5a17ee3c409, type: 3}
+  night: {fileID: 2800000, guid: efa8bdb63ceae40adaa029c1e5da76db, type: 3}
+  objects: {fileID: 4900000, guid: 6df265da82eb249cd92087743bc96ed7, type: 3}
+  background: {r: 0.0471, g: 0.0471, b: 0.0784, a: 1}
+  scanner: SciFiScanner
+  lensRadius: 0.1
+  timeLimitSeconds: 180
+  toughness: 3
+  targetsPerWave: 3
+  waves: 2
