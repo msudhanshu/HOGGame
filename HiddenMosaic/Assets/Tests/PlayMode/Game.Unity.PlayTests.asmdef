@@ -4,6 +4,7 @@
     "references": [
         "Game.Core",
         "Game.Unity",
+        "Nixin.Mosaic",
         "Nixin.Ui",
         "Nixin.Game.Core",
         "UnityEngine.TestRunner",

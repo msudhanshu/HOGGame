@@ -11,37 +11,46 @@ namespace Game.Unity
         public const string ResourcePath = "HuntUiTheme";
 
         [Header("Background")]
-        public Color bgTop = Hex("#6C3BFF");
-        public Color bgBottom = Hex("#FF5FA2");
+        public Color bgTop = Hex("#0B1B4D");
+        public Color bgBottom = Hex("#04071A");
+        public Color bgGlow = Hex("#1E6BFF");
 
         [Header("Palette")]
-        public Color primary = Hex("#7C4DFF");
-        public Color accent = Hex("#FFC93C");
-        public Color success = Hex("#2ED47A");
-        public Color danger = Hex("#FF4D5E");
-        public Color info = Hex("#29C5F6");
-        public Color panel = Hex("#FFF7EC");
-        public Color panelAlt = Hex("#FFE9D2");
-        public Color ink = Hex("#2B1B4A");
-        public Color inkSoft = Hex("#7A6A99");
-        public Color coin = Hex("#FFC93C");
-        public Color hint = Hex("#29C5F6");
-        public Color locked = Hex("#B9B1CC");
+        public Color primary = Hex("#2F7BFF");
+        public Color accent = Hex("#FFC857");
+        public Color success = Hex("#19E3A6");
+        public Color danger = Hex("#FF4F7B");
+        public Color info = Hex("#31D6FF");
+        public Color panel = Hex("#101B3D");
+        public Color panelAlt = Hex("#19295A");
+        public Color ink = Hex("#E6F4FF");
+        [Tooltip("Dark fill (shadows, deep panels). Use this, not ink, when you need a dark colour.")]
+        public Color deep = Hex("#050B24");
+        [Tooltip("Neon edge / energy accent.")]
+        public Color glow = Hex("#4FE3FF");
+        public Color violet = Hex("#B65CFF");
+        public Color inkSoft = Hex("#8FA8D6");
+        public Color coin = Hex("#FFC857");
+        public Color hint = Hex("#31D6FF");
+        public Color locked = Hex("#3A4770");
 
         [Tooltip("Toughness 1..5 ring colours on the map / intro card.")]
         public Color[] toughness =
         {
-            Hex("#2ED47A"), Hex("#FFC93C"), Hex("#FF9A3C"), Hex("#FF4D5E"), Hex("#B04DFF")
+            Hex("#19E3A6"), Hex("#FFC857"), Hex("#FF8A4C"), Hex("#FF4F7B"), Hex("#B65CFF")
         };
 
         [Tooltip("Confetti colours.")]
         public Color[] confetti =
         {
-            Hex("#FFC93C"), Hex("#FF5FA2"), Hex("#29C5F6"), Hex("#2ED47A"), Hex("#7C4DFF"), Hex("#FF9A3C")
+            Hex("#FFC857"), Hex("#4FE3FF"), Hex("#19E3A6"), Hex("#B65CFF"), Hex("#2F7BFF"), Hex("#FF8A4C")
         };
 
         [Header("Typography (optional)")]
+        [Tooltip("Body font (Rajdhani). Empty = Resources/Fonts/Rajdhani-Bold, then built-in.")]
         public Font font;
+        [Tooltip("Title / number font (Orbitron). Empty = Resources/Fonts/Orbitron-Bold, then body font.")]
+        public Font titleFont;
 
         [Header("Art overrides (optional)")]
         public Sprite logo;
@@ -72,15 +81,36 @@ namespace Game.Unity
             }
         }
 
+        Font _bodyCache, _titleCache;
+
         public Font Font
         {
             get
             {
                 if (font != null)
                     return font;
-                var f = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-                return f != null ? f : Resources.GetBuiltinResource<Font>("Arial.ttf");
+                if (_bodyCache == null)
+                    _bodyCache = Resources.Load<Font>("Fonts/Rajdhani-Bold") ?? BuiltIn();
+                return _bodyCache;
             }
+        }
+
+        public Font TitleFont
+        {
+            get
+            {
+                if (titleFont != null)
+                    return titleFont;
+                if (_titleCache == null)
+                    _titleCache = Resources.Load<Font>("Fonts/Orbitron-Bold") ?? Font;
+                return _titleCache;
+            }
+        }
+
+        static Font BuiltIn()
+        {
+            var f = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            return f != null ? f : Resources.GetBuiltinResource<Font>("Arial.ttf");
         }
 
         public Color ToughnessColor(int toughness)

@@ -7,6 +7,7 @@ namespace Game.Unity.Editor
     {
         public const string HomeScenePath = "Assets/Scenes/Home.unity";
         public const string PlayScenePath = "Assets/Scenes/Play.unity";
+        public const string DriftScenePath = "Assets/Scenes/Drift.unity";
 
         public static void RegisterMenuAndPlayScenes()
         {
@@ -15,6 +16,9 @@ namespace Game.Unity.Editor
                 new EditorBuildSettingsScene(HomeScenePath, true),
                 new EditorBuildSettingsScene(PlayScenePath, true)
             };
+            // Keep the experimental drift scene once it has been generated.
+            if (System.IO.File.Exists(DriftScenePath))
+                scenes.Add(new EditorBuildSettingsScene(DriftScenePath, true));
             EditorBuildSettings.scenes = scenes.ToArray();
         }
 

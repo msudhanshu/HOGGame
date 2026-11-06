@@ -73,22 +73,38 @@ namespace Game.Unity
         {
             var root = Rect("Card", parent);
             Place(root, new Vector2(0.5f, 0.5f), size);
-            var shadow = Image(root, "Shadow", HuntUiSprites.Shadow, new Color(0.1f, 0f, 0.2f, 0.35f));
+            var shadow = Image(root, "Shadow", HuntUiSprites.Shadow, HuntUiTheme.WithAlpha(T.glow, radius > 2f ? 0.28f : 0f));
             shadow.type = UnityEngine.UI.Image.Type.Sliced;
             Stretch(shadow.rectTransform, -22f);
-            shadow.rectTransform.anchoredPosition = new Vector2(0f, -14f);
+            shadow.rectTransform.anchoredPosition = new Vector2(0f, -6f);
             var face = Rounded(root, "Face", color, radius, true);
             Stretch(face.rectTransform);
+            if (radius > 2f)
+                NeonEdge(face.transform, T.glow, radius);
             return face;
         }
 
+        /// <summary>Thin glowing outline stretched over a rounded panel (child "Edge").</summary>
+        public static Image NeonEdge(Transform parent, Color color, float radius = 48f, float alpha = 0.9f)
+        {
+            var edge = Image(parent, "Edge", HuntUiSprites.Frame, HuntUiTheme.WithAlpha(color, alpha));
+            edge.type = UnityEngine.UI.Image.Type.Sliced;
+            edge.pixelsPerUnitMultiplier = SpriteRadius / Mathf.Max(4f, radius);
+            Stretch(edge.rectTransform);
+            return edge;
+        }
+
+        /// <summary>Perceived brightness 0..1 - decides dark vs light text on a coloured face.</summary>
+        public static bool IsLight(Color c) => c.r * 0.299f + c.g * 0.587f + c.b * 0.114f > 0.52f;
+
         public static Text Label(Transform parent, string text, int size, Color color,
-            TextAnchor anchor = TextAnchor.MiddleCenter, bool outline = false, FontStyle style = FontStyle.Bold)
+            TextAnchor anchor = TextAnchor.MiddleCenter, bool outline = false, FontStyle style = FontStyle.Bold,
+            bool title = false)
         {
             var go = new GameObject("Label", typeof(RectTransform), typeof(Text));
             go.transform.SetParent(parent, false);
             var t = go.GetComponent<Text>();
-            t.font = T.Font;
+            t.font = title ? T.TitleFont : T.Font;
             t.text = text;
             t.fontSize = size;
             t.fontStyle = style;
@@ -102,10 +118,10 @@ namespace Game.Unity
             if (outline)
             {
                 var o = go.AddComponent<Outline>();
-                o.effectColor = new Color(0.17f, 0.07f, 0.3f, 0.85f);
+                o.effectColor = HuntUiTheme.WithAlpha(T.deep, 0.85f);
                 o.effectDistance = new Vector2(3f, -3f);
                 var s = go.AddComponent<Shadow>();
-                s.effectColor = new Color(0.17f, 0.07f, 0.3f, 0.6f);
+                s.effectColor = HuntUiTheme.WithAlpha(T.deep, 0.6f);
                 s.effectDistance = new Vector2(0f, -6f);
             }
 
@@ -161,10 +177,11 @@ namespace Game.Unity
             var root = Rect(label + "Button", parent);
             Place(root, new Vector2(0.5f, 0.5f), size);
 
-            var shadow = Image(root, "Shadow", HuntUiSprites.Shadow, new Color(0.1f, 0f, 0.2f, 0.3f));
+            // Neon glow in the button's own colour (replaces the old dark drop shadow).
+            var shadow = Image(root, "Shadow", HuntUiSprites.Shadow, HuntUiTheme.WithAlpha(color, 0.5f));
             shadow.type = UnityEngine.UI.Image.Type.Sliced;
-            Stretch(shadow.rectTransform, -14f);
-            shadow.rectTransform.anchoredPosition = new Vector2(0f, -16f);
+            Stretch(shadow.rectTransform, -18f);
+            shadow.rectTransform.anchoredPosition = new Vector2(0f, -8f);
 
             var lip = Rounded(root, "Lip", HuntUiTheme.Darken(color, 0.28f), radius);
             Stretch(lip.rectTransform);
@@ -174,19 +191,21 @@ namespace Game.Unity
             var face = Rounded(root, "Face", color, radius, true);
             Stretch(face.rectTransform);
 
-            var gloss = Rounded(face.transform, "Gloss", new Color(1f, 1f, 1f, 0.22f), radius * 0.8f);
+            var gloss = Rounded(face.transform, "Gloss", new Color(1f, 1f, 1f, 0.28f), radius * 0.8f);
             gloss.rectTransform.anchorMin = new Vector2(0f, 0.52f);
             gloss.rectTransform.anchorMax = new Vector2(1f, 1f);
             gloss.rectTransform.offsetMin = new Vector2(10f, 0f);
             gloss.rectTransform.offsetMax = new Vector2(-10f, -6f);
 
+            var lightFace = IsLight(color);
+            var faceText = lightFace ? new Color(0.016f, 0.07f, 0.18f, 1f) : Color.white;
             Image iconImg = null;
             Text text = null;
             var hasLabel = !string.IsNullOrEmpty(label);
             if (icon != null)
             {
                 var iconSize = Mathf.Min(size.y * 0.58f, 84f);
-                iconImg = Icon(root, icon, Color.white, new Vector2(iconSize, iconSize));
+                iconImg = Icon(root, icon, icon == CoinSprite ? Color.white : faceText, new Vector2(iconSize, iconSize));
                 if (hasLabel)
                 {
                     iconImg.rectTransform.anchorMin = iconImg.rectTransform.anchorMax = new Vector2(0f, 0.5f);
@@ -196,7 +215,7 @@ namespace Game.Unity
 
             if (hasLabel)
             {
-                text = Label(root, label, fontSize, Color.white, TextAnchor.MiddleCenter, outline: true);
+                text = Label(root, label, fontSize, faceText, TextAnchor.MiddleCenter, outline: !lightFace, title: true);
                 if (icon != null)
                     text.rectTransform.offsetMin = new Vector2(size.y * 0.75f, 0f);
                 text.rectTransform.offsetMax = new Vector2(text.rectTransform.offsetMax.x, -2f);
@@ -324,33 +343,33 @@ namespace Game.Unity
             return g != null ? g : go.AddComponent<CanvasGroup>();
         }
 
-        /// <summary>Slowly drifting translucent mosaic tiles behind menus.</summary>
+        /// <summary>Time-machine backdrop: two slowly counter-rotating dials plus drifting energy motes.</summary>
         public static void FloatingTiles(Transform parent, int count = 14)
         {
             var layer = Stretch(Rect("Tiles", parent));
             layer.SetSiblingIndex(1);
+
+            var glow = Image(layer, "Glow", HuntUiSprites.Radial, HuntUiTheme.WithAlpha(T.bgGlow, 0.55f));
+            Place(glow.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(2400f, 2400f), new Vector2(0f, -120f));
+
+            var big = Image(layer, "DialBig", HuntUiSprites.Dial, HuntUiTheme.WithAlpha(T.glow, 0.2f));
+            Place(big.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(1500f, 1500f), new Vector2(0f, -120f));
+            big.gameObject.AddComponent<HuntSpin>().degreesPerSecond = 3f;
+
+            var small = Image(layer, "DialSmall", HuntUiSprites.Dial, HuntUiTheme.WithAlpha(T.accent, 0.16f));
+            Place(small.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(960f, 960f), new Vector2(0f, -120f));
+            small.gameObject.AddComponent<HuntSpin>().degreesPerSecond = -5f;
+
             for (var i = 0; i < count; i++)
             {
-                var sprite = (i % 3) switch
-                {
-                    0 => HuntUiSprites.Star,
-                    1 => HuntUiSprites.Circle,
-                    _ => HuntUiSprites.Rounded
-                };
-                var tile = Image(layer, "Tile", sprite, new Color(1f, 1f, 1f, UnityEngine.Random.Range(0.06f, 0.16f)));
-                if (sprite == HuntUiSprites.Rounded)
-                {
-                    tile.type = UnityEngine.UI.Image.Type.Sliced;
-                    tile.pixelsPerUnitMultiplier = 2f;
-                }
-
-                var size = UnityEngine.Random.Range(70f, 190f);
-                Place(tile.rectTransform, new Vector2(UnityEngine.Random.value, UnityEngine.Random.value), new Vector2(size, size));
-                tile.rectTransform.localRotation = Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0f, 360f));
-                var bob = tile.gameObject.AddComponent<HuntFloatBob>();
-                bob.amplitude = UnityEngine.Random.Range(14f, 40f);
-                bob.speed = UnityEngine.Random.Range(0.3f, 0.8f);
-                bob.rotate = UnityEngine.Random.Range(6f, 20f);
+                var gold = i % 4 == 0;
+                var size = UnityEngine.Random.Range(8f, 22f);
+                var mote = Image(layer, "Mote", HuntUiSprites.SoftCircle,
+                    HuntUiTheme.WithAlpha(gold ? T.accent : T.glow, UnityEngine.Random.Range(0.25f, 0.6f)));
+                Place(mote.rectTransform, new Vector2(UnityEngine.Random.value, UnityEngine.Random.value), new Vector2(size, size));
+                var bob = mote.gameObject.AddComponent<HuntFloatBob>();
+                bob.amplitude = UnityEngine.Random.Range(20f, 60f);
+                bob.speed = UnityEngine.Random.Range(0.25f, 0.7f);
             }
         }
     }
@@ -401,6 +420,14 @@ namespace Game.Unity
             var c = on ? _color : HuntUiTheme.Current.locked;
             Face.color = c;
             Lip.color = HuntUiTheme.Darken(c, 0.28f);
+            var glow = Root.Find("Shadow");
+            if (glow != null)
+                glow.GetComponent<Image>().color = HuntUiTheme.WithAlpha(c, on ? 0.5f : 0f);
+            var fg = HuntUiKit.IsLight(c) ? new Color(0.016f, 0.07f, 0.18f, 1f) : Color.white;
+            if (Label != null)
+                Label.color = fg;
+            if (Icon != null && Icon.sprite != HuntUiKit.CoinSprite)
+                Icon.color = fg;
         }
     }
 

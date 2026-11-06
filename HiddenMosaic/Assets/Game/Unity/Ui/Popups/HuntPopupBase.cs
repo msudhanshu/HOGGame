@@ -24,6 +24,10 @@ namespace Game.Unity
         protected virtual string OpenSfx => NixinAudio.Pause;
         /// <summary>Edge-to-edge page instead of a floating card (fades in, no pop).</summary>
         protected virtual bool FullScreen => false;
+        /// <summary>Full-width sheet glued to the bottom edge that slides up (level intro). CardSize.y is its height;
+        /// the bottom 80 units sit below the screen so the lower corners never show.</summary>
+        protected virtual bool BottomSheet => false;
+        const float SheetOverscan = 80f;
 
         protected abstract void BuildContent(RectTransform card);
 
@@ -39,6 +43,16 @@ namespace Game.Unity
             _group = HuntUiKit.Group(gameObject);
             CardFace = HuntUiKit.Card(transform, CardSize, CardColor, FullScreen ? 1f : 48f);
             CardRoot = (RectTransform)CardFace.transform.parent;
+            if (BottomSheet)
+            {
+                CardRoot.anchorMin = new Vector2(0f, 0f);
+                CardRoot.anchorMax = new Vector2(1f, 0f);
+                CardRoot.pivot = new Vector2(0.5f, 0f);
+                CardRoot.sizeDelta = new Vector2(0f, CardSize.y);
+                CardRoot.anchoredPosition = new Vector2(0f, -SheetOverscan);
+                CardRoot.Find("Shadow").gameObject.SetActive(false);
+            }
+
             if (FullScreen)
             {
                 HuntUiKit.Stretch(CardRoot);
@@ -65,6 +79,8 @@ namespace Game.Unity
             HuntTweener.Kill(CardRoot);
             if (FullScreen)
                 CardRoot.localScale = Vector3.one;
+            else if (BottomSheet)
+                HuntTweener.Move(CardRoot, new Vector2(0f, -CardSize.y), new Vector2(0f, -SheetOverscan), 0.38f, Ease.OutCubic);
             else
                 HuntTweener.Scale(CardRoot, Vector3.one * 0.55f, Vector3.one, 0.42f, Ease.OutBack);
             HuntTweener.Fade(_group, 0f, 1f, 0.15f);
@@ -85,7 +101,9 @@ namespace Game.Unity
             _closing = true;
             _group.interactable = false;
             HuntTweener.Kill(CardRoot);
-            if (!FullScreen)
+            if (BottomSheet)
+                HuntTweener.Move(CardRoot, CardRoot.anchoredPosition, new Vector2(0f, -CardSize.y), 0.2f, Ease.InQuad);
+            else if (!FullScreen)
                 HuntTweener.Scale(CardRoot, CardRoot.localScale, Vector3.one * 0.7f, 0.16f, Ease.InBack);
             HuntTweener.Fade(_group, 1f, 0f, 0.16f, 0f, () =>
             {

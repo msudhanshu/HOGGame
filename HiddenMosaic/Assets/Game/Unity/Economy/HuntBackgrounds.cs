@@ -24,11 +24,11 @@ namespace Game.Unity
 
         public static readonly IReadOnlyList<Def> All = new[]
         {
-            Make("ocean", "Ocean Breeze", 250, "#2C8FD6", "#0B3C75"),
-            Make("forest", "Mossy Forest", 300, "#4DB56A", "#12502D"),
-            Make("sunset", "Sunset Glow", 350, "#FF8A5B", "#8E2A6B"),
-            Make("midnight", "Midnight Sky", 450, "#3A2D7A", "#0A0720"),
-            Make("candy", "Cotton Candy", 500, "#FFB3DE", "#8F7BFF")
+            Make("ocean", "Deep Ocean", 250, "#1E6BFF", "#061A4A"),
+            Make("forest", "Bio Dome", 300, "#19B98A", "#05301F"),
+            Make("sunset", "Solar Flare", 350, "#FF8A4C", "#4A1456"),
+            Make("midnight", "Void", 450, "#2A2470", "#05041A"),
+            Make("candy", "Aurora", 500, "#4FE3FF", "#7A4DFF")
         };
 
         public static event Action Changed;

@@ -17,11 +17,13 @@ MonoBehaviour:
     title: Horse
     waveSize: 3
     waveCount: 2
-    memoryFade: 8.0
+    memoryFade: 8
     glassRadius: 0.1
-    zoom: 3.6
+    zoom: 9
     huntSizeScale: 1
     glassFog: 1
+    baseSaturation: 0.95
+    iconScale: 3
     timeLimitSeconds: 90
     toughness: 1
     sprinkleSeed: 0
@@ -38,6 +40,8 @@ MonoBehaviour:
     zoom: 3.63
     huntSizeScale: 1
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 75
     toughness: 1
     sprinkleSeed: 101
@@ -54,6 +58,8 @@ MonoBehaviour:
     zoom: 3.66
     huntSizeScale: 1
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 60
     toughness: 1
     sprinkleSeed: 202
@@ -70,6 +76,8 @@ MonoBehaviour:
     zoom: 3.68
     huntSizeScale: 1
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 60
     toughness: 2
     sprinkleSeed: 303
@@ -86,6 +94,8 @@ MonoBehaviour:
     zoom: 3.71
     huntSizeScale: 1
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 60
     toughness: 2
     sprinkleSeed: 404
@@ -102,6 +112,8 @@ MonoBehaviour:
     zoom: 3.74
     huntSizeScale: 1
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 60
     toughness: 2
     sprinkleSeed: 505
@@ -113,11 +125,13 @@ MonoBehaviour:
     title: Elephant
     waveSize: 3
     waveCount: 2
-    memoryFade: 7.0
+    memoryFade: 7
     glassRadius: 0.094
     zoom: 3.77
     huntSizeScale: 0.88
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 60
     toughness: 2
     sprinkleSeed: 606
@@ -134,6 +148,8 @@ MonoBehaviour:
     zoom: 3.79
     huntSizeScale: 0.82
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 55
     toughness: 2
     sprinkleSeed: 707
@@ -142,7 +158,7 @@ MonoBehaviour:
     scanner: 
     revealSet: 
   - silhouetteFile: horse.json
-    title: "Horse — Remix"
+    title: "Horse \u2014 Remix"
     waveSize: 3
     waveCount: 2
     memoryFade: 6.6
@@ -150,6 +166,8 @@ MonoBehaviour:
     zoom: 3.82
     huntSizeScale: 1
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 55
     toughness: 3
     sprinkleSeed: 808
@@ -158,7 +176,7 @@ MonoBehaviour:
     scanner: 
     revealSet: 
   - silhouetteFile: bird.json
-    title: "Bird — Remix"
+    title: "Bird \u2014 Remix"
     waveSize: 3
     waveCount: 2
     memoryFade: 6.4
@@ -166,6 +184,8 @@ MonoBehaviour:
     zoom: 3.85
     huntSizeScale: 1
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 55
     toughness: 3
     sprinkleSeed: 909
@@ -174,7 +194,7 @@ MonoBehaviour:
     scanner: Target
     revealSet: 
   - silhouetteFile: bat.json
-    title: "Bat — Remix"
+    title: "Bat \u2014 Remix"
     waveSize: 3
     waveCount: 3
     memoryFade: 6.3
@@ -182,6 +202,8 @@ MonoBehaviour:
     zoom: 3.88
     huntSizeScale: 1
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 85
     toughness: 3
     sprinkleSeed: 1010
@@ -190,7 +212,7 @@ MonoBehaviour:
     scanner: 
     revealSet: 
   - silhouetteFile: rabbit.json
-    title: "Rabbit — Remix"
+    title: "Rabbit \u2014 Remix"
     waveSize: 3
     waveCount: 3
     memoryFade: 6.1
@@ -198,6 +220,8 @@ MonoBehaviour:
     zoom: 3.9
     huntSizeScale: 1
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 80
     toughness: 3
     sprinkleSeed: 1111
@@ -206,7 +230,7 @@ MonoBehaviour:
     scanner: 
     revealSet: 
   - silhouetteFile: cap.json
-    title: "Cap — Remix"
+    title: "Cap \u2014 Remix"
     waveSize: 3
     waveCount: 3
     memoryFade: 5.9
@@ -214,6 +238,8 @@ MonoBehaviour:
     zoom: 3.93
     huntSizeScale: 1
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 80
     toughness: 3
     sprinkleSeed: 1212
@@ -222,7 +248,7 @@ MonoBehaviour:
     scanner: 
     revealSet: 
   - silhouetteFile: camel.json
-    title: "Camel — Remix"
+    title: "Camel \u2014 Remix"
     waveSize: 4
     waveCount: 3
     memoryFade: 5.8
@@ -230,6 +256,8 @@ MonoBehaviour:
     zoom: 3.96
     huntSizeScale: 1
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 105
     toughness: 3
     sprinkleSeed: 1313
@@ -238,7 +266,7 @@ MonoBehaviour:
     scanner: 
     revealSet: 
   - silhouetteFile: elephant.json
-    title: "Elephant — Remix"
+    title: "Elephant \u2014 Remix"
     waveSize: 4
     waveCount: 3
     memoryFade: 5.6
@@ -246,6 +274,8 @@ MonoBehaviour:
     zoom: 3.99
     huntSizeScale: 0.88
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 105
     toughness: 4
     sprinkleSeed: 1414
@@ -254,7 +284,7 @@ MonoBehaviour:
     scanner: RectLens
     revealSet: 
   - silhouetteFile: watch.json
-    title: "Watch — Remix"
+    title: "Watch \u2014 Remix"
     waveSize: 3
     waveCount: 3
     memoryFade: 5.4
@@ -262,6 +292,8 @@ MonoBehaviour:
     zoom: 4.01
     huntSizeScale: 0.82
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 75
     toughness: 3
     sprinkleSeed: 1515
@@ -270,7 +302,7 @@ MonoBehaviour:
     scanner: 
     revealSet: 
   - silhouetteFile: horse.json
-    title: "Horse — Rush"
+    title: "Horse \u2014 Rush"
     waveSize: 3
     waveCount: 3
     memoryFade: 5.2
@@ -278,6 +310,8 @@ MonoBehaviour:
     zoom: 4.04
     huntSizeScale: 1
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 75
     toughness: 4
     sprinkleSeed: 1616
@@ -286,7 +320,7 @@ MonoBehaviour:
     scanner: 
     revealSet: 
   - silhouetteFile: bird.json
-    title: "Bird — Rush"
+    title: "Bird \u2014 Rush"
     waveSize: 3
     waveCount: 3
     memoryFade: 5.1
@@ -294,6 +328,8 @@ MonoBehaviour:
     zoom: 4.07
     huntSizeScale: 1
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 75
     toughness: 4
     sprinkleSeed: 1717
@@ -302,7 +338,7 @@ MonoBehaviour:
     scanner: 
     revealSet: 
   - silhouetteFile: bat.json
-    title: "Bat — Rush"
+    title: "Bat \u2014 Rush"
     waveSize: 4
     waveCount: 3
     memoryFade: 4.9
@@ -310,6 +346,8 @@ MonoBehaviour:
     zoom: 4.1
     huntSizeScale: 1
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 100
     toughness: 4
     sprinkleSeed: 1818
@@ -318,7 +356,7 @@ MonoBehaviour:
     scanner: 
     revealSet: 
   - silhouetteFile: rabbit.json
-    title: "Rabbit — Rush"
+    title: "Rabbit \u2014 Rush"
     waveSize: 4
     waveCount: 3
     memoryFade: 4.7
@@ -326,6 +364,8 @@ MonoBehaviour:
     zoom: 4.12
     huntSizeScale: 1
     glassFog: 1
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 95
     toughness: 4
     sprinkleSeed: 1919
@@ -334,7 +374,7 @@ MonoBehaviour:
     scanner: Microscope
     revealSet: 
   - silhouetteFile: cap.json
-    title: "Cap — Rush"
+    title: "Cap \u2014 Rush"
     waveSize: 4
     waveCount: 3
     memoryFade: 4.6
@@ -342,6 +382,8 @@ MonoBehaviour:
     zoom: 4.15
     huntSizeScale: 1
     glassFog: 0
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 95
     toughness: 4
     sprinkleSeed: 2020
@@ -350,7 +392,7 @@ MonoBehaviour:
     scanner: 
     revealSet: 
   - silhouetteFile: camel.json
-    title: "Camel — Rush"
+    title: "Camel \u2014 Rush"
     waveSize: 4
     waveCount: 3
     memoryFade: 4.4
@@ -358,6 +400,8 @@ MonoBehaviour:
     zoom: 4.18
     huntSizeScale: 1
     glassFog: 0
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 90
     toughness: 4
     sprinkleSeed: 2121
@@ -366,7 +410,7 @@ MonoBehaviour:
     scanner: 
     revealSet: 
   - silhouetteFile: elephant.json
-    title: "Elephant — Rush"
+    title: "Elephant \u2014 Rush"
     waveSize: 4
     waveCount: 3
     memoryFade: 4.2
@@ -374,6 +418,8 @@ MonoBehaviour:
     zoom: 4.21
     huntSizeScale: 0.88
     glassFog: 0
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 90
     toughness: 4
     sprinkleSeed: 2222
@@ -382,14 +428,16 @@ MonoBehaviour:
     scanner: 
     revealSet: 
   - silhouetteFile: watch.json
-    title: "Watch — Rush"
+    title: "Watch \u2014 Rush"
     waveSize: 4
     waveCount: 3
-    memoryFade: 4.0
+    memoryFade: 4
     glassRadius: 0.078
     zoom: 4.23
     huntSizeScale: 0.82
     glassFog: 0
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 90
     toughness: 5
     sprinkleSeed: 2323
@@ -398,7 +446,7 @@ MonoBehaviour:
     scanner: 
     revealSet: 
   - silhouetteFile: horse.json
-    title: "Horse — Expert"
+    title: "Horse \u2014 Expert"
     waveSize: 4
     waveCount: 3
     memoryFade: 3.9
@@ -406,6 +454,8 @@ MonoBehaviour:
     zoom: 4.26
     huntSizeScale: 1
     glassFog: 0
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 85
     toughness: 5
     sprinkleSeed: 2424
@@ -414,7 +464,7 @@ MonoBehaviour:
     scanner: Target
     revealSet: 
   - silhouetteFile: bird.json
-    title: "Bird — Expert"
+    title: "Bird \u2014 Expert"
     waveSize: 4
     waveCount: 3
     memoryFade: 3.7
@@ -422,6 +472,8 @@ MonoBehaviour:
     zoom: 4.29
     huntSizeScale: 1
     glassFog: 0
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 85
     toughness: 5
     sprinkleSeed: 2525
@@ -430,7 +482,7 @@ MonoBehaviour:
     scanner: 
     revealSet: 
   - silhouetteFile: bat.json
-    title: "Bat — Expert"
+    title: "Bat \u2014 Expert"
     waveSize: 4
     waveCount: 3
     memoryFade: 3.5
@@ -438,6 +490,8 @@ MonoBehaviour:
     zoom: 4.32
     huntSizeScale: 1
     glassFog: 0
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 85
     toughness: 5
     sprinkleSeed: 2626
@@ -446,7 +500,7 @@ MonoBehaviour:
     scanner: 
     revealSet: 
   - silhouetteFile: rabbit.json
-    title: "Rabbit — Expert"
+    title: "Rabbit \u2014 Expert"
     waveSize: 4
     waveCount: 3
     memoryFade: 3.3
@@ -454,6 +508,8 @@ MonoBehaviour:
     zoom: 4.34
     huntSizeScale: 1
     glassFog: 0
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 80
     toughness: 5
     sprinkleSeed: 2727
@@ -462,7 +518,7 @@ MonoBehaviour:
     scanner: 
     revealSet: 
   - silhouetteFile: elephant.json
-    title: "Elephant — Expert"
+    title: "Elephant \u2014 Expert"
     waveSize: 4
     waveCount: 3
     memoryFade: 3.2
@@ -470,6 +526,8 @@ MonoBehaviour:
     zoom: 4.37
     huntSizeScale: 0.88
     glassFog: 0
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 80
     toughness: 5
     sprinkleSeed: 2828
@@ -478,14 +536,16 @@ MonoBehaviour:
     scanner: 
     revealSet: 
   - silhouetteFile: camel.json
-    title: "Camel — Finale"
+    title: "Camel \u2014 Finale"
     waveSize: 4
     waveCount: 3
-    memoryFade: 3.0
+    memoryFade: 3
     glassRadius: 0.072
     zoom: 4.4
     huntSizeScale: 1
     glassFog: 0
+    baseSaturation: 0
+    iconScale: 1
     timeLimitSeconds: 80
     toughness: 5
     sprinkleSeed: 2929
@@ -507,7 +567,7 @@ MonoBehaviour:
     toughness: 2
     revealSet: {fileID: 11400000, guid: 5f1b57403f0a453e83409b9add77eacc, type: 2}
   - id: newyork
-    title: "Times Square: Then & Now"
+    title: 'Times Square: Then & Now'
     scene: 
     timeLimitSeconds: 60
     toughness: 3

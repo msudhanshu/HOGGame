@@ -100,7 +100,7 @@ namespace Game.Unity
                 hud.HintRequested.AddListener(OnHintRequested);
                 hud.LensRequested.AddListener(CycleScanner);
                 hud.ShopRequested.AddListener(OpenShop);
-                hud.SetHintCount(HuntWallet.Hints);
+                hud.RefreshHints();
             }
 
             GameServices.Analytics.TrackScreenView("HuntPlayScreen");
@@ -114,8 +114,8 @@ namespace Game.Unity
 
         void OnWalletChanged(string currency, int balance)
         {
-            if (currency == HuntCurrencies.Hints && hud != null)
-                hud.SetHintCount(balance);
+            if ((HuntHintStock.IsHintCurrency(currency) || currency == HuntCurrencies.Coins) && hud != null)
+                hud.RefreshHints();
         }
 
         void Update()
@@ -226,6 +226,7 @@ namespace Game.Unity
                 Total = _director.Current.TargetCount,
                 ContinueCost = cost,
                 ContinueSeconds = t.ContinueSeconds,
+                AdContinueSeconds = t.AdContinueSeconds,
                 AdContinueAvailable = !_adContinueUsed && Monetization.IsAvailable(HuntPlacements.ContinueAd),
                 OnContinueCoins = () =>
                 {
@@ -255,7 +256,8 @@ namespace Game.Unity
 
         void Continue(string method)
         {
-            var seconds = HuntWallet.Tuning.ContinueSeconds;
+            var tuning = HuntWallet.Tuning;
+            var seconds = method == "ad" ? tuning.AdContinueSeconds : tuning.ContinueSeconds;
             _timedOut = false;
             _levelEnded = false;
             _lastTickSecond = -1;
@@ -317,28 +319,159 @@ namespace Game.Unity
             LoadLevel(_director.Current, _currentLevelIndex);
         }
 
-        void OnHintRequested()
+        Coroutine _peek;
+        Coroutine _radarBanner;
+
+        /// <summary>A dock button was pressed. Uses stock first, then the coin price, then the out-of-hints jam.</summary>
+        void OnHintRequested(HuntHintKind kind)
         {
-            if (Paused || _director == null || _director.Session == null || _director.IsLevelComplete || _timedOut)
+            if (Paused || _director == null || _director.Session == null || _director.IsLevelComplete || _timedOut || _preview)
                 return;
             if (_director.Session.Remaining == null || _director.Session.Remaining.Count == 0)
                 return;
 
-            if (HuntWallet.TrySpend(HuntCurrencies.Hints, 1, "hint"))
+            if (HuntHintStock.TryUseStock(kind))
             {
-                UseHint();
+                ApplyHint(kind);
                 return;
             }
 
-            HuntJams.OutOfHints(UseHint);
+            var price = HuntHintStock.Price(kind);
+            if (HuntWallet.CanAfford(HuntCurrencies.Coins, price))
+            {
+                if (HuntHintStock.TryBuyUse(kind))
+                    ApplyHint(kind);
+                return;
+            }
+
+            if (kind == HuntHintKind.LockOn)
+                HuntJams.OutOfHints(() => ApplyHint(kind));
+            else
+                HuntJams.NotEnoughCoins(price, null);
         }
 
-        void UseHint()
+        void ApplyHint(HuntHintKind kind)
         {
             _hintsUsed++;
             HuntAudio.Sfx(NixinAudio.Shuffle, 1.3f);
             HuntHaptics.Light();
-            RevealHint();
+            HuntAnalytics.HintUsed(_director.Current.FileName, kind.ToString());
+            var t = HuntWallet.Tuning;
+            switch (kind)
+            {
+                case HuntHintKind.LockOn:
+                    RevealHint();
+                    break;
+                case HuntHintKind.Peek:
+                    if (_peek != null) StopCoroutine(_peek);
+                    _peek = StartCoroutine(PeekRoutine(t.PeekSeconds));
+                    break;
+                case HuntHintKind.Radar:
+                    RadarPing(t.RadarSeconds);
+                    break;
+                case HuntHintKind.FreezeTime:
+                    AddHintTime(t.FreezeSeconds);
+                    break;
+            }
+        }
+
+        /// <summary>"Take with you" picks from the level intro: paid from stock first, then coins, then used right away.</summary>
+        void ApplyBoosts(List<HuntHintKind> chosen)
+        {
+            if (chosen == null)
+                return;
+            for (var i = 0; i < chosen.Count; i++)
+            {
+                var kind = chosen[i];
+                if (!HuntHintStock.TryUseStock(kind) && !HuntHintStock.TryBuyUse(kind))
+                    continue;
+                ApplyHint(kind);
+            }
+
+            if (hud != null)
+                hud.RefreshHints();
+        }
+
+        void AddHintTime(float seconds)
+        {
+            _clock.AddTime(seconds);
+            _lastTickSecond = -1;
+            if (hud == null)
+                return;
+            hud.RefreshTimer(_clock.Remaining, _clock.Remaining <= HuntRemoteConfig.UrgentThreshold);
+            HuntFx.PopText((RectTransform)hud.transform, new Vector2(0f, 200f), "+" + Mathf.RoundToInt(seconds) + "s",
+                HuntUiTheme.Current.success, 110);
+        }
+
+        /// <summary>Colour floods the whole board for a moment, then the board drops back to the level's own saturation.</summary>
+        IEnumerator PeekRoutine(float seconds)
+        {
+            if (hud != null)
+                hud.SetActiveHint(HuntHintKind.Peek);
+            MosaicSaturationDriver.SetBaseSaturation(1f);
+            yield return new WaitForSecondsRealtime(seconds);
+            MosaicSaturationDriver.SetBaseSaturation(_boardIsReveal || _currentDef == null ? 0f : _currentDef.BaseSaturation);
+            if (hud != null)
+                hud.SetActiveHint(null);
+            _peek = null;
+        }
+
+        void RadarPing(float seconds)
+        {
+            var camera = Camera.main;
+            if (hud == null || camera == null || _director.Session == null)
+                return;
+            var positions = new List<Vector3>();
+            var remaining = _director.Session.Remaining;
+            for (var i = 0; i < remaining.Count; i++)
+            {
+                var view = FindViewByName(remaining[i]);
+                if (view != null)
+                    positions.Add(view.transform.position);
+            }
+
+            hud.ShowRadar(positions, camera, seconds);
+            hud.ShowBanner("RADAR SWEEP  ·  " + positions.Count + (positions.Count == 1 ? " TARGET" : " TARGETS") + " LOCATED",
+                HuntUiTheme.Current.violet);
+            hud.SetActiveHint(HuntHintKind.Radar);
+            if (_radarBanner != null)
+                StopCoroutine(_radarBanner);
+            _radarBanner = StartCoroutine(EndRadar(seconds));
+        }
+
+        IEnumerator EndRadar(float seconds)
+        {
+            yield return new WaitForSecondsRealtime(seconds);
+            if (hud != null)
+            {
+                hud.HideBanner();
+                hud.SetActiveHint(null);
+            }
+
+            _radarBanner = null;
+        }
+
+        /// <summary>New level / restart: drop any running hint effect so nothing leaks across boards.</summary>
+        void StopHintEffects()
+        {
+            if (_peek != null)
+            {
+                StopCoroutine(_peek);
+                _peek = null;
+            }
+
+            if (_radarBanner != null)
+            {
+                StopCoroutine(_radarBanner);
+                _radarBanner = null;
+            }
+
+            if (hud != null)
+            {
+                hud.ClearRadar();
+                hud.HideBanner();
+                hud.SetActiveHint(null);
+            }
         }
 
         void RevealHint()
@@ -528,12 +661,21 @@ namespace Game.Unity
             var coins = HuntEconomyRules.CoinsForWin(def.Toughness, stars, first, prevBest, tuning);
             HuntCurrencyPill.HoldOn(HuntCurrencies.Coins, coins);
             HuntWallet.Earn(HuntCurrencies.Coins, coins, first ? "level_win" : "level_replay");
+            // Daily Hunt: the special's one-a-day bonus rides on this win (coins + one hint from the chest).
+            var doubleCoins = coins;
+            var dailyBonus = HuntLaunchRequest.IsDaily ? HuntDailyStore.AwardSpecialWin() : 0;
+            if (dailyBonus > 0)
+            {
+                HuntCurrencyPill.HoldOn(HuntCurrencies.Coins, dailyBonus);
+                HuntWallet.Earn(HuntCurrencies.Coins, dailyBonus, "daily_special");
+                coins += dailyBonus;
+            }
             HuntAnalytics.StarsAwarded(def.FileName, stars, first);
 
             var next = HuntRoadmapService.Next(_node);
             HuntPopups.Win(new HuntWinPayload
             {
-                Title = next == null ? "All Levels Done!" : stars == 3 ? "Perfect!" : "Level Complete!",
+                Title = dailyBonus > 0 ? "DAILY HUNT CLEARED" : next == null ? "ALL LEVELS DONE" : stars == 3 ? "PERFECT" : "TIMELINE SECURED",
                 Stars = stars,
                 Coins = coins,
                 FirstClear = first,
@@ -550,9 +692,9 @@ namespace Game.Unity
                             return;
                         }
 
-                        HuntCurrencyPill.HoldOn(HuntCurrencies.Coins, coins);
-                        HuntWallet.Earn(HuntCurrencies.Coins, coins, "double_coins_ad");
-                        done(coins);
+                        HuntCurrencyPill.HoldOn(HuntCurrencies.Coins, doubleCoins);
+                        HuntWallet.Earn(HuntCurrencies.Coins, doubleCoins, "double_coins_ad");
+                        done(doubleCoins);
                     });
                 },
                 NextLabel = next == null ? "HOME" : next.Kind == HuntNodeKind.ImageHog ? PhotoLabel(next) : "NEXT",
@@ -768,6 +910,7 @@ namespace Game.Unity
             var fog = !reveal && def.GlassFog;
             glass.SetRevealMode(reveal);
             glass.SetScanner(ResolveScanner(def));
+            MosaicSaturationDriver.SetBaseSaturation(reveal ? 0f : def.BaseSaturation);
             glass.SetGlassFogMode(fog);
             glass.ApplyRules(def.MemoryFade, def.GlassRadius, def.Zoom);
             if (root != null && cam != null)
@@ -797,8 +940,10 @@ namespace Game.Unity
                 hud.Bind(_director);
                 hud.RefreshTimer(_clock.Remaining, false);
                 hud.SetPlayControls(true);
-                hud.SetHintCount(HuntWallet.Hints);
+                hud.RefreshHints();
+                hud.PopIcons();
             }
+            StopHintEffects();
             PlayClip(NixinAudio.Shuffle);
             ShowIntro(def);
             HuntAnalytics.LevelStart(def.FileName, index, _launchMode.ToString(), _attemptByLevel[index],
@@ -830,14 +975,22 @@ namespace Game.Unity
             level = MosaicHuntSprinklerUnity.Apply(level, _catalog, huntCount, seed, huntSizeScale: def.HuntSizeScale);
 
             MosaicAssembler.Assemble(level, _catalog, transform);
+            if (def.IconScale > 1.001f || def.IconScale < 0.999f)
+            {
+                foreach (var v in GetComponentsInChildren<MosaicItemView>(false))
+                    v.transform.localScale *= def.IconScale;
+            }
 
             var cam = Camera.main;
             if (hud != null && cam != null)
                 hud.ApplyPlayViewport(cam);
             MosaicAssembler.FrameCamera(cam, level);
             var background = HuntBackgrounds.Selected;
-            if (cam != null && background != null)
-                cam.backgroundColor = background.Field;
+            if (cam != null)
+            {
+                var theme = HuntUiTheme.Current;
+                cam.backgroundColor = background != null ? background.Field : Color.Lerp(theme.bgTop, theme.bgBottom, 0.55f);
+            }
             names = UniqueNames(level);
             return true;
         }
@@ -908,12 +1061,20 @@ namespace Game.Unity
         {
             _introOpen = true;
             var payload = HuntFlow.IntroFor(_node, def);
+            if (_director != null && _director.Session != null && _catalog != null)
+            {
+                var first = _director.Session.Remaining;
+                for (var i = 0; i < first.Count; i++)
+                    payload.TargetIcons.Add(_catalog.GetStamp(first[i]));
+            }
+
             payload.OnPlay = () =>
             {
                 _introOpen = false;
                 _levelStartTime = Time.time;
                 if (hud != null)
                     hud.PopIcons();
+                ApplyBoosts(payload.ChosenBoosts);
             };
             payload.OnHome = () =>
             {

@@ -38,6 +38,7 @@ Shader "HiddenMosaic/MosaicSpriteReveal"
             float _RevealAmount;
             float4 _MosaicGlass;
             float4 _MosaicGlassShape; // (halfW, halfH, isRect, 0)
+            float _MosaicBaseSat;
 
             struct Attributes
             {
@@ -86,7 +87,7 @@ Shader "HiddenMosaic/MosaicSpriteReveal"
                 half lum = dot(c.rgb, half3(0.299, 0.587, 0.114));
                 half3 gray = half3(lum, lum, lum);
                 half reveal = saturate(max(LensReveal(input.worldXY), _RevealAmount));
-                c.rgb = lerp(gray, c.rgb, reveal);
+                c.rgb = lerp(lerp(gray, c.rgb, saturate(_MosaicBaseSat)), c.rgb, reveal);
                 return c;
             }
             ENDHLSL
@@ -109,6 +110,7 @@ Shader "HiddenMosaic/MosaicSpriteReveal"
             float _RevealAmount;
             float4 _MosaicGlass;
             float4 _MosaicGlassShape; // (halfW, halfH, isRect, 0)
+            float _MosaicBaseSat;
 
             struct Attributes
             {
@@ -157,7 +159,7 @@ Shader "HiddenMosaic/MosaicSpriteReveal"
                 half lum = dot(c.rgb, half3(0.299, 0.587, 0.114));
                 half3 gray = half3(lum, lum, lum);
                 half reveal = saturate(max(LensReveal(input.worldXY), _RevealAmount));
-                c.rgb = lerp(gray, c.rgb, reveal);
+                c.rgb = lerp(lerp(gray, c.rgb, saturate(_MosaicBaseSat)), c.rgb, reveal);
                 return c;
             }
             ENDHLSL

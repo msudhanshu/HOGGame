@@ -20,10 +20,17 @@ namespace Game.Unity
         const float HogGap = 60f;
         const float Amplitude = 250f;
 
+        // Era names + subtitles (placeholders - swap freely). Index = chapter, wraps around.
         static readonly string[] ChapterNames =
         {
-            "Sunny Meadow", "Night Market", "Ocean Breeze", "Candy Town", "Starlight Bay", "Snowy Peaks", "Jungle Drums",
-            "Desert Glow"
+            "The Dawn Age", "The Gilded Age", "Age of Sail", "Steam & Iron", "Neon Century", "Orbital Dawn",
+            "The Far Future", "The Final Hour"
+        };
+
+        static readonly string[] EraSubtitles =
+        {
+            "Stone, fire & first tools", "Brass, clocks & clockwork", "Maps, storms & open seas", "Engines, rails & smoke",
+            "Rain, signs & arcades", "Stations & silent stars", "Where time folds back", "Every clock, one last time"
         };
 
         RectTransform _content;
@@ -34,6 +41,31 @@ namespace Game.Unity
 
         public static string ChapterName(int chapter) => ChapterNames[Mathf.Abs(chapter) % ChapterNames.Length];
 
+        public static string EraSubtitle(int chapter) => EraSubtitles[Mathf.Abs(chapter) % EraSubtitles.Length];
+
+        const float TopBarHeight = 200f;
+        const float EraHeaderHeight = 200f;
+
+        int _chapter = -1;
+        RectTransform _eraDots;
+        Text _eraTop;
+        Text _eraName;
+        Text _eraSub;
+        GameObject _prevArrow;
+        GameObject _nextArrow;
+        CanvasGroup _contentGroup;
+        HuntEraDrawer _drawer;
+        List<HuntEraInfo> _eras = new List<HuntEraInfo>();
+
+        /// <summary>Back key: closes the era drawer first. True when it handled the key.</summary>
+        public bool TryCloseDrawer()
+        {
+            if (_drawer == null || !_drawer.IsOpen)
+                return false;
+            _drawer.Close();
+            return true;
+        }
+
         public void Build(RectTransform panel, Action<HuntNode> onPick, Action onBack)
         {
             _onPick = onPick;
@@ -42,7 +74,7 @@ namespace Game.Unity
             var scrollGo = new GameObject("Scroll", typeof(RectTransform), typeof(ScrollRect));
             scrollGo.transform.SetParent(panel, false);
             var scrollRt = HuntUiKit.Stretch((RectTransform)scrollGo.transform);
-            scrollRt.offsetMax = new Vector2(0f, -200f);
+            scrollRt.offsetMax = new Vector2(0f, -(TopBarHeight + EraHeaderHeight));
             _viewport = HuntUiKit.Stretch(HuntUiKit.Rect("Viewport", scrollRt));
             _viewport.gameObject.AddComponent<RectMask2D>();
             _viewport.gameObject.AddComponent<Image>().color = Color.clear;
@@ -66,17 +98,148 @@ namespace Game.Unity
 
             var back = HuntUiKit.IconButton(top, NixinIcons.Load(NixinIcons.ChevronLeft), theme.primary, 120f, onBack);
             HuntUiKit.Place(back.Root, new Vector2(0f, 0.5f), new Vector2(120f, 120f), new Vector2(100f, 0f));
-            var title = HuntUiKit.Label(top, "Levels", 76, Color.white, TextAnchor.MiddleCenter, true);
-            title.rectTransform.offsetMin = new Vector2(220f, 0f);
-            title.rectTransform.offsetMax = new Vector2(-220f, 0f);
+            var menu = HuntUiKit.IconButton(top, NixinIcons.Load(NixinIcons.Menu), theme.glow, 120f, OpenDrawer);
+            HuntUiKit.Place(menu.Root, new Vector2(0f, 0.5f), new Vector2(120f, 120f), new Vector2(250f, 0f));
+            var title = HuntUiKit.Label(top, "TIMELINE", 50, Color.white, TextAnchor.MiddleCenter, true, FontStyle.Bold, true);
+            title.rectTransform.offsetMin = new Vector2(360f, 0f);
+            title.rectTransform.offsetMax = new Vector2(-330f, 0f);
 
-            var starPill = HuntUiKit.Rounded(top, "StarPill", new Color(0.12f, 0.03f, 0.25f, 0.45f), 46f);
+            var starPill = HuntUiKit.Rounded(top, "StarPill", HuntUiTheme.WithAlpha(theme.deep, 0.82f), 46f);
+            HuntUiKit.NeonEdge(starPill.transform, theme.accent, 46f, 0.7f);
             HuntUiKit.Place(starPill.rectTransform, new Vector2(1f, 0.5f), new Vector2(200f, 92f), new Vector2(-120f, 0f));
             var star = HuntUiKit.Image(starPill.transform, "Star", HuntUiSprites.Star, theme.accent);
             HuntUiKit.Place(star.rectTransform, new Vector2(0f, 0.5f), new Vector2(80f, 80f), new Vector2(40f, 4f));
-            _starTotal = HuntUiKit.Label(starPill.transform, "0", 46, Color.white, TextAnchor.MiddleCenter, true);
+            _starTotal = HuntUiKit.Label(starPill.transform, "0", 46, Color.white, TextAnchor.MiddleCenter, true, FontStyle.Bold, true);
             _starTotal.rectTransform.offsetMin = new Vector2(70f, 0f);
+
+            BuildEraHeader(panel);
+            _prevArrow = EraArrow(panel, true);
+            _nextArrow = EraArrow(panel, false);
+            _contentGroup = HuntUiKit.Group(_content.gameObject);
+            _drawer = HuntEraDrawer.Build(panel, c => ShowChapter(c));
         }
+
+        // ---------------- era navigation ----------------
+
+        void BuildEraHeader(RectTransform panel)
+        {
+            var theme = HuntUiTheme.Current;
+            var box = HuntUiKit.Rect("EraHeader", panel);
+            box.anchorMin = new Vector2(0f, 1f);
+            box.anchorMax = new Vector2(1f, 1f);
+            box.pivot = new Vector2(0.5f, 1f);
+            box.sizeDelta = new Vector2(0f, EraHeaderHeight);
+            box.anchoredPosition = new Vector2(0f, -TopBarHeight);
+            HuntSafeTopInset.Ensure(box);
+
+            _eraTop = HuntUiKit.Label(box, "", 30, theme.inkSoft, TextAnchor.MiddleCenter, false, FontStyle.Bold, true);
+            Anchor(_eraTop.rectTransform, 0f, 1f, 0f, 0.74f);
+            _eraName = HuntUiKit.Label(box, "", 58, theme.accent, TextAnchor.MiddleCenter, true, FontStyle.Bold, true);
+            Anchor(_eraName.rectTransform, 0f, 0.74f, 0f, 0.44f);
+            _eraSub = HuntUiKit.Label(box, "", 34, theme.ink, TextAnchor.MiddleCenter, false, FontStyle.Normal);
+            Anchor(_eraSub.rectTransform, 0f, 0.44f, 0f, 0.2f);
+            _eraDots = HuntUiKit.Rect("Dots", box);
+            Anchor(_eraDots, 0f, 0.2f, 0f, 0f);
+            var layout = _eraDots.gameObject.AddComponent<HorizontalLayoutGroup>();
+            layout.childAlignment = TextAnchor.MiddleCenter;
+            layout.spacing = 14f;
+            layout.childControlWidth = false;
+            layout.childControlHeight = false;
+            layout.childForceExpandWidth = false;
+            layout.childForceExpandHeight = false;
+        }
+
+        static void Anchor(RectTransform rt, float xMin, float yMax, float xMax, float yMin)
+        {
+            rt.anchorMin = new Vector2(0f, yMin);
+            rt.anchorMax = new Vector2(1f, yMax);
+            rt.offsetMin = new Vector2(120f, 0f);
+            rt.offsetMax = new Vector2(-120f, 0f);
+        }
+
+        GameObject EraArrow(RectTransform panel, bool left)
+        {
+            var theme = HuntUiTheme.Current;
+            var bg = HuntUiKit.Rounded(panel, left ? "PrevEra" : "NextEra", HuntUiTheme.WithAlpha(theme.deep, 0.78f), 56f, true);
+            HuntUiKit.Place(bg.rectTransform, new Vector2(left ? 0f : 1f, 0.5f), new Vector2(112f, 168f),
+                new Vector2(left ? 14f : -14f, 0f), new Vector2(left ? 0f : 1f, 0.5f));
+            HuntUiKit.NeonEdge(bg.transform, theme.glow, 56f, 0.9f);
+            var icon = HuntUiKit.Image(bg.transform, "Chevron",
+                NixinIcons.Load(left ? NixinIcons.ChevronLeft : NixinIcons.ChevronRight), theme.glow);
+            icon.preserveAspect = true;
+            HuntUiKit.Stretch(icon.rectTransform, 34f);
+            var button = bg.gameObject.AddComponent<Button>();
+            button.targetGraphic = bg;
+            button.transition = Selectable.Transition.None;
+            bg.gameObject.AddComponent<HuntButtonJuice>();
+            var step = left ? -1 : 1;
+            button.onClick.AddListener(() => ShowChapter(_chapter + step));
+            return bg.gameObject;
+        }
+
+        void OpenDrawer()
+        {
+            RefreshEras();
+            _drawer.Open(_eras);
+        }
+
+        void RefreshEras()
+        {
+            var current = HuntSave.CurrentNode;
+            _eras = HuntEras.Build(HuntRoadmapService.Nodes, HuntSave.IsCleared, HuntSave.IsUnlocked,
+                current != null ? current.Chapter : 0);
+        }
+
+        /// <summary>Opening the map: land on the era holding the current node, scrolled to it.</summary>
+        public void FocusCurrent()
+        {
+            var current = HuntSave.CurrentNode;
+            _chapter = current != null ? current.Chapter : 0;
+            Rebuild();
+            ScrollTo(current);
+        }
+
+        /// <summary>Switches era (clamped), fading the new path in.</summary>
+        public void ShowChapter(int chapter)
+        {
+            RefreshEras();
+            if (_eras.Count == 0)
+                return;
+            var target = Mathf.Clamp(chapter, _eras[0].Chapter, _eras[_eras.Count - 1].Chapter);
+            if (target == _chapter)
+                return;
+            _chapter = target;
+            Rebuild();
+            var current = HuntSave.CurrentNode;
+            ScrollTo(current != null && current.Chapter == _chapter ? current : null);
+            if (_contentGroup != null)
+                HuntTweener.Fade(_contentGroup, 0f, 1f, 0.22f);
+            HuntAudio.Sfx(Nixin.Audio.NixinAudio.Click);
+        }
+
+        void RefreshEraHeader()
+        {
+            var theme = HuntUiTheme.Current;
+            RefreshEras();
+            var idx = HuntEras.IndexOfChapter(_eras, _chapter);
+            _eraTop.text = "ERA " + (idx + 1) + " OF " + Mathf.Max(1, _eras.Count);
+            _eraName.text = ChapterName(_chapter).ToUpperInvariant();
+            _eraSub.text = EraSubtitle(_chapter);
+            _prevArrow.SetActive(idx > 0);
+            _nextArrow.SetActive(idx < _eras.Count - 1);
+
+            for (var i = _eraDots.childCount - 1; i >= 0; i--)
+                Destroy(_eraDots.GetChild(i).gameObject);
+            for (var i = 0; i < _eras.Count; i++)
+            {
+                var era = _eras[i];
+                var cur = i == idx;
+                var done = era.Unlocked && era.Count > 0 && era.Cleared >= era.Count;
+                var dot = HuntUiKit.Rounded(_eraDots, "Dot" + i, cur ? theme.glow : done ? theme.success : theme.locked, 12f);
+                dot.rectTransform.sizeDelta = new Vector2(cur ? 44f : 16f, 16f);
+            }
+        }
+
 
         public void Rebuild()
         {
@@ -86,51 +249,49 @@ namespace Game.Unity
                 Destroy(_content.GetChild(i).gameObject);
             _nodeViews.Clear();
 
-            var nodes = HuntRoadmapService.Nodes;
+            var all = HuntRoadmapService.Nodes;
             var current = HuntSave.CurrentNode;
+            if (_chapter < 0)
+                _chapter = current != null ? current.Chapter : 0;
             _starTotal.text = HuntSave.State.TotalStars.ToString();
 
-            // Level 1 sits at the bottom and the path climbs. Lay out bottom-up (heights measured from the
+            var nodes = new List<HuntNode>();
+            for (var i = 0; i < all.Count; i++)
+                if (all[i].Chapter == _chapter)
+                    nodes.Add(all[i]);
+            if (nodes.Count == 0 && all.Count > 0)
+            {
+                _chapter = all[0].Chapter;
+                for (var i = 0; i < all.Count; i++)
+                    if (all[i].Chapter == _chapter)
+                        nodes.Add(all[i]);
+            }
+
+            RefreshEraHeader();
+
+            // Level 1 of the era sits at the bottom and the path climbs. Lay out bottom-up (heights measured from the
             // content's bottom edge), then flip into the top-anchored content once the total height is known.
-            var chapterRise = new List<KeyValuePair<int, float>>();
             var nodeRise = new float[nodes.Count];
             var y = BottomPad;
-            var chapter = -1;
             for (var i = 0; i < nodes.Count; i++)
             {
                 var node = nodes[i];
-                if (node.Chapter != chapter)
-                {
-                    chapter = node.Chapter;
-                    chapterRise.Add(new KeyValuePair<int, float>(chapter, y + HeaderStep * 0.5f));
-                    y += HeaderStep;
-                }
-
                 if (node.Kind == HuntNodeKind.ImageHog)
                     y += HogGap;
                 nodeRise[i] = y + NodeStep * 0.5f;
                 y += NodeStep + (node.Kind == HuntNodeKind.ImageHog ? HogGap : 0f);
             }
 
-            var height = y + TopPad;
+            var height = y + TopPad - 120f;
             _content.sizeDelta = new Vector2(0f, height);
 
             var dotLayer = HuntUiKit.Rect("Path", _content);
             dotLayer.anchorMin = dotLayer.anchorMax = new Vector2(0.5f, 1f);
-            for (var c = 0; c < chapterRise.Count; c++)
-                Header(chapterRise[c].Key, chapterRise[c].Value - height);
 
-            chapter = -1;
             Vector2? prev = null;
             for (var i = 0; i < nodes.Count; i++)
             {
                 var node = nodes[i];
-                if (node.Chapter != chapter)
-                {
-                    chapter = node.Chapter;
-                    prev = null;
-                }
-
                 var x = node.Kind == HuntNodeKind.ImageHog ? 0f : Mathf.Sin(i * 0.95f) * Amplitude;
                 var pos = new Vector2(x, nodeRise[i] - height);
                 if (prev.HasValue)
@@ -156,17 +317,6 @@ namespace Game.Unity
             _content.anchoredPosition = new Vector2(0f, Mathf.Clamp(target, 0f, max));
         }
 
-        /// <summary>Chapter pill centred at <paramref name="y"/> (top-anchored, negative down).</summary>
-        void Header(int chapter, float y)
-        {
-            var theme = HuntUiTheme.Current;
-            var pill = HuntUiKit.Rounded(_content, "Chapter" + chapter, HuntUiTheme.WithAlpha(theme.ink, 0.55f), 50f);
-            HuntUiKit.Place(pill.rectTransform, new Vector2(0.5f, 1f), new Vector2(760f, 130f), new Vector2(0f, y));
-            var label = HuntUiKit.Label(pill.transform, "Chapter " + (chapter + 1) + "  ·  <color=#FFC93C>" + ChapterName(chapter) + "</color>",
-                48, Color.white, TextAnchor.MiddleCenter, true);
-            label.supportRichText = true;
-        }
-
         void Dots(RectTransform layer, Vector2 a, Vector2 b)
         {
             var dist = Vector2.Distance(a, b);
@@ -174,7 +324,7 @@ namespace Game.Unity
             for (var k = 2; k < n - 1; k++)
             {
                 var p = Vector2.Lerp(a, b, k / (float)n);
-                var dot = HuntUiKit.Image(layer, "Dot", HuntUiSprites.Circle, new Color(1f, 1f, 1f, 0.55f));
+                var dot = HuntUiKit.Image(layer, "Dot", HuntUiSprites.Circle, HuntUiTheme.WithAlpha(HuntUiTheme.Current.glow, 0.6f));
                 HuntUiKit.Place(dot.rectTransform, new Vector2(0.5f, 1f), new Vector2(20f, 20f), p);
             }
         }
@@ -194,15 +344,15 @@ namespace Game.Unity
             var root = HuntUiKit.Rect("Node" + node.Number, _content);
             HuntUiKit.Place(root, new Vector2(0.5f, 1f), new Vector2(size, size), pos);
 
-            var shadow = HuntUiKit.Image(root, "Shadow", HuntUiSprites.Circle, new Color(0.1f, 0f, 0.2f, 0.3f));
-            HuntUiKit.Stretch(shadow.rectTransform);
-            shadow.rectTransform.anchoredPosition = new Vector2(0f, -14f);
+            var shadow = HuntUiKit.Image(root, "Shadow", HuntUiSprites.SoftCircle, HuntUiTheme.WithAlpha(ring, isCurrent ? 0.6f : 0.3f));
+            HuntUiKit.Stretch(shadow.rectTransform, -26f);
             var rim = HuntUiKit.Image(root, "Rim", HuntUiSprites.Circle, HuntUiTheme.Darken(ring, 0.25f));
             HuntUiKit.Stretch(rim.rectTransform);
             rim.rectTransform.anchoredPosition = new Vector2(0f, -8f);
             var face = HuntUiKit.Image(root, "Ring", HuntUiSprites.Circle, ring, true);
             HuntUiKit.Stretch(face.rectTransform);
-            var inner = HuntUiKit.Image(root, "Inner", HuntUiSprites.Circle, unlocked ? Color.white : HuntUiTheme.Lighten(theme.locked, 0.4f));
+            var inner = HuntUiKit.Image(root, "Inner", HuntUiSprites.Circle,
+                isCurrent ? theme.glow : unlocked ? theme.panelAlt : theme.deep);
             HuntUiKit.Stretch(inner.rectTransform, size * 0.12f);
 
             var thumb = hog ? PhotoHuntThumbnail(node) : null;
@@ -231,7 +381,7 @@ namespace Game.Unity
                 var hasArt = preview != null && cleared;
                 if (hasArt)
                 {
-                    var art = HuntUiKit.Image(root, "Art", preview, HuntUiTheme.WithAlpha(theme.ink, 0.7f));
+                    var art = HuntUiKit.Image(root, "Art", preview, HuntUiTheme.WithAlpha(theme.glow, 0.95f));
                     art.preserveAspect = true;
                     HuntUiKit.Stretch(art.rectTransform, size * 0.17f);
                 }
@@ -245,7 +395,7 @@ namespace Game.Unity
                 }
                 else
                 {
-                    HuntUiKit.Label(root, node.Number.ToString(), 70, theme.ink);
+                    HuntUiKit.Label(root, node.Number.ToString(), 70, isCurrent ? theme.deep : theme.ink, TextAnchor.MiddleCenter, false, FontStyle.Bold, true);
                 }
             }
 
@@ -275,10 +425,10 @@ namespace Game.Unity
             if (isCurrent)
             {
                 root.gameObject.AddComponent<HuntIdlePulse>().amount = 0.06f;
-                var arrow = HuntUiKit.Image(root, "Arrow", NixinIcons.Load(NixinIcons.ArrowDown), Color.white);
+                var arrow = HuntUiKit.Image(root, "Arrow", NixinIcons.Load(NixinIcons.ArrowDown), theme.accent);
                 arrow.preserveAspect = true;
                 HuntUiKit.Place(arrow.rectTransform, new Vector2(0.5f, 1f), new Vector2(90f, 90f), new Vector2(0f, 70f));
-                arrow.gameObject.AddComponent<Outline>().effectColor = HuntUiTheme.WithAlpha(theme.ink, 0.6f);
+                arrow.gameObject.AddComponent<Outline>().effectColor = HuntUiTheme.WithAlpha(theme.deep, 0.6f);
                 arrow.gameObject.AddComponent<HuntFloatBob>().amplitude = 14f;
             }
 
@@ -335,7 +485,7 @@ namespace Game.Unity
 
         static readonly Dictionary<string, Sprite> Previews = new Dictionary<string, Sprite>();
 
-        static Sprite SilhouettePreview(HuntNode node)
+        public static Sprite SilhouettePreview(HuntNode node)
         {
             var def = HuntRoadmapService.LevelFor(node);
             if (def == null)

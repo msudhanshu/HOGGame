@@ -9,9 +9,12 @@ namespace Game.Unity
     public static class HuntWallet
     {
         const string StarterKey = "hunt.eco.starter";
+        const string HintKitKey = "hunt.eco.hintkit";
 
         public static int Coins => GameServices.Wallet.Get(HuntCurrencies.Coins);
         public static int Hints => GameServices.Wallet.Get(HuntCurrencies.Hints);
+
+        public static int Balance(string currency) => GameServices.Wallet.Get(currency);
 
         public static HuntEconomyTuning Tuning => HuntRemoteConfig.Economy();
 
@@ -25,12 +28,29 @@ namespace Game.Unity
         /// <summary>First launch: grants the starting coins and hints once.</summary>
         public static void EnsureStarterGrant()
         {
-            if (PlayerPrefs.GetInt(StarterKey, 0) == 1)
+            if (PlayerPrefs.GetInt(StarterKey, 0) != 1)
+            {
+                var t = Tuning;
+                Earn(HuntCurrencies.Coins, t.StartCoins, "starter");
+                Earn(HuntCurrencies.Hints, t.StartHints, "starter");
+                PlayerPrefs.SetInt(StarterKey, 1);
+                PlayerPrefs.Save();
+            }
+
+            EnsureHintKitGrant();
+        }
+
+        /// <summary>Once per install (new players and upgraders alike): a taste of Peek / Radar / +time.
+        /// Lock-on already lives in the original "hints" balance.</summary>
+        static void EnsureHintKitGrant()
+        {
+            if (PlayerPrefs.GetInt(HintKitKey, 0) == 1)
                 return;
-            var t = Tuning;
-            Earn(HuntCurrencies.Coins, t.StartCoins, "starter");
-            Earn(HuntCurrencies.Hints, t.StartHints, "starter");
-            PlayerPrefs.SetInt(StarterKey, 1);
+            var n = Tuning.StarterOtherHints;
+            Earn(HuntCurrencies.HintPeek, n, "starter");
+            Earn(HuntCurrencies.HintRadar, n, "starter");
+            Earn(HuntCurrencies.HintFreeze, n, "starter");
+            PlayerPrefs.SetInt(HintKitKey, 1);
             PlayerPrefs.Save();
         }
 

@@ -64,6 +64,7 @@ namespace Game.Unity
         public const string PopupViewEvent = "popup_view";
         public const string ShopViewEvent = "shop_view";
         public const string ContinueUsedEvent = "continue_used";
+        public const string HintUsedEvent = "hint_used";
         public const string StarsAwardedEvent = "stars_awarded";
         public const string ImageHogStartEvent = "image_hog_start";
         public const string ImageHogCompleteEvent = "image_hog_complete";
@@ -91,6 +92,13 @@ namespace Game.Unity
             => GameServices.Analytics.Track(ContinueUsedEvent, new Dictionary<string, object>
             {
                 { AnalyticsParams.LevelId, levelId }, { "method", method }, { "continue_index", continueIndex },
+            });
+
+        /// <summary>kind: LockOn | Peek | Radar | FreezeTime.</summary>
+        public static void HintUsed(string levelId, string kind)
+            => GameServices.Analytics.Track(HintUsedEvent, new Dictionary<string, object>
+            {
+                { AnalyticsParams.LevelId, levelId }, { "kind", kind },
             });
 
         public static void StarsAwarded(string levelId, int stars, bool firstClear)

@@ -45,6 +45,8 @@ namespace Game.Unity
             public float zoom;
             public float hunt_size_scale;
             public bool glass_fog;
+            public float base_saturation;
+            public float icon_scale;
             public float time_limit_seconds;
             public int toughness;
             public int sprinkle_seed;

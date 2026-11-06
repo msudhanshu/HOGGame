@@ -46,15 +46,16 @@ namespace Game.Unity
             var theme = HuntUiTheme.Current;
             var root = HuntUiKit.Rect(currency + "Pill", parent);
             HuntUiKit.Place(root, new Vector2(0.5f, 0.5f), new Vector2(width, 92f));
-            var bg = HuntUiKit.Rounded(root, "Bg", new Color(0.12f, 0.03f, 0.25f, 0.45f), 46f);
+            var bg = HuntUiKit.Rounded(root, "Bg", HuntUiTheme.WithAlpha(theme.deep, 0.82f), 46f);
             HuntUiKit.Stretch(bg.rectTransform);
             bg.rectTransform.offsetMin = new Vector2(36f, 6f);
             bg.rectTransform.offsetMax = new Vector2(0f, -6f);
+            HuntUiKit.NeonEdge(bg.transform, currency == HuntCurrencies.Coins ? theme.accent : theme.glow, 46f, 0.75f);
 
             var icon = currency == HuntCurrencies.Coins ? HuntUiKit.CoinIcon(root, 104f) : HuntUiKit.HintBadgeIcon(root, 100f);
             HuntUiKit.Place(icon, new Vector2(0f, 0.5f), icon.sizeDelta, new Vector2(52f, 0f));
 
-            var label = HuntUiKit.Label(root, "0", 46, Color.white, TextAnchor.MiddleCenter, outline: true);
+            var label = HuntUiKit.Label(root, "0", 44, Color.white, TextAnchor.MiddleCenter, outline: true, title: true);
             label.horizontalOverflow = HorizontalWrapMode.Overflow;
             label.rectTransform.offsetMin = new Vector2(100f, 0f);
             label.rectTransform.offsetMax = new Vector2(onPlus != null ? -76f : -16f, 0f);

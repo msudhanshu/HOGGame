@@ -14,12 +14,21 @@ namespace Game.Core
         public static int NodeIndex { get; private set; } = -1;
         /// <summary>Set when launching an image-HOG scene; read it there for id/title/time limit.</summary>
         public static ImageHogDef ImageHog { get; private set; }
+        /// <summary>Launched from the Daily Hunt: the win also pays the daily special reward.</summary>
+        public static bool IsDaily { get; private set; }
+
+        public static void SetDaily(int nodeIndex)
+        {
+            SetNode(nodeIndex);
+            IsDaily = true;
+        }
 
         public static void SetNode(int nodeIndex)
         {
             Mode = HuntLaunchMode.Campaign;
             NodeIndex = nodeIndex < 0 ? -1 : nodeIndex;
             ImageHog = null;
+            IsDaily = false;
         }
 
         public static void SetImageHog(int nodeIndex, ImageHogDef def)
@@ -27,6 +36,7 @@ namespace Game.Core
             Mode = HuntLaunchMode.Campaign;
             NodeIndex = nodeIndex;
             ImageHog = def;
+            IsDaily = false;
         }
 
         public static void ResetToDefaults()
@@ -34,6 +44,7 @@ namespace Game.Core
             Mode = HuntLaunchMode.Campaign;
             NodeIndex = -1;
             ImageHog = null;
+            IsDaily = false;
         }
     }
 }

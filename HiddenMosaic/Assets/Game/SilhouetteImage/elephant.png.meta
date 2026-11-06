@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0da4b230fff394289b61b094e9db15a0
+guid: 795cbf40b0eb1488d9292f86cde6444a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4711318594913427124
-    second: mosiaclogo_0
+      213: -8283620988547500454
+    second: elephant_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mosiaclogo_0
+      name: elephant_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 600
-        height: 600
+        x: 5
+        y: 10
+        width: 754
+        height: 682
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c412e7613b80e9eb0800000000000000
-      internalID: -4711318594913427124
+      spriteID: a56f7a3799aaa0d80800000000000000
+      internalID: -8283620988547500454
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mosiaclogo_0: -4711318594913427124
+      elephant_0: -8283620988547500454
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

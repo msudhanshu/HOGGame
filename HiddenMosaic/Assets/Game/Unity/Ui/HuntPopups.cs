@@ -20,7 +20,7 @@ namespace Game.Unity
         {
             HuntUiInput.EnsureEventSystem();
             var nav = UiNavigator.Ensure();
-            nav.SetDimmerColor(new Color(0.12f, 0.02f, 0.26f, 0.62f));
+            nav.SetDimmerColor(new Color(0.01f, 0.03f, 0.1f, 0.72f));
             return nav;
         }
 
@@ -76,6 +76,7 @@ namespace Game.Unity
         public static void Fail(HuntFailPayload p) => Open<HuntFailPopup, HuntFailPayload>(p);
         public static void Jam(HuntJamPayload p) => Open<HuntJamPopup, HuntJamPayload>(p);
         public static void Pause(HuntPausePayload p) => Open<HuntPausePopup, HuntPausePayload>(p);
+        public static void Daily(string from = "home") => Open<HuntDailyPopup, string>(from);
         public static void Chapter(HuntChapterPayload p) => Open<HuntChapterPopup, HuntChapterPayload>(p);
 
         public static void Settings(string from)

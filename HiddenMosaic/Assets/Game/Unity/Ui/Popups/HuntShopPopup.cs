@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Game.Core;
 using Nixin.Game.Core;
 using Nixin.Icons;
 using Nixin.Monetization;
@@ -37,19 +38,45 @@ namespace Game.Unity
 
         protected override Vector2 CardSize => new Vector2(960f, 1640f);
 
+        const int TabHints = 0;
+        const int TabFree = 1;
+        const int TabLooks = 2;
+        static readonly string[] TabNames = { "HINTS", "FREE", "LOOKS" };
+
+        readonly List<GameObject>[] _tabObjects = { new List<GameObject>(), new List<GameObject>(), new List<GameObject>() };
+        readonly Image[] _tabFaces = new Image[3];
+        readonly Text[] _tabLabels = new Text[3];
+        int _buildTab;
+        int _tab;
+
         protected override void BuildContent(RectTransform card)
         {
-            HuntUiKit.Ribbon(card, "Shop", Theme.accent, 600f);
+            HuntUiKit.Ribbon(card, "SHOP", Theme.accent, 600f);
 
-            var coins = HuntCurrencyPill.Build(card, HuntCurrencies.Coins, null, 320f);
-            HuntUiKit.Place((RectTransform)coins.transform, new Vector2(0.5f, 1f), new Vector2(320f, 92f), new Vector2(-180f, -140f));
-            var hints = HuntCurrencyPill.Build(card, HuntCurrencies.Hints, null, 280f);
-            HuntUiKit.Place((RectTransform)hints.transform, new Vector2(0.5f, 1f), new Vector2(280f, 92f), new Vector2(190f, -140f));
-            foreach (var bg in new[] { coins.transform.Find("Bg"), hints.transform.Find("Bg") })
-                bg.GetComponent<Image>().color = HuntUiTheme.WithAlpha(Theme.ink, 0.8f);
+            var coins = HuntCurrencyPill.Build(card, HuntCurrencies.Coins, null, 380f);
+            HuntUiKit.Place((RectTransform)coins.transform, new Vector2(0.5f, 1f), new Vector2(380f, 92f), new Vector2(0f, -140f));
 
+            BuildTabs(card);
             BuildScroll(card);
 
+            // ---- HINTS: packs of 3, bought with coins ----
+            _buildTab = TabHints;
+            Section("HINT PACKS");
+            var tuning = HuntWallet.Tuning;
+            for (var i = 0; i < HuntHints.All.Length; i++)
+            {
+                var kind = HuntHints.All[i];
+                var price = HuntHints.PackPrice(kind, tuning);
+                var row = Item(HuntHints.Name(kind, tuning) + "  ×" + HuntHints.PackSize,
+                    HuntHints.Description(kind, tuning),
+                    HuntHintDock.GlyphOf(kind), Theme.accent, HuntUiKit.CoinSprite, () => price.ToString(), () => true, null, () => BuyPack(kind));
+                row.IconBg.color = HuntUiTheme.WithAlpha(HuntHintDock.ColorOf(kind), 0.2f);
+                row.Icon.color = HuntHintDock.ColorOf(kind);
+                row.Buy.SetColor(Theme.accent);
+            }
+
+            // ---- FREE: rewarded videos ----
+            _buildTab = TabFree;
             Section("FREE");
             Item("Free Coins", "Watch a short video", HuntUiKit.CoinSprite, Theme.info, NixinIcons.Load(NixinIcons.Play),
                 () => "+" + HuntJams.FreeCoinsReward,
@@ -62,7 +89,8 @@ namespace Game.Unity
                 }));
 
             // Coin->hint conversion and real-money rows are hidden (economy control / IAP not shipped).
-            Item("Free Hint", "Watch a short video", HuntUiKit.HintGlyph, Theme.info, NixinIcons.Load(NixinIcons.Play),
+            Item("Free Lock-on", "Watch a short video", HuntHintDock.GlyphOf(Game.Core.HuntHintKind.LockOn), Theme.info,
+                NixinIcons.Load(NixinIcons.Play),
                 () => "+1", () => Monetization.IsAvailable(HuntPlacements.FreeHint), null,
                 () => Monetization.Request(HuntPlacements.FreeHint, granted =>
                 {
@@ -71,12 +99,75 @@ namespace Game.Unity
                     Refresh();
                 }));
 
+            // ---- LOOKS: arena backgrounds ----
+            _buildTab = TabLooks;
             Section("BACKGROUNDS");
             BackgroundRow(null);
             for (var i = 0; i < HuntBackgrounds.All.Count; i++)
                 BackgroundRow(HuntBackgrounds.All[i]);
 
             CloseButton(card, () => Dismiss(_p?.OnClosed));
+            SelectTab(TabHints);
+        }
+
+        void BuyPack(Game.Core.HuntHintKind kind)
+        {
+            var price = HuntHints.PackPrice(kind, HuntWallet.Tuning);
+            if (!HuntWallet.TrySpend(HuntCurrencies.Coins, price, "hint_pack_" + kind))
+            {
+                HuntJams.NotEnoughCoins(price, null);
+                return;
+            }
+
+            HuntWallet.Earn(HuntHintStock.Currency(kind), HuntHints.PackSize, "shop_pack");
+            HuntAudio.Sfx(Nixin.Audio.NixinAudio.Win);
+            HuntHaptics.Light();
+            HuntToast.Show("+" + HuntHints.PackSize + " " + HuntHints.Name(kind, HuntWallet.Tuning), Theme.success);
+            Refresh();
+        }
+
+        void BuildTabs(RectTransform card)
+        {
+            var row = HuntUiKit.Rect("Tabs", card);
+            HuntUiKit.Place(row, new Vector2(0.5f, 1f), new Vector2(860f, 100f), new Vector2(0f, -250f), new Vector2(0.5f, 1f));
+            var layout = row.gameObject.AddComponent<HorizontalLayoutGroup>();
+            layout.spacing = 16f;
+            layout.childControlWidth = true;
+            layout.childControlHeight = true;
+            layout.childForceExpandWidth = true;
+            layout.childForceExpandHeight = true;
+            for (var i = 0; i < TabNames.Length; i++)
+            {
+                var index = i;
+                var face = HuntUiKit.Rounded(row, "Tab" + i, Theme.deep, 46f, true);
+                HuntUiKit.NeonEdge(face.transform, Theme.glow, 46f, 0.6f);
+                _tabFaces[i] = face;
+                _tabLabels[i] = HuntUiKit.Label(face.transform, TabNames[i], 38, Theme.ink, TextAnchor.MiddleCenter, false,
+                    FontStyle.Bold, true);
+                var button = face.gameObject.AddComponent<Button>();
+                button.targetGraphic = face;
+                button.transition = Selectable.Transition.None;
+                face.gameObject.AddComponent<HuntButtonJuice>();
+                button.onClick.AddListener(() => SelectTab(index));
+            }
+        }
+
+        void SelectTab(int tab)
+        {
+            _tab = tab;
+            for (var t = 0; t < _tabObjects.Length; t++)
+                for (var i = 0; i < _tabObjects[t].Count; i++)
+                    if (_tabObjects[t][i] != null)
+                        _tabObjects[t][i].SetActive(t == tab);
+            for (var i = 0; i < _tabFaces.Length; i++)
+            {
+                var on = i == tab;
+                _tabFaces[i].color = on ? Theme.glow : Theme.deep;
+                _tabLabels[i].color = on ? Theme.deep : Theme.ink;
+            }
+
+            if (_scroll != null)
+                _scroll.verticalNormalizedPosition = 1f;
         }
 
         /// <summary>def == null is the free default look (original game-scene and home colours).</summary>
@@ -121,7 +212,7 @@ namespace Game.Unity
             var scrollRt = (RectTransform)scrollGo.transform;
             HuntUiKit.Stretch(scrollRt);
             scrollRt.offsetMin = new Vector2(24f, 30f);
-            scrollRt.offsetMax = new Vector2(-24f, -220f);
+            scrollRt.offsetMax = new Vector2(-24f, -380f);
 
             var viewport = HuntUiKit.Stretch(HuntUiKit.Rect("Viewport", scrollRt));
             viewport.gameObject.AddComponent<RectMask2D>();
@@ -161,19 +252,20 @@ namespace Game.Unity
 
         void Section(string title)
         {
-            var t = HuntUiKit.Label(_content, title, 40, Theme.inkSoft, TextAnchor.LowerLeft);
+            var t = HuntUiKit.Label(_content, title, 36, Theme.inkSoft, TextAnchor.LowerLeft, false, FontStyle.Bold, true);
             t.rectTransform.sizeDelta = new Vector2(860f, 70f);
             AddLayout(t.rectTransform, 70f);
+            _tabObjects[_buildTab].Add(t.gameObject);
         }
 
         Row Item(string title, string subtitle, Sprite icon, Color buyColor, Sprite buyIcon, Func<string> price,
             Func<bool> available, Func<bool> owned, Action onBuy)
         {
-            var row = HuntUiKit.Rounded(_content, title + "Row", Color.white, 40f);
+            var row = HuntUiKit.Rounded(_content, title + "Row", Theme.panelAlt, 40f);
             row.rectTransform.sizeDelta = new Vector2(860f, 170f);
             AddLayout(row.rectTransform, 170f);
 
-            var iconBg = HuntUiKit.Image(row.transform, "IconBg", HuntUiSprites.Circle, Theme.panelAlt);
+            var iconBg = HuntUiKit.Image(row.transform, "IconBg", HuntUiSprites.Circle, Theme.deep);
             HuntUiKit.Place(iconBg.rectTransform, new Vector2(0f, 0.5f), new Vector2(124f, 124f), new Vector2(90f, 0f));
             var iconImg = HuntUiKit.Icon(iconBg.transform, icon, icon == HuntUiKit.CoinSprite ? Color.white : Theme.primary,
                 new Vector2(84f, 84f));
@@ -189,6 +281,7 @@ namespace Game.Unity
             var buy = HuntUiKit.Button(row.transform, "BUY", buyColor, new Vector2(260f, 110f), onBuy, buyIcon, 40);
             HuntUiKit.Place(buy.Root, new Vector2(1f, 0.5f), new Vector2(260f, 110f), new Vector2(-150f, 6f));
 
+            _tabObjects[_buildTab].Add(row.gameObject);
             var r = new Row { Buy = buy, Available = available, Price = price, Owned = owned, IconBg = iconBg, Icon = iconImg };
             _rows.Add(r);
             return r;

@@ -31,6 +31,7 @@ namespace Game.Unity
         HuntMapScreen _mapScreen;
         RectTransform _aboveBanner;
         Text _playSub;
+        GameObject _dailyDot;
         RectTransform _gamesTile;
         GameObject _gamesDot;
         Image _preview;
@@ -136,8 +137,6 @@ namespace Game.Unity
             top.sizeDelta = new Vector2(0f, 170f);
             var coins = HuntCurrencyPill.Build(top, HuntCurrencies.Coins, () => HuntPopups.Shop("home_coins"));
             HuntUiKit.Place((RectTransform)coins.transform, new Vector2(0f, 0.5f), new Vector2(300f, 92f), new Vector2(190f, 0f));
-            var hints = HuntCurrencyPill.Build(top, HuntCurrencies.Hints, () => HuntPopups.Shop("home_hints"), 260f);
-            HuntUiKit.Place((RectTransform)hints.transform, new Vector2(0f, 0.5f), new Vector2(260f, 92f), new Vector2(500f, 0f));
             var settings = HuntUiKit.IconButton(top, NixinIcons.Load(NixinIcons.Settings), theme.primary, 110f,
                 () => HuntPopups.Settings("home"));
             HuntUiKit.Place(settings.Root, new Vector2(1f, 0.5f), new Vector2(110f, 110f), new Vector2(-90f, 0f));
@@ -153,10 +152,14 @@ namespace Game.Unity
             }
             else
             {
-                var hidden = HuntUiKit.Label(logo, "HIDDEN", 150, Color.white, TextAnchor.MiddleCenter, true);
-                hidden.rectTransform.anchorMin = new Vector2(0f, 0.5f);
-                var mosaic = HuntUiKit.Label(logo, "MOSAIC", 170, theme.accent, TextAnchor.MiddleCenter, true);
-                mosaic.rectTransform.anchorMax = new Vector2(1f, 0.55f);
+                var tagline = HuntUiKit.Label(logo, "HUNT THROUGH TIME", 36, theme.glow, TextAnchor.MiddleCenter, false,
+                    FontStyle.Bold, true);
+                tagline.rectTransform.anchorMin = new Vector2(0f, 0.88f);
+                var hidden = HuntUiKit.Label(logo, "HIDDEN", 124, Color.white, TextAnchor.MiddleCenter, true, FontStyle.Bold, true);
+                hidden.rectTransform.anchorMin = new Vector2(0f, 0.48f);
+                hidden.rectTransform.anchorMax = new Vector2(1f, 0.9f);
+                var mosaic = HuntUiKit.Label(logo, "MOSAIC", 136, theme.accent, TextAnchor.MiddleCenter, true, FontStyle.Bold, true);
+                mosaic.rectTransform.anchorMax = new Vector2(1f, 0.5f);
             }
 
             logo.gameObject.AddComponent<HuntFloatBob>().amplitude = 10f;
@@ -184,18 +187,20 @@ namespace Game.Unity
 
             var ring = HuntUiKit.Image(medal, "Ring", HuntUiSprites.Circle, theme.accent);
             HuntUiKit.Stretch(ring.rectTransform);
-            var inner = HuntUiKit.Image(medal, "Inner", HuntUiSprites.Circle, Color.white);
+            var inner = HuntUiKit.Image(medal, "Inner", HuntUiSprites.Circle, theme.deep);
             HuntUiKit.Stretch(inner.rectTransform, 26f);
-            _preview = HuntUiKit.Image(medal, "Preview", null, theme.ink);
+            _preview = HuntUiKit.Image(medal, "Preview", null, theme.glow);
             _preview.preserveAspect = true;
             HuntUiKit.Stretch(_preview.rectTransform, 80f);
 
-            var pill = HuntUiKit.Rounded(medal, "PlayPill", theme.success, 50f, true);
+            var pill = HuntUiKit.Rounded(medal, "PlayPill", theme.glow, 50f, true);
             HuntUiKit.Place(pill.rectTransform, new Vector2(0.5f, 0f), new Vector2(300f, 130f), new Vector2(0f, -10f));
             pill.gameObject.AddComponent<HuntIdlePulse>().amount = 0.06f;
-            var playLabel = HuntUiKit.Label(pill.transform, "PLAY", 68, Color.white, TextAnchor.MiddleCenter, true);
+            HuntUiKit.NeonEdge(pill.transform, Color.white, 50f, 0.7f);
+            var playLabel = HuntUiKit.Label(pill.transform, "PLAY", 64, theme.deep, TextAnchor.MiddleCenter, false, FontStyle.Bold, true);
             playLabel.rectTransform.offsetMin = new Vector2(0f, 34f);
-            _playSub = HuntUiKit.Label(pill.transform, "Level 1", 34, HuntUiTheme.WithAlpha(Color.white, 0.92f), TextAnchor.MiddleCenter, true);
+            _playSub = HuntUiKit.Label(pill.transform, "Level 1", 28, HuntUiTheme.WithAlpha(theme.deep, 0.85f), TextAnchor.MiddleCenter,
+                false, FontStyle.Bold, true);
             _playSub.rectTransform.offsetMax = new Vector2(0f, -78f);
 
             var playButton = medal.gameObject.AddComponent<Button>();
@@ -205,24 +210,24 @@ namespace Game.Unity
             medal.gameObject.AddComponent<HuntButtonJuice>().pressedScale = 0.95f;
 
             // Levels: a tilted mosaic tile drifting in the background.
-            var levels = HuntUiKit.Button(panel, null, theme.info, new Vector2(190f, 190f), OpenMap, NixinIcons.Load(NixinIcons.Grid));
+            var levels = HuntUiKit.Button(panel, null, theme.glow, new Vector2(190f, 190f), OpenMap, NixinIcons.Load(NixinIcons.Grid));
             levels.Root.name = "LevelsTile";
             HuntUiKit.Place(levels.Root, new Vector2(0.2f, 0.2f), new Vector2(190f, 190f));
             levels.Root.localRotation = Quaternion.Euler(0f, 0f, 12f);
             levels.Icon.rectTransform.anchoredPosition = new Vector2(0f, 22f);
-            var levelsLabel = HuntUiKit.Label(levels.Root, "Levels", 38, Color.white, TextAnchor.MiddleCenter, true);
+            var levelsLabel = HuntUiKit.Label(levels.Root, "LEVELS", 32, theme.deep, TextAnchor.MiddleCenter, false, FontStyle.Bold, true);
             levelsLabel.rectTransform.offsetMax = new Vector2(0f, -110f);
             var drift = levels.Root.gameObject.AddComponent<HuntFloatBob>();
             drift.amplitude = 8f;
             drift.speed = 0.7f;
 
             // Nixin Games: other studio games with Try It. Hidden until the list has a game; red dot while one is new.
-            var games = HuntUiKit.Button(panel, null, theme.primary, new Vector2(190f, 190f), OnGames, CrossPromoArt.BadgeStarSprite());
+            var games = HuntUiKit.Button(panel, null, theme.violet, new Vector2(190f, 190f), OnGames, CrossPromoArt.BadgeStarSprite());
             games.Root.name = "GamesTile";
             HuntUiKit.Place(games.Root, new Vector2(0.8f, 0.2f), new Vector2(190f, 190f));
             games.Root.localRotation = Quaternion.Euler(0f, 0f, -10f);
             games.Icon.rectTransform.anchoredPosition = new Vector2(0f, 22f);
-            var gamesLabel = HuntUiKit.Label(games.Root, CrossPromoArt.BadgeLabel, 30, Color.white, TextAnchor.MiddleCenter, true);
+            var gamesLabel = HuntUiKit.Label(games.Root, CrossPromoArt.BadgeLabel, 26, Color.white, TextAnchor.MiddleCenter, true, FontStyle.Bold, true);
             gamesLabel.rectTransform.offsetMax = new Vector2(0f, -120f);
             var dot = HuntUiKit.Image(games.Root, "NewDot", HuntUiSprites.Circle, theme.danger);
             HuntUiKit.Place(dot.rectTransform, new Vector2(1f, 1f), new Vector2(46f, 46f), new Vector2(-10f, -10f));
@@ -232,6 +237,42 @@ namespace Game.Unity
             _gamesTile = games.Root;
             _gamesDot = dot.gameObject;
             RefreshGamesTile();
+
+            // Daily Hunt: today's special + login streak. Red dot while something is waiting.
+            var daily = HuntUiKit.Button(panel, null, theme.accent, new Vector2(190f, 190f), OpenDaily, HuntUiSprites.Star);
+            daily.Root.name = "DailyTile";
+            HuntUiKit.Place(daily.Root, new Vector2(0.5f, 0.2f), new Vector2(190f, 190f));
+            daily.Icon.rectTransform.anchoredPosition = new Vector2(0f, 22f);
+            daily.Icon.rectTransform.sizeDelta = new Vector2(90f, 90f);
+            var dailyLabel = HuntUiKit.Label(daily.Root, "DAILY", 32, theme.deep, TextAnchor.MiddleCenter, false, FontStyle.Bold, true);
+            dailyLabel.rectTransform.offsetMax = new Vector2(0f, -110f);
+            var dailyDot = HuntUiKit.Image(daily.Root, "NewDot", HuntUiSprites.Circle, theme.danger);
+            HuntUiKit.Place(dailyDot.rectTransform, new Vector2(1f, 1f), new Vector2(46f, 46f), new Vector2(-10f, -10f));
+            _dailyDot = dailyDot.gameObject;
+            var dailyBob = daily.Root.gameObject.AddComponent<HuntFloatBob>();
+            dailyBob.amplitude = 8f;
+            dailyBob.speed = 0.8f;
+
+            // Dev-only entry to the experimental drift hunt (moving targets, lock-on picks).
+            if (Debug.isDebugBuild)
+            {
+                var driftLab = HuntUiKit.Button(panel, "Drift (lab)", theme.danger, new Vector2(300f, 110f), OnDriftLab, fontSize: 40);
+                driftLab.Root.name = "DriftLab";
+                HuntUiKit.Place(driftLab.Root, new Vector2(0.5f, 0.07f), new Vector2(300f, 110f));
+            }
+        }
+
+        void OpenDaily()
+        {
+            GameServices.Analytics.TrackButtonClick("daily_hunt", "HuntHomeScreen");
+            HuntPopups.Daily("home");
+        }
+
+        void OnDriftLab()
+        {
+            GameServices.Analytics.TrackButtonClick("drift_lab", "HuntHomeScreen");
+            HuntPopups.CloseAll();
+            UnityEngine.SceneManagement.SceneManager.LoadScene(HuntScenes.Drift);
         }
 
         void RefreshGamesTile()
@@ -283,8 +324,10 @@ namespace Game.Unity
             var node = HuntSave.CurrentNode;
             if (node == null)
                 return;
+            if (_dailyDot != null)
+                _dailyDot.SetActive(HuntDailyStore.HasAttention);
             var allDone = HuntSave.IsCleared(node);
-            _playSub.text = allDone ? "All cleared! Replay" : node.Kind == HuntNodeKind.ImageHog ? "Photo Hunt" : "Level " + node.Number;
+            _playSub.text = allDone ? "ALL CLEARED · REPLAY" : node.Kind == HuntNodeKind.ImageHog ? "PHOTO HUNT" : "ERA " + (node.Chapter + 1) + " · LEVEL " + node.Number;
             var def = HuntRoadmapService.LevelFor(node);
             _preview.sprite = null;
             _preview.enabled = false;
@@ -325,8 +368,7 @@ namespace Game.Unity
             _mapOpen = true;
             GameServices.Analytics.TrackButtonClick("select_levels", "HuntHomeScreen");
             _map.gameObject.SetActive(true);
-            _mapScreen.Rebuild();
-            _mapScreen.ScrollTo(HuntSave.CurrentNode);
+            _mapScreen.FocusCurrent();
             var width = ((RectTransform)transform).rect.width;
             HuntTweener.Move(_map, new Vector2(width, 0f), Vector2.zero, 0.35f, Ease.OutCubic);
             HuntTweener.Fade(_mapGroup, 0f, 1f, 0.25f);
@@ -353,7 +395,10 @@ namespace Game.Unity
             if (HuntCrossPromoHost.TryHandleBack())
                 return;
             if (_mapOpen)
-                CloseMap();
+            {
+                if (!_mapScreen.TryCloseDrawer())
+                    CloseMap();
+            }
             else
                 AppShell.Minimize();
         }

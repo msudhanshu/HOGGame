@@ -67,7 +67,12 @@ namespace Game.Unity
     /// <summary>Wallet currency ids.</summary>
     public static class HuntCurrencies
     {
+        /// <summary>Lock-on stock. Keeps the original "hints" id so the monetization catalog rewards
+        /// and existing saves keep working.</summary>
         public const string Hints = "hints";
+        public const string HintPeek = "hint_peek";
+        public const string HintRadar = "hint_radar";
+        public const string HintFreeze = "hint_freeze";
         public const string Coins = "coins";
     }
 }

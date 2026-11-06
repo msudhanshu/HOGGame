@@ -12,6 +12,11 @@ namespace Game.Unity
         static readonly int MosaicGlassId = Shader.PropertyToID("_MosaicGlass");
         static readonly int MosaicGlassShapeId = Shader.PropertyToID("_MosaicGlassShape");
 
+        static readonly int BaseSatId = Shader.PropertyToID("_MosaicBaseSat");
+
+        /// <summary>0 = grey board (default); higher keeps muted colour outside the lens.</summary>
+        public static void SetBaseSaturation(float value) => Shader.SetGlobalFloat(BaseSatId, Mathf.Clamp01(value));
+
         [SerializeField] float revealEdgeSoftness = 0.08f;
 
         MosaicGlass _glass;

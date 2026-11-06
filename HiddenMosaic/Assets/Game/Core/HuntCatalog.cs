@@ -29,7 +29,9 @@ namespace Game.Core
             string theme = null,
             HuntLevelMode mode = HuntLevelMode.Mosaic,
             string scanner = null,
-            string revealSet = null)
+            string revealSet = null,
+            float baseSaturation = 0f,
+            float iconScale = 1f)
         {
             if (string.IsNullOrWhiteSpace(fileName))
                 throw new ArgumentException("Level file is required.", nameof(fileName));
@@ -47,6 +49,8 @@ namespace Game.Core
             SprinkleSeed = sprinkleSeed;
             Theme = theme ?? string.Empty;
             Mode = mode;
+            IconScale = iconScale < 0.5f ? 0.5f : (iconScale > 4f ? 4f : iconScale);
+            BaseSaturation = baseSaturation < 0f ? 0f : (baseSaturation > 1f ? 1f : baseSaturation);
             Scanner = scanner ?? string.Empty;
             RevealSet = string.IsNullOrWhiteSpace(revealSet) ? (mode == HuntLevelMode.Reveal ? fileName : string.Empty) : revealSet;
         }
@@ -67,7 +71,7 @@ namespace Game.Core
                 waveCount > 0 ? waveCount : WaveCount,
                 MemoryFade, GlassRadius, Zoom, HuntSizeScale, GlassFog,
                 timeScale > 0f ? TimeLimitSeconds * timeScale : TimeLimitSeconds,
-                Toughness, SprinkleSeed, Theme, Mode, Scanner, RevealSet);
+                Toughness, SprinkleSeed, Theme, Mode, Scanner, RevealSet, BaseSaturation, IconScale);
         }
 
         public string FileName { get; }
@@ -81,6 +85,10 @@ namespace Game.Core
         public float HuntSizeScale { get; }
         /// <summary>Blur/fog the board except under the magnifier (easy / memory-style levels).</summary>
         public bool GlassFog { get; }
+        /// <summary>0 = grey board outside the lens; e.g. 0.55 keeps muted colour.</summary>
+        public float BaseSaturation { get; }
+        /// <summary>Multiplier on every board icon size (1 = authored layout size).</summary>
+        public float IconScale { get; }
         public float TimeLimitSeconds { get; }
         /// <summary>1–5 difficulty band for level-select UI.</summary>
         public int Toughness { get; }

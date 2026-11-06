@@ -95,6 +95,138 @@ namespace Game.Core.Tests
         }
     }
 
+    public sealed class HuntErasTests
+    {
+        static List<HuntNode> Nodes()
+        {
+            var defs = new List<HuntLevelDef>();
+            for (var i = 0; i < 12; i++)
+                defs.Add(new HuntLevelDef("a.json", "L" + i));
+            return new List<HuntNode>(HuntRoadmap.Build(new HuntCatalog(defs, new ImageHogDef[0]), 5));
+        }
+
+        [Test]
+        public void GroupsNodesByChapterAndCountsProgress()
+        {
+            var nodes = Nodes();
+            var eras = HuntEras.Build(nodes, n => n.Index < 3, n => n.Index <= 6, 1);
+            Assert.AreEqual(3, eras.Count);
+            Assert.AreEqual(6, eras[0].Count);
+            Assert.AreEqual(3, eras[0].Cleared);
+            Assert.IsTrue(eras[0].Unlocked);
+            Assert.IsTrue(eras[1].Unlocked);
+            Assert.IsFalse(eras[2].Unlocked);
+            Assert.IsTrue(eras[1].Current);
+            Assert.IsFalse(eras[0].Current);
+        }
+
+        [Test]
+        public void IndexOfChapterFallsBackToFirst()
+        {
+            var eras = HuntEras.Build(Nodes(), null, null, 0);
+            Assert.AreEqual(2, HuntEras.IndexOfChapter(eras, 2));
+            Assert.AreEqual(0, HuntEras.IndexOfChapter(eras, 99));
+        }
+    }
+
+    public sealed class HuntHintsTests
+    {
+        [Test]
+        public void EveryHintHasNameAndPositivePrice()
+        {
+            var t = new HuntEconomyTuning();
+            Assert.AreEqual(4, HuntHints.All.Length);
+            foreach (var kind in HuntHints.All)
+            {
+                Assert.IsFalse(string.IsNullOrEmpty(HuntHints.Name(kind, t)), kind.ToString());
+                Assert.Greater(HuntHints.CoinPrice(kind, t), 0, kind.ToString());
+            }
+        }
+
+        [Test]
+        public void FreezeNameReflectsTuning()
+        {
+            var t = new HuntEconomyTuning { FreezeSeconds = 20f };
+            Assert.AreEqual("+20s", HuntHints.Name(HuntHintKind.FreezeTime, t));
+        }
+    }
+
+    public sealed class HuntDailyTests
+    {
+        [Test]
+        public void FirstEverClaimIsDayOne()
+        {
+            var s = new HuntDailyState();
+            Assert.AreEqual(1, HuntDaily.TodayDay(s, "2026-11-06"));
+            Assert.AreEqual(1, HuntDaily.Claim(s, "2026-11-06"));
+            Assert.IsTrue(HuntDaily.AlreadyClaimed(s, "2026-11-06"));
+            Assert.AreEqual(1, s.Streak);
+        }
+
+        [Test]
+        public void ConsecutiveDaysAdvanceAndWrapAfterSeven()
+        {
+            var s = new HuntDailyState();
+            var day = new System.DateTime(2026, 11, 1);
+            for (var i = 1; i <= 7; i++)
+                Assert.AreEqual(i, HuntDaily.Claim(s, HuntDaily.DayKey(day.AddDays(i - 1))));
+            Assert.AreEqual(1, HuntDaily.TodayDay(s, HuntDaily.DayKey(day.AddDays(7))));
+        }
+
+        [Test]
+        public void MissedDayRestartsStreak()
+        {
+            var s = new HuntDailyState();
+            HuntDaily.Claim(s, "2026-11-01");
+            HuntDaily.Claim(s, "2026-11-02");
+            Assert.AreEqual(1, HuntDaily.TodayDay(s, "2026-11-05"));
+            HuntDaily.Claim(s, "2026-11-05");
+            Assert.AreEqual(1, s.Streak);
+        }
+
+        [Test]
+        public void ClaimingTwiceInADayDoesNotAdvance()
+        {
+            var s = new HuntDailyState();
+            HuntDaily.Claim(s, "2026-11-01");
+            HuntDaily.Claim(s, "2026-11-02");
+            HuntDaily.Claim(s, "2026-11-02");
+            Assert.AreEqual(2, s.Streak);
+        }
+
+        [Test]
+        public void StateRoundTrips()
+        {
+            var s = new HuntDailyState { LastClaimDay = "2026-11-02", Streak = 4, HuntDoneDay = "2026-11-02" };
+            var r = HuntDailyState.Parse(s.Serialize());
+            Assert.AreEqual("2026-11-02", r.LastClaimDay);
+            Assert.AreEqual(4, r.Streak);
+            Assert.AreEqual("2026-11-02", r.HuntDoneDay);
+        }
+
+        [Test]
+        public void DaySevenIsAChest()
+        {
+            Assert.AreEqual(HuntDailyRewardKind.Chest, HuntDaily.RewardFor(7).Kind);
+            Assert.AreEqual(HuntDailyRewardKind.Coins, HuntDaily.RewardFor(4).Kind);
+            Assert.AreEqual(HuntHintKind.Radar, HuntDaily.RewardFor(5).Hint);
+        }
+
+        [Test]
+        public void PickIsDeterministicAndInRange()
+        {
+            for (var i = 0; i < 30; i++)
+            {
+                var key = HuntDaily.DayKey(new System.DateTime(2026, 11, 1).AddDays(i));
+                var a = HuntDaily.PickIndex(key, 5);
+                Assert.AreEqual(a, HuntDaily.PickIndex(key, 5));
+                Assert.That(a, Is.InRange(0, 4));
+            }
+
+            Assert.AreEqual(-1, HuntDaily.PickIndex("2026-11-01", 0));
+        }
+    }
+
     public sealed class HuntProgressStateTests
     {
         [Test]

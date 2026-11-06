@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Play.unity
     guid: 6a58b6e67f501439f9474b25c3ad2742
+  - enabled: 1
+    path: Assets/Scenes/Drift.unity
+    guid: 2fc6d02ee20b4463ea7623b30d0a78fa
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

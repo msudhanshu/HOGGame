@@ -54,6 +54,8 @@ namespace Game.Unity
         public float LensRectAspect => _style != null ? _style.RectAspect : 1f;
         /// <summary>Lens half-width in world units (equals GlassWorldRadius for circles).</summary>
         public float GlassWorldHalfWidth => LensShape == ScannerShape.Rect ? GlassWorldRadius * LensRectAspect : GlassWorldRadius;
+        /// <summary>Radius of the board area actually shown magnified inside the lens (hole radius / zoom).</summary>
+        public float VisibleWorldRadius => GlassWorldRadius / Mathf.Max(1f, EffectiveZoom);
         public ScannerStyle Scanner => _style;
         public bool RevealMode => _revealMode;
         public bool PointerHeld { get; private set; }
@@ -100,7 +102,7 @@ namespace Game.Unity
                 if (_style.DefaultZoom <= 1.001f)
                     return 1f;
                 // Level zoom is tuned for the classic magnifier; stronger/weaker styles scale it.
-                return Mathf.Clamp(zoom * _style.DefaultZoom / ReferenceZoom, 1f, 8f);
+                return Mathf.Clamp(zoom * _style.DefaultZoom / ReferenceZoom, 1f, 14f);
             }
         }
 
@@ -360,7 +362,7 @@ namespace Game.Unity
 
         void EnsureCapture(Camera cam)
         {
-            var height = Mathf.Clamp(Screen.height, 1024, 2048);
+            var height = Mathf.Clamp(Screen.height * 2, 2048, 4096); // lens magnifies this capture; keep it dense
             var width = Mathf.Max(64, Mathf.RoundToInt(height * Mathf.Max(cam.aspect, 0.1f)));
             if (_rt != null && (_rt.width != width || _rt.height != height))
                 ReleaseRt();

@@ -92,6 +92,10 @@ namespace Game.Unity
         [SerializeField] float zoom = 3.8f;
         [SerializeField] float huntSizeScale = 1f;
         [SerializeField] bool glassFog = true;
+        [Tooltip("0 = grey board outside the lens; ~0.55 keeps muted colour.")]
+        [SerializeField, Range(0f, 1f)] float baseSaturation;
+        [Tooltip("Multiplier on all board icon sizes.")]
+        [SerializeField] float iconScale = 1f;
         [SerializeField] float timeLimitSeconds = 60f;
         [SerializeField] int toughness = 1;
         [SerializeField] int sprinkleSeed;
@@ -128,7 +132,9 @@ namespace Game.Unity
                 theme,
                 mode,
                 scanner,
-                revealSet);
+                revealSet,
+                baseSaturation,
+                iconScale);
         }
 
         public static HuntSilhouetteEntry FromJson(HuntCatalogLoader.LevelJson row)
@@ -145,6 +151,8 @@ namespace Game.Unity
             entry.zoom = row.zoom > 0f ? row.zoom : 3.8f;
             entry.huntSizeScale = row.hunt_size_scale > 0f ? row.hunt_size_scale : 1f;
             entry.glassFog = row.glass_fog;
+            entry.baseSaturation = row.base_saturation;
+            entry.iconScale = row.icon_scale > 0f ? row.icon_scale : 1f;
             entry.timeLimitSeconds = row.time_limit_seconds > 0f ? row.time_limit_seconds : 60f;
             entry.toughness = row.toughness > 0 ? row.toughness : 1;
             entry.sprinkleSeed = row.sprinkle_seed;

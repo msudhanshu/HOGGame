@@ -22,6 +22,16 @@ namespace Game.Unity
             SceneManager.LoadScene(HuntScenes.Play);
         }
 
+        /// <summary>Daily special: same play scene, flagged so the win pays the daily reward.</summary>
+        public static void LaunchDaily(HuntNode node)
+        {
+            if (node == null || node.Kind != HuntNodeKind.Mosaic)
+                return;
+            HuntLaunchRequest.SetDaily(node.Index);
+            HuntPopups.CloseAll();
+            SceneManager.LoadScene(HuntScenes.Play);
+        }
+
         /// <summary>Coin entry fee of a playable photo hunt (0 for "coming soon" placeholders).</summary>
         public static int PhotoFee(HuntNode node)
         {
@@ -80,7 +90,12 @@ namespace Game.Unity
                 Targets = def != null ? def.TargetCount : 0,
                 TimeLimit = def != null ? def.TimeLimitSeconds : (hog ? node.ImageHog.TimeLimitSeconds : 0f),
                 BestStars = HuntSave.StarsFor(node),
-                DifficultyUp = IsDifficultyUp(node)
+                DifficultyUp = IsDifficultyUp(node),
+                EraName = node != null ? HuntMapScreen.ChapterName(node.Chapter) : null,
+                Waves = def != null ? def.WaveCount : 1,
+                WaveSize = def != null ? def.WaveSize : 0,
+                Silhouette = hog ? null : HuntMapScreen.SilhouettePreview(node),
+                BoostChoices = hog ? new HuntHintKind[0] : new[] { HuntHintKind.FreezeTime, HuntHintKind.LockOn, HuntHintKind.Radar }
             };
         }
     }

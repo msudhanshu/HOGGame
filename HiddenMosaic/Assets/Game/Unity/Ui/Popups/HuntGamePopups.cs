@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Game.Core;
 using Nixin.Audio;
 using Nixin.Icons;
@@ -17,10 +18,21 @@ namespace Game.Unity
         public int Targets;
         public float TimeLimit;
         public int BestStars;
-        /// <summary>Toughness went up versus the previous level → "DIFFICULTY UP!" ribbon.</summary>
+        /// <summary>Toughness went up versus the previous level → "DIFFICULTY UP!" tag.</summary>
         public bool DifficultyUp;
+        public string EraName;
+        public int Waves;
+        public int WaveSize;
+        /// <summary>Silhouette of the finished picture (mosaic levels).</summary>
+        public Sprite Silhouette;
+        /// <summary>Real colour icons of the first wave's targets.</summary>
+        public List<Sprite> TargetIcons = new List<Sprite>();
+        /// <summary>Filled by the popup before OnPlay: hints the player took along (applied at the start).</summary>
+        public List<HuntHintKind> ChosenBoosts = new List<HuntHintKind>();
+        /// <summary>Hints offered as "take with you" boosts. Empty = no boost row.</summary>
+        public HuntHintKind[] BoostChoices = { HuntHintKind.FreezeTime, HuntHintKind.LockOn, HuntHintKind.Radar };
         public Action OnPlay;
-        /// <summary>Null = no home button; PLAY stays centred.</summary>
+        /// <summary>Null = no home button; START stays full width.</summary>
         public Action OnHome;
         /// <summary>Null = no close button (in-level intro); back key then plays.</summary>
         public Action OnClose;
@@ -28,120 +40,334 @@ namespace Game.Unity
 
     public sealed class HuntLevelIntroPopup : HuntPopupBase<HuntLevelIntroPayload>
     {
+        sealed class BoostTile
+        {
+            public HuntHintKind Kind;
+            public Image Face;
+            public Image Edge;
+            public RectTransform Check;
+            public Text Info;
+            public bool Chosen;
+        }
+
         HuntLevelIntroPayload _p;
-        Text _ribbon;
-        Image _ribbonFace;
+        Text _era;
         Text _title;
-        Text _band;
-        Image _bandChip;
-        Text _info;
+        Text _tagline;
         RectTransform _jump;
         Image[] _stars;
         RectTransform _starsRoot;
+        Image _previewImage;
+        Text _previewCaption;
+        Text _diffName;
+        Image[] _diffBars;
+        Text _timeValue;
+        Text _waveValue;
+        Text _targetsLabel;
+        RectTransform _targetRow;
+        RectTransform _boostRow;
+        Text _boostLabel;
+        readonly List<BoostTile> _boosts = new List<BoostTile>();
         HuntKitButton _play;
         HuntKitButton _home;
         HuntKitButton _close;
-        HuntKitIconToggle _music;
-        HuntKitIconToggle _sound;
-        RectTransform _art;
-        Image _artFace;
 
-        protected override Vector2 CardSize => new Vector2(860f, 1000f);
+        protected override bool BottomSheet => true;
+        protected override Vector2 CardSize => new Vector2(0f, 1500f);
+
+        static RectTransform Put(RectTransform rt, float x, float top, float w, float h)
+        {
+            HuntUiKit.Place(rt, new Vector2(0f, 1f), new Vector2(w, h), new Vector2(x, -top), new Vector2(0f, 1f));
+            return rt;
+        }
+
+        static Text Caption(RectTransform parent, string text, int size, Color color, TextAnchor anchor = TextAnchor.MiddleLeft)
+        {
+            return HuntUiKit.Label(parent, text, size, color, anchor, false, FontStyle.Bold, true);
+        }
 
         protected override void BuildContent(RectTransform card)
         {
-            _ribbon = HuntUiKit.Ribbon(card, "Level 1", Theme.primary);
-            _ribbonFace = _ribbon.transform.parent.Find("RibbonFace").GetComponent<Image>();
+            var theme = Theme;
+            var grab = HuntUiKit.Rounded(card, "Grabber", new Color(1f, 1f, 1f, 0.25f), 6f);
+            HuntUiKit.Place(grab.rectTransform, new Vector2(0.5f, 1f), new Vector2(110f, 10f), new Vector2(0f, -22f), new Vector2(0.5f, 1f));
 
-            _art = AtTop(HuntUiKit.Rect("Art", card), 170f, new Vector2(260f, 260f));
-            _artFace = HuntUiKit.Image(_art, "Ring", HuntUiSprites.Circle, Theme.accent);
-            HuntUiKit.Stretch(_artFace.rectTransform);
-            var inner = HuntUiKit.Image(_art, "Inner", HuntUiSprites.Circle, Color.white);
-            HuntUiKit.Stretch(inner.rectTransform, 22f);
-            var glyph = HuntUiKit.Image(_art, "Glyph", HuntUiKit.HintGlyph, Theme.ink);
-            glyph.preserveAspect = true;
-            HuntUiKit.Stretch(glyph.rectTransform, 70f);
-            var bob = _art.gameObject.AddComponent<HuntFloatBob>();
-            bob.amplitude = 8f;
-            bob.rotate = 6f;
+            _era = Caption(card, "", 30, theme.inkSoft);
+            Put(_era.rectTransform, 64f, 56f, 760f, 44f);
+            _title = Caption(card, "LEVEL 1", 84, theme.ink);
+            Put(_title.rectTransform, 64f, 100f, 760f, 110f);
 
-            _title = HuntUiKit.Label(card, "", 60, Theme.ink);
-            AtTop(_title.rectTransform, 450f, new Vector2(760f, 80f));
-
-            _bandChip = HuntUiKit.Rounded(card, "Band", Theme.success, 30f);
-            AtTop(_bandChip.rectTransform, 545f, new Vector2(260f, 64f));
-            _band = HuntUiKit.Label(_bandChip.transform, "EASY", 38, Color.white, TextAnchor.MiddleCenter, true);
-
-            _info = HuntUiKit.Label(card, "", 40, Theme.inkSoft, TextAnchor.MiddleCenter, false, FontStyle.Normal);
-            AtTop(_info.rectTransform, 625f, new Vector2(760f, 60f));
-
-            _stars = HuntUiKit.Stars(card, 0, 64f, 14f);
+            _stars = HuntUiKit.Stars(card, 0, 50f, 8f);
             _starsRoot = (RectTransform)_stars[0].transform.parent;
-            AtTop(_starsRoot, 700f, _starsRoot.sizeDelta);
+            Put(_starsRoot, 64f, 214f, _starsRoot.sizeDelta.x, _starsRoot.sizeDelta.y);
 
-            var jumpBg = HuntUiKit.Rounded(card, "DifficultyUp", Theme.danger, 30f);
+            var jumpBg = HuntUiKit.Rounded(card, "DifficultyUp", theme.danger, 30f);
             _jump = jumpBg.rectTransform;
-            HuntUiKit.Place(_jump, new Vector2(0.5f, 1f), new Vector2(520f, 76f), new Vector2(0f, -150f));
-            _jump.localRotation = Quaternion.Euler(0f, 0f, -6f);
-            HuntUiKit.Label(_jump, "DIFFICULTY UP!", 40, Color.white, TextAnchor.MiddleCenter, true);
-            _jump.gameObject.AddComponent<HuntIdlePulse>().amount = 0.06f;
-
-            _play = HuntUiKit.Button(card, "PLAY", Theme.success, new Vector2(520f, 140f), () => Dismiss(_p?.OnPlay), null, 64);
-            HuntUiKit.Place(_play.Root, new Vector2(0.5f, 0f), new Vector2(520f, 140f), new Vector2(0f, 110f));
-            _play.Root.gameObject.AddComponent<HuntIdlePulse>().amount = 0.035f;
-            _play.Button.GetComponent<HuntButtonJuice>().sfx = NixinAudio.Confirm;
-
-            _home = HuntUiKit.IconButton(card, NixinIcons.Load(NixinIcons.Home), Theme.primary, 130f, () => Dismiss(_p?.OnHome));
-            HuntUiKit.Place(_home.Root, new Vector2(0.5f, 0f), new Vector2(130f, 130f), new Vector2(-300f, 115f));
-
-            _music = HuntUiKit.IconToggle(card, NixinIcons.Load(NixinIcons.Music), null, "Music", Theme.primary, 96f,
-                HuntSettings.Music, v =>
-                {
-                    HuntSettings.Music = v;
-                    HuntAudio.EnsureMusic();
-                });
-            HuntUiKit.Place(_music.Root, new Vector2(0.5f, 1f), new Vector2(96f, 96f), new Vector2(-310f, -220f));
-            _sound = HuntUiKit.IconToggle(card, NixinIcons.Load(NixinIcons.Volume), NixinIcons.Load(NixinIcons.Mute), "Sound",
-                Theme.primary, 96f, HuntSettings.Sfx, v => HuntSettings.Sfx = v);
-            HuntUiKit.Place(_sound.Root, new Vector2(0.5f, 1f), new Vector2(96f, 96f), new Vector2(310f, -220f));
+            HuntUiKit.Place(_jump, new Vector2(1f, 1f), new Vector2(340f, 64f), new Vector2(-200f, -190f), new Vector2(1f, 1f));
+            HuntUiKit.Label(_jump, "DIFFICULTY UP", 32, Color.white, TextAnchor.MiddleCenter, true, FontStyle.Bold, true);
+            _jump.gameObject.AddComponent<HuntIdlePulse>().amount = 0.05f;
 
             _close = CloseButton(card, () => Dismiss(_p?.OnClose));
+            HuntUiKit.Place(_close.Root, new Vector2(1f, 1f), new Vector2(104f, 104f), new Vector2(-70f, -70f));
+
+            // preview (left) + stats (right)
+            var preview = HuntUiKit.Rounded(card, "Preview", theme.deep, 40f, true);
+            Put(preview.rectTransform, 64f, 296f, 360f, 360f);
+            HuntUiKit.NeonEdge(preview.transform, theme.glow, 40f, 0.85f);
+            var glow = HuntUiKit.Image(preview.transform, "Glow", HuntUiSprites.Radial, HuntUiTheme.WithAlpha(theme.bgGlow, 0.5f));
+            HuntUiKit.Stretch(glow.rectTransform);
+            _previewImage = HuntUiKit.Image(preview.transform, "Silhouette", null, theme.glow);
+            _previewImage.preserveAspect = true;
+            HuntUiKit.Stretch(_previewImage.rectTransform, 40f);
+            _previewCaption = Caption(preview.rectTransform, "TARGET SHAPE", 22, theme.inkSoft);
+            _previewCaption.rectTransform.anchorMin = new Vector2(0f, 0f);
+            _previewCaption.rectTransform.anchorMax = new Vector2(1f, 0f);
+            _previewCaption.rectTransform.offsetMin = new Vector2(24f, 14f);
+            _previewCaption.rectTransform.offsetMax = new Vector2(-24f, 56f);
+
+            var diff = HuntUiKit.Rounded(card, "Difficulty", new Color(1f, 1f, 1f, 0.06f), 36f);
+            Put(diff.rectTransform, 454f, 296f, 562f, 220f);
+            HuntUiKit.NeonEdge(diff.transform, Color.white, 36f, 0.12f);
+            var diffLabel = Caption(diff.rectTransform, "DIFFICULTY", 24, theme.inkSoft);
+            Put(diffLabel.rectTransform, 28f, 18f, 400f, 36f);
+            _diffName = Caption(diff.rectTransform, "EASY", 54, theme.accent);
+            Put(_diffName.rectTransform, 28f, 62f, 500f, 76f);
+            var bars = HuntUiKit.Rect("Bars", diff.rectTransform);
+            Put(bars, 28f, 158f, 506f, 16f);
+            _diffBars = new Image[5];
+            for (var i = 0; i < 5; i++)
+            {
+                var bar = HuntUiKit.Rounded(bars, "Bar" + i, theme.locked, 8f);
+                bar.rectTransform.anchorMin = new Vector2(i / 5f, 0f);
+                bar.rectTransform.anchorMax = new Vector2((i + 1) / 5f, 1f);
+                bar.rectTransform.offsetMin = new Vector2(i == 0 ? 0f : 4f, 0f);
+                bar.rectTransform.offsetMax = new Vector2(i == 4 ? 0f : -4f, 0f);
+                _diffBars[i] = bar;
+            }
+
+            _timeValue = StatBox(card, 454f, "TIME");
+            _waveValue = StatBox(card, 454f + 292f, "WAVES");
+
+            // targets
+            _targetsLabel = Caption(card, "TARGETS TO FIND", 28, theme.inkSoft);
+            Put(_targetsLabel.rectTransform, 64f, 692f, 900f, 40f);
+            _targetRow = HuntUiKit.Rect("Targets", card);
+            Put(_targetRow, 64f, 740f, 952f, 124f);
+            var tl = _targetRow.gameObject.AddComponent<HorizontalLayoutGroup>();
+            tl.spacing = 16f;
+            tl.childAlignment = TextAnchor.MiddleLeft;
+            tl.childControlWidth = false;
+            tl.childControlHeight = false;
+            tl.childForceExpandWidth = false;
+            tl.childForceExpandHeight = false;
+
+            // boosts
+            _boostLabel = Caption(card, "TAKE WITH YOU", 28, theme.inkSoft);
+            Put(_boostLabel.rectTransform, 64f, 896f, 900f, 40f);
+            _boostRow = HuntUiKit.Rect("Boosts", card);
+            Put(_boostRow, 64f, 944f, 952f, 210f);
+            var bl = _boostRow.gameObject.AddComponent<HorizontalLayoutGroup>();
+            bl.spacing = 20f;
+            bl.childControlWidth = true;
+            bl.childControlHeight = true;
+            bl.childForceExpandWidth = true;
+            bl.childForceExpandHeight = true;
+
+            _play = HuntUiKit.Button(card, "START HUNT", theme.glow, new Vector2(700f, 150f), () => StartHunt(), null, 60);
+            HuntUiKit.Place(_play.Root, new Vector2(0.5f, 0f), new Vector2(700f, 150f), new Vector2(60f, 190f));
+            _play.Root.gameObject.AddComponent<HuntIdlePulse>().amount = 0.025f;
+            _play.Button.GetComponent<HuntButtonJuice>().sfx = NixinAudio.Confirm;
+
+            _home = HuntUiKit.IconButton(card, NixinIcons.Load(NixinIcons.Home), theme.panelAlt, 130f, () => Dismiss(_p?.OnHome));
+            HuntUiKit.Place(_home.Root, new Vector2(0.5f, 0f), new Vector2(130f, 130f), new Vector2(-380f, 200f));
+        }
+
+        Text StatBox(RectTransform card, float x, string label)
+        {
+            var theme = Theme;
+            var box = HuntUiKit.Rounded(card, label + "Box", new Color(1f, 1f, 1f, 0.06f), 36f);
+            Put(box.rectTransform, x, 536f, 270f, 120f);
+            HuntUiKit.NeonEdge(box.transform, Color.white, 36f, 0.12f);
+            var l = Caption(box.rectTransform, label, 22, theme.inkSoft, TextAnchor.UpperCenter);
+            l.rectTransform.offsetMin = new Vector2(0f, 0f);
+            l.rectTransform.offsetMax = new Vector2(0f, -14f);
+            var v = HuntUiKit.Label(box.rectTransform, "-", 46, theme.ink, TextAnchor.LowerCenter, false, FontStyle.Bold, true);
+            v.rectTransform.offsetMin = new Vector2(0f, 12f);
+            return v;
         }
 
         public override void Bind(HuntLevelIntroPayload payload)
         {
             EnsureBuilt();
             _p = payload ?? new HuntLevelIntroPayload();
+            var theme = Theme;
             var hog = _p.Node != null && _p.Node.Kind == HuntNodeKind.ImageHog;
             var number = _p.Node != null ? _p.Node.Number : 1;
-            var color = hog ? Theme.accent : Theme.ToughnessColor(_p.Toughness);
-            _ribbon.text = hog ? "Photo Hunt" : "Level " + number;
-            _ribbonFace.color = hog ? Theme.accent : Theme.primary;
-            _artFace.color = color;
-            _title.text = _p.Title ?? "";
-            _band.text = HuntEconomyRules.ToughnessName(_p.Toughness).ToUpperInvariant();
-            _bandChip.color = color;
-            var minutes = Mathf.CeilToInt(_p.TimeLimit) / 60;
-            var seconds = Mathf.CeilToInt(_p.TimeLimit) % 60;
-            _info.text = hog
-                ? "A real photo full of hidden objects!"
-                : "Find " + _p.Targets + " objects  ·  " + minutes + ":" + seconds.ToString("00");
+            var color = hog ? theme.accent : theme.ToughnessColor(_p.Toughness);
+
+            var eraIndex = _p.Node != null ? _p.Node.Chapter + 1 : 1;
+            _era.text = ("ERA " + eraIndex + (string.IsNullOrEmpty(_p.EraName) ? "" : "  ·  " + _p.EraName)).ToUpperInvariant();
+            _title.text = hog ? "PHOTO HUNT" : "LEVEL " + number;
             for (var i = 0; i < _stars.Length; i++)
-                _stars[i].color = i < _p.BestStars ? Theme.accent : new Color(0f, 0f, 0f, 0.15f);
+                _stars[i].color = i < _p.BestStars ? theme.accent : new Color(1f, 1f, 1f, 0.18f);
             _jump.gameObject.SetActive(_p.DifficultyUp);
+
+            if (_p.Silhouette != null)
+            {
+                _previewImage.sprite = _p.Silhouette;
+                _previewImage.gameObject.SetActive(true);
+                _previewImage.color = theme.glow;
+            }
+            else
+            {
+                _previewImage.sprite = HuntUiKit.HintGlyph;
+                _previewImage.gameObject.SetActive(true);
+                _previewImage.color = HuntUiTheme.WithAlpha(theme.glow, 0.7f);
+            }
+
+            _previewCaption.text = hog ? "REAL PHOTO" : "TARGET SHAPE";
+            _diffName.text = HuntEconomyRules.ToughnessName(_p.Toughness).ToUpperInvariant();
+            _diffName.color = color;
+            for (var i = 0; i < _diffBars.Length; i++)
+                _diffBars[i].color = i < Mathf.Clamp(_p.Toughness, 1, 5) ? color : new Color(1f, 1f, 1f, 0.15f);
+            var secs = Mathf.CeilToInt(_p.TimeLimit);
+            _timeValue.text = (secs / 60) + ":" + (secs % 60).ToString("00");
+            _waveValue.text = _p.Waves > 0 ? _p.Waves.ToString() : "1";
+
+            var perWave = _p.WaveSize > 0 ? _p.WaveSize : _p.Targets;
+            _targetsLabel.text = hog ? "FIND THE HIDDEN OBJECTS"
+                : "TARGETS TO FIND" + (perWave > 0 ? "  ·  " + perWave + (_p.Waves > 1 ? " PER WAVE" : "") : "");
+            FillTargets();
+            FillBoosts();
+
             var hasHome = _p.OnHome != null;
             _home.gameObject.SetActive(hasHome);
-            _play.Root.anchoredPosition = new Vector2(hasHome ? 70f : 0f, 110f);
-            _play.Root.sizeDelta = new Vector2(hasHome ? 480f : 520f, 140f);
+            _play.Root.anchoredPosition = new Vector2(hasHome ? 60f : 0f, 190f);
+            _play.Root.sizeDelta = new Vector2(hasHome ? 700f : 880f, 150f);
             _close.gameObject.SetActive(_p.OnClose != null);
-            _music.Set(HuntSettings.Music);
-            _sound.Set(HuntSettings.Sfx);
-            SetBackHandler(() => Dismiss(_p.OnClose ?? _p.OnPlay));
+            SetBackHandler(() => Dismiss(_p.OnClose ?? (Action)StartHuntAction));
+        }
+
+        void StartHuntAction() => StartHunt();
+
+        void FillTargets()
+        {
+            for (var i = _targetRow.childCount - 1; i >= 0; i--)
+                Destroy(_targetRow.GetChild(i).gameObject);
+            var theme = Theme;
+            var count = _p.TargetIcons != null ? _p.TargetIcons.Count : 0;
+            var size = count <= 6 ? 112f : Mathf.Max(72f, 112f - (count - 6) * 10f);
+            for (var i = 0; i < count; i++)
+            {
+                var chip = HuntUiKit.Rounded(_targetRow, "Target" + i, HuntUiTheme.WithAlpha(theme.glow, 0.1f), 30f);
+                chip.rectTransform.sizeDelta = new Vector2(size, size);
+                HuntUiKit.NeonEdge(chip.transform, theme.glow, 30f, 0.8f);
+                if (_p.TargetIcons[i] != null)
+                {
+                    var icon = HuntUiKit.Image(chip.transform, "Icon", _p.TargetIcons[i], Color.white);
+                    icon.preserveAspect = true;
+                    HuntUiKit.Stretch(icon.rectTransform, size * 0.12f);
+                }
+            }
+
+            _targetsLabel.gameObject.SetActive(count > 0 || true);
+        }
+
+        void FillBoosts()
+        {
+            for (var i = _boostRow.childCount - 1; i >= 0; i--)
+                Destroy(_boostRow.GetChild(i).gameObject);
+            _boosts.Clear();
+            var choices = _p.BoostChoices;
+            var any = choices != null && choices.Length > 0;
+            _boostLabel.gameObject.SetActive(any);
+            _boostRow.gameObject.SetActive(any);
+            if (!any)
+                return;
+            for (var i = 0; i < choices.Length; i++)
+                _boosts.Add(BuildBoost(choices[i]));
+            RefreshBoosts();
+        }
+
+        BoostTile BuildBoost(HuntHintKind kind)
+        {
+            var theme = Theme;
+            var color = HuntHintDock.ColorOf(kind);
+            var tile = new BoostTile { Kind = kind };
+            var face = HuntUiKit.Rounded(_boostRow, kind + "Boost", HuntUiTheme.WithAlpha(color, 0.08f), 40f, true);
+            tile.Face = face;
+            tile.Edge = HuntUiKit.NeonEdge(face.transform, color, 40f, 0.55f);
+            var glyph = HuntUiKit.Icon(face.transform, HuntHintDock.GlyphOf(kind), color, new Vector2(84f, 84f));
+            glyph.rectTransform.anchorMin = glyph.rectTransform.anchorMax = new Vector2(0.5f, 0.68f);
+            glyph.rectTransform.anchoredPosition = Vector2.zero;
+            var name = Caption(face.rectTransform, HuntHints.Name(kind, HuntWallet.Tuning), 28, Color.white, TextAnchor.MiddleCenter);
+            name.rectTransform.anchorMin = new Vector2(0f, 0.22f);
+            name.rectTransform.anchorMax = new Vector2(1f, 0.42f);
+            name.rectTransform.offsetMin = name.rectTransform.offsetMax = Vector2.zero;
+            tile.Info = Caption(face.rectTransform, "", 26, theme.accent, TextAnchor.MiddleCenter);
+            tile.Info.rectTransform.anchorMin = new Vector2(0f, 0.02f);
+            tile.Info.rectTransform.anchorMax = new Vector2(1f, 0.22f);
+            tile.Info.rectTransform.offsetMin = tile.Info.rectTransform.offsetMax = Vector2.zero;
+
+            var check = HuntUiKit.Image(face.transform, "Check", HuntUiSprites.Circle, color);
+            HuntUiKit.Place(check.rectTransform, new Vector2(1f, 1f), new Vector2(46f, 46f), new Vector2(-12f, -12f), new Vector2(1f, 1f));
+            var tick = HuntUiKit.Image(check.transform, "Tick", NixinIcons.Load(NixinIcons.Check), theme.deep);
+            tick.preserveAspect = true;
+            HuntUiKit.Stretch(tick.rectTransform, 10f);
+            tile.Check = check.rectTransform;
+
+            var button = face.gameObject.AddComponent<Button>();
+            button.targetGraphic = face;
+            button.transition = Selectable.Transition.None;
+            face.gameObject.AddComponent<HuntButtonJuice>();
+            button.onClick.AddListener(() => ToggleBoost(tile));
+            return tile;
+        }
+
+        void ToggleBoost(BoostTile tile)
+        {
+            if (!tile.Chosen)
+            {
+                var owned = HuntHintStock.Count(tile.Kind) > 0;
+                if (!owned && !HuntWallet.CanAfford(HuntCurrencies.Coins, HuntHintStock.Price(tile.Kind)))
+                {
+                    HuntToast.Show("Not enough coins");
+                    return;
+                }
+            }
+
+            tile.Chosen = !tile.Chosen;
+            RefreshBoosts();
+        }
+
+        void RefreshBoosts()
+        {
+            var theme = Theme;
+            for (var i = 0; i < _boosts.Count; i++)
+            {
+                var t = _boosts[i];
+                var color = HuntHintDock.ColorOf(t.Kind);
+                var count = HuntHintStock.Count(t.Kind);
+                t.Info.text = count > 0 ? "OWNED  ×" + count : HuntHintStock.Price(t.Kind) + " COINS";
+                t.Info.color = count > 0 ? theme.inkSoft : theme.accent;
+                t.Check.gameObject.SetActive(t.Chosen);
+                t.Face.color = HuntUiTheme.WithAlpha(color, t.Chosen ? 0.22f : 0.08f);
+                t.Edge.color = HuntUiTheme.WithAlpha(color, t.Chosen ? 1f : 0.55f);
+            }
+        }
+
+        void StartHunt()
+        {
+            _p.ChosenBoosts = new List<HuntHintKind>();
+            for (var i = 0; i < _boosts.Count; i++)
+                if (_boosts[i].Chosen)
+                    _p.ChosenBoosts.Add(_boosts[i].Kind);
+            Dismiss(_p.OnPlay);
         }
 
         protected override void OnShown()
         {
-            Stagger(0.15f, _art, _title.transform, _bandChip.transform, _info.transform, _starsRoot, _play.Root);
+            Stagger(0.2f, _targetRow, _boostRow, _play.Root);
             if (_p.DifficultyUp)
             {
                 _jump.localScale = Vector3.zero;
@@ -159,7 +385,7 @@ namespace Game.Unity
 
     public sealed class HuntWinPayload
     {
-        public string Title = "Level Complete!";
+        public string Title = "TIMELINE SECURED";
         public int Stars;
         /// <summary>Already credited; caller holds it on the coin pill (HuntCurrencyPill.HoldOn) so it can fly in.</summary>
         public int Coins;
@@ -192,7 +418,7 @@ namespace Game.Unity
 
         protected override void BuildContent(RectTransform card)
         {
-            _ribbon = HuntUiKit.Ribbon(card, "Level Complete!", Theme.success, 800f);
+            _ribbon = HuntUiKit.Ribbon(card, "TIMELINE SECURED", Theme.success, 860f);
 
             var glow = HuntUiKit.Image(card, "Glow", HuntUiSprites.Star, HuntUiTheme.WithAlpha(Theme.accent, 0.18f));
             AtTop(glow.rectTransform, 90f, new Vector2(520f, 520f));
@@ -215,7 +441,7 @@ namespace Game.Unity
             _coins = amount.gameObject.AddComponent<HuntCounterText>();
             _coins.prefix = "+";
 
-            _double = HuntUiKit.Button(card, "×2 COINS", Theme.info, new Vector2(560f, 120f), OnDouble,
+            _double = HuntUiKit.Button(card, "×2 COINS", Theme.violet, new Vector2(560f, 120f), OnDouble,
                 NixinIcons.Load(NixinIcons.Play), 46);
             HuntUiKit.Place(_double.Root, new Vector2(0.5f, 0f), new Vector2(560f, 120f), new Vector2(0f, 290f));
 
@@ -341,6 +567,8 @@ namespace Game.Unity
         public int Total;
         public int ContinueCost;
         public float ContinueSeconds = 30f;
+        /// <summary>Seconds the rewarded video adds (usually less than the coin continue).</summary>
+        public float AdContinueSeconds = 20f;
         public bool AdContinueAvailable;
         public Action OnContinueCoins;
         public Action OnContinueAd;
@@ -364,9 +592,9 @@ namespace Game.Unity
 
         protected override void BuildContent(RectTransform card)
         {
-            HuntUiKit.Ribbon(card, "Time's Up!", Theme.danger, 760f);
+            HuntUiKit.Ribbon(card, "TIME'S UP", Theme.danger, 760f);
 
-            _clock = HuntUiKit.Label(card, "0:00", 150, Theme.danger, TextAnchor.MiddleCenter, true);
+            _clock = HuntUiKit.Label(card, "0:00", 150, Theme.danger, TextAnchor.MiddleCenter, true, FontStyle.Bold, true);
             AtTop(_clock.rectTransform, 120f, new Vector2(600f, 190f));
 
             var bar = HuntUiKit.Rounded(card, "ProgressBg", new Color(0f, 0f, 0f, 0.1f), 30f);
@@ -376,16 +604,16 @@ namespace Game.Unity
             _progressFill.rectTransform.anchorMax = new Vector2(0.5f, 1f);
             _progressFill.rectTransform.offsetMin = Vector2.zero;
             _progressFill.rectTransform.offsetMax = Vector2.zero;
-            _progressText = HuntUiKit.Label(bar.transform, "", 36, Color.white, TextAnchor.MiddleCenter, true);
+            _progressText = HuntUiKit.Label(bar.transform, "", 34, Color.white, TextAnchor.MiddleCenter, true, FontStyle.Bold, true);
 
-            _coins = HuntUiKit.Button(card, "+30s", Theme.accent, new Vector2(620f, 130f), () => Dismiss(_p?.OnContinueCoins),
-                HuntUiKit.CoinSprite, 50);
-            AtTop(_coins.Root, 440f, new Vector2(620f, 130f));
-            _coins.Root.gameObject.AddComponent<HuntIdlePulse>().amount = 0.03f;
+            _ad = HuntUiKit.Button(card, "WATCH VIDEO  +20s", Theme.accent, new Vector2(700f, 140f), () => Dismiss(_p?.OnContinueAd),
+                NixinIcons.Load(NixinIcons.Play), 36);
+            AtTop(_ad.Root, 440f, new Vector2(700f, 140f));
+            _ad.Root.gameObject.AddComponent<HuntIdlePulse>().amount = 0.03f;
 
-            _ad = HuntUiKit.Button(card, "+30s FREE", Theme.info, new Vector2(620f, 130f), () => Dismiss(_p?.OnContinueAd),
-                NixinIcons.Load(NixinIcons.Play), 50);
-            AtTop(_ad.Root, 600f, new Vector2(620f, 130f));
+            _coins = HuntUiKit.Button(card, "+30s", Theme.glow, new Vector2(700f, 130f), () => Dismiss(_p?.OnContinueCoins),
+                HuntUiKit.CoinSprite, 44);
+            AtTop(_coins.Root, 600f, new Vector2(700f, 130f));
 
             _retry = HuntUiKit.Button(card, "RETRY", Theme.primary, new Vector2(400f, 120f), () => Dismiss(_p?.OnRetry),
                 NixinIcons.Load(NixinIcons.Restart), 46);
@@ -401,12 +629,13 @@ namespace Game.Unity
             _p = payload ?? new HuntFailPayload();
             var frac = _p.Total > 0 ? Mathf.Clamp01(_p.Found / (float)_p.Total) : 0f;
             _progressFill.rectTransform.anchorMax = new Vector2(Mathf.Max(0.08f, frac), 1f);
-            _progressText.text = "Found " + _p.Found + " / " + _p.Total;
+            _progressText.text = "FOUND " + _p.Found + " / " + _p.Total;
             var secs = Mathf.RoundToInt(_p.ContinueSeconds);
             _coins.SetLabel("+" + secs + "s   " + _p.ContinueCost);
             _coins.SetInteractable(_p.OnContinueCoins != null);
-            _ad.SetLabel("+" + secs + "s FREE");
+            _ad.SetLabel("WATCH VIDEO  +" + Mathf.RoundToInt(_p.AdContinueSeconds) + "s");
             _ad.gameObject.SetActive(_p.AdContinueAvailable && _p.OnContinueAd != null);
+            AtTop(_coins.Root, _ad.gameObject.activeSelf ? 600f : 460f, new Vector2(700f, 130f));
             SetBackHandler(() => Dismiss(_p.OnHome));
         }
 
@@ -508,7 +737,7 @@ namespace Game.Unity
 
     public sealed class HuntPausePayload
     {
-        public string Title = "Paused";
+        public string Title = "PAUSED";
         public Action OnResume;
         public Action OnRestart;
         public Action OnHome;
@@ -524,18 +753,19 @@ namespace Game.Unity
 
         protected override void BuildContent(RectTransform card)
         {
-            _title = HuntUiKit.Ribbon(card, "Paused", Theme.primary, 700f);
+            _title = HuntUiKit.Ribbon(card, "PAUSED", Theme.primary, 700f);
             _settings = HuntSettingsBlock.Build(card, 150f);
 
-            var resume = HuntUiKit.Button(card, "RESUME", Theme.success, new Vector2(620f, 140f), () => Dismiss(_p?.OnResume),
-                NixinIcons.Load(NixinIcons.Play), 56);
-            AtTop(resume.Root, 560f, new Vector2(620f, 140f));
-            var restart = HuntUiKit.Button(card, "RESTART", Theme.accent, new Vector2(300f, 120f), () => Dismiss(_p?.OnRestart),
-                NixinIcons.Load(NixinIcons.Restart), 40);
-            HuntUiKit.Place(restart.Root, new Vector2(0.5f, 0f), new Vector2(300f, 120f), new Vector2(-160f, 110f));
-            var home = HuntUiKit.Button(card, "HOME", Theme.primary, new Vector2(300f, 120f), () => Dismiss(_p?.OnHome),
-                NixinIcons.Load(NixinIcons.Home), 40);
-            HuntUiKit.Place(home.Root, new Vector2(0.5f, 0f), new Vector2(300f, 120f), new Vector2(160f, 110f));
+            var resume = HuntUiKit.Button(card, "RESUME", Theme.glow, new Vector2(640f, 140f), () => Dismiss(_p?.OnResume),
+                NixinIcons.Load(NixinIcons.Play), 54);
+            AtTop(resume.Root, 560f, new Vector2(640f, 140f));
+            resume.Root.gameObject.AddComponent<HuntIdlePulse>().amount = 0.025f;
+            var restart = HuntUiKit.Button(card, "RESTART", Theme.primary, new Vector2(640f, 120f), () => Dismiss(_p?.OnRestart),
+                NixinIcons.Load(NixinIcons.Restart), 42);
+            AtTop(restart.Root, 740f, new Vector2(640f, 120f));
+            var home = HuntUiKit.Button(card, "LEAVE MISSION", Theme.danger, new Vector2(640f, 120f), () => Dismiss(_p?.OnHome),
+                NixinIcons.Load(NixinIcons.Home), 38);
+            AtTop(home.Root, 890f, new Vector2(640f, 120f));
         }
 
         public override void Bind(HuntPausePayload payload)

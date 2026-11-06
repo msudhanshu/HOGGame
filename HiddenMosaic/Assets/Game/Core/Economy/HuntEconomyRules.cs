@@ -22,6 +22,18 @@ namespace Game.Core
         public int ContinueBase = 30;
         public int ContinueStep = 15;
         public float ContinueSeconds = 30f;
+        /// <summary>Seconds the rewarded-video continue adds.</summary>
+        public float AdContinueSeconds = 20f;
+        /// <summary>Coin price of one hint use when the stock is empty.</summary>
+        public int HintPriceLockOn = 60;
+        public int HintPricePeek = 50;
+        public int HintPriceRadar = 120;
+        public int HintPriceFreeze = 40;
+        public float PeekSeconds = 2f;
+        public float RadarSeconds = 4f;
+        public float FreezeSeconds = 15f;
+        /// <summary>Free uses of Peek / Radar / +time granted once (Lock-on keeps StartHints).</summary>
+        public int StarterOtherHints = 1;
     }
 
     public static class HuntEconomyRules
